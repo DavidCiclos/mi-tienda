@@ -49,7 +49,7 @@ export default function Home() {
         <h3 style={{ color: "#d4af37" }}>
           Hola, bienvenido 👋
         </h3>
-        <p>¿Qué tal tu día? ¿Cómo puedo ayudarte hoy?</p>
+        <p>¿Qué tal tu día? </p>
       </div>
 
       {/* PRODUCTOS */}
