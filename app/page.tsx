@@ -5,7 +5,7 @@ export default function Home() {
   const [name, setName] = useState("");
   const [cart, setCart] = useState<any[]>([]);
   const [lang, setLang] = useState<"es" | "en">("es");
-
+const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const texts = {
     es: {
       saludo: "Hola",
@@ -37,28 +37,44 @@ export default function Home() {
       name: "Classic Silver Watch",
       price: 420000,
       category: "good",
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+      images: [
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+  "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+],
+description: "Reloj elegante en acero inoxidable, resistente al agua."
     },
     {
       id: 2,
       name: "Black Minimal Watch",
       price: 350000,
       category: "good",
-      image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+     images: [
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+  "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+],
+description: "Reloj elegante en acero inoxidable, resistente al agua."
     },
     {
       id: 3,
       name: "Golden Luxury Watch",
       price: 580000,
       category: "premium",
-      image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa"
+    images: [
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+  "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+],
+description: "Reloj elegante en acero inoxidable, resistente al agua."
     },
     {
       id: 4,
       name: "Diamond Elite Watch",
       price: 950000,
       category: "premium",
-      image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3"
+     images: [
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+  "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+],
+description: "Reloj elegante en acero inoxidable, resistente al agua."
     }
   ];
 
@@ -87,77 +103,76 @@ export default function Home() {
   };
 
   const renderSection = (title: string, type: string) => (
-    <div style={{ marginTop: "40px" }}>
-      <h2 style={{ color: "#d4af37", paddingLeft: "20px" }}>{title}</h2>
+  <div style={{ marginTop: "40px" }}>
+    <h2 style={{ color: "#d4af37", paddingLeft: "20px" }}>{title}</h2>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "25px",
-          padding: "20px"
-        }}
-      >
-        {products
-          .filter((p) => p.category === type)
-          .map((product) => (
-            <div
-              key={product.id}
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+        gap: "25px",
+        padding: "20px"
+      }}
+    >
+      {products
+        .filter((p) => p.category === type)
+        .map((product) => (
+          <div
+            key={product.id}
+            onClick={() => setSelectedProduct(product)}
+            style={{
+              backgroundColor: "#111",
+              borderRadius: "20px",
+              overflow: "hidden",
+              transition: "0.3s",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.transform =
+                "scale(1.05)";
+              (e.currentTarget as HTMLElement).style.boxShadow =
+                "0 10px 30px rgba(212,175,55,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.transform = "scale(1)";
+              (e.currentTarget as HTMLElement).style.boxShadow = "none";
+            }}
+          >
+            <img
+              src={product.images[0]}
               style={{
-                backgroundColor: "#111",
-                borderRadius: "20px",
-                overflow: "hidden",
-                transition: "0.3s",
-                cursor: "pointer"
+                width: "100%",
+                height: "220px",
+                objectFit: "cover"
               }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform =
-                  "scale(1.05)";
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 10px 30px rgba(212,175,55,0.3)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "scale(1)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
-            >
-              <img
-                src={product.image}
+            />
+
+            <div style={{ padding: "15px" }}>
+              <h3>{product.name}</h3>
+
+              <p style={{ color: "#d4af37", fontWeight: "bold" }}>
+                ${product.price.toLocaleString()}
+              </p>
+
+              <button
                 style={{
+                  marginTop: "5px",
                   width: "100%",
-                  height: "220px",
-                  objectFit: "cover"
+                  padding: "8px",
+                  background: "#333",
+                  color: "white",
+                  borderRadius: "8px",
+                  border: "none"
                 }}
-              />
-
-              <div style={{ padding: "15px" }}>
-                <h3>{product.name}</h3>
-
-                <p style={{ color: "#d4af37", fontWeight: "bold" }}>
-                  ${product.price.toLocaleString()}
-                </p>
-
-                <button
-                  onClick={() => addToCart(product)}
-                  style={{
-                    marginTop: "5px",
-                    width: "100%",
-                    padding: "8px",
-                    background: "#333",
-                    color: "white",
-                    borderRadius: "8px",
-                    border: "none"
-                  }}
-                >
-                  {t.comprar}
-                </button>
-              </div>
+              >
+                👁 Ver producto
+              </button>
             </div>
-          ))}
-      </div>
+          </div>
+        ))}
     </div>
-  );
-
+  </div>
+);
   return (
     <div
       style={{
@@ -226,6 +241,55 @@ export default function Home() {
       {/* SECCIONES */}
       {renderSection(t.good, "good")}
       {renderSection(t.premium, "premium")}
+      {selectedProduct && (
+  <div style={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.9)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000
+  }}>
+    <div style={{
+      background: "#111",
+      padding: "20px",
+      borderRadius: "20px",
+      width: "90%",
+      maxWidth: "500px"
+    }}>
+      
+      <button onClick={() => setSelectedProduct(null)}>❌</button>
+
+      <img src={selectedProduct.images[0]} style={{
+        width: "100%",
+        borderRadius: "10px"
+      }} />
+
+      <h2>{selectedProduct.name}</h2>
+
+      <p style={{ color: "#d4af37" }}>
+        ${selectedProduct.price}
+      </p>
+
+      <p>{selectedProduct.description}</p>
+
+      <button onClick={() => addToCart(selectedProduct)}>
+        Añadir al carrito
+      </button>
+
+      <button onClick={() => {
+        window.open(`https://wa.me/573116287493?text=Quiero ${selectedProduct.name}`);
+      }}>
+        Comprar ahora
+      </button>
+
+    </div>
+  </div>
+)}
     </div>
   );
 }
