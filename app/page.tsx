@@ -1,4 +1,4 @@
-"use welcome";
+"use client";
 import { useState } from "react";
 
 export default function Home() {
@@ -6,110 +6,121 @@ export default function Home() {
   const [cart, setCart] = useState<any[]>([]);
   const [lang, setLang] = useState<"es" | "en">("es");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [search, setSearch] = useState("");
 
   const texts = {
     es: {
-      saludo: "Hola",
-      placeholder: "¿Qué buscas hoy?",
-      comprar: "Añadir al carrito",
-      carrito: "Mi Carrito",
-      good: "Colección Esencial",
-      premium: "Lo más Exclusivo",
+      placeholder: "Buscar en Luxury Time...",
+      agregar: "Agregar al carrito",
+      carrito: "Carrito",
       vacio: "Tu carrito está vacío",
-      ver: "Ver producto",
-      agregar: "Agregar ya"
+      detalles: "Especificaciones del producto",
+      puntuacion: "Calificación de clientes",
+      comprarYa: "Finalizar compra por WhatsApp"
     },
     en: {
-      saludo: "Hello",
-      placeholder: "What are you looking for?",
-      comprar: "Add to cart",
-      carrito: "My Cart",
-      good: "Essential Collection",
-      premium: "Most Exclusive",
+      placeholder: "Search Luxury Time...",
+      agregar: "Add to cart",
+      carrito: "Cart",
       vacio: "Your cart is empty",
-      ver: "View product",
-      agregar: "Add now"
+      detalles: "Product specifications",
+      puntuacion: "Customer rating",
+      comprarYa: "Complete purchase via WhatsApp"
     }
   };
 
   const t = texts[lang];
 
   const products = [
-    { id: 1, name: "Classic Silver Watch", price: 420000, oldPrice: 525000, category: "good", images: ["https://unsplash.com"], description: "Reloj elegante en acero inoxidable, resistente al agua." },
-    { id: 2, name: "Black Minimal Watch", price: 350000, oldPrice: 410000, category: "good", images: ["https://unsplash.com"], description: "Reloj minimalista con pulsera de cuero negro." },
-    { id: 3, name: "Golden Luxury Watch", price: 580000, oldPrice: 720000, category: "premium", images: ["https://unsplash.com"], description: "Acabados en oro de 18k, cristal de zafiro." },
-    { id: 4, name: "Diamond Elite Watch", price: 950000, oldPrice: 1200000, category: "premium", images: ["https://unsplash.com"], description: "Incrustaciones de diamante auténtico, edición limitada." }
+    { id: 1, name: "Rolex Submariner Hulk - Esfera Verde", price: 42000000, oldPrice: 45000000, brand: "Rolex", rating: 5, specs: "Acero Oystersteel, Bisel Cerachrom verde, Hermético 300m.", image: "https://unsplash.com" },
+    { id: 2, name: "Casio Edifice Classic Silver", price: 450000, oldPrice: 580000, brand: "Casio", rating: 4, specs: "Cristal mineral, Cronómetro de 1/10 segundos, Correa de acero.", image: "https://unsplash.com" },
+    { id: 3, name: "Garmin Forerunner 55 Inteligente", price: 878990, oldPrice: 1175000, brand: "Garmin", rating: 5, specs: "GPS integrado, Monitor de frecuencia cardiaca, Autonomía 2 semanas.", image: "https://unsplash.com" },
   ];
 
   const addToCart = (product: any) => {
     setCart([...cart, product]);
-    alert(`${product.name} agregado ✅`);
+    alert("Producto añadido");
   };
 
-  const comprarTodo = () => {
-    if (cart.length === 0) { alert(t.vacio); return; }
-    let mensaje = `Hola, soy ${name || "cliente"} y quiero comprar:\n` + cart.map(p => `- ${p.name} ($${p.price.toLocaleString()})`).join("\n");
-    window.open(`https://wa.me{encodeURIComponent(mensaje)}`);
+  const enviarWhatsApp = () => {
+    if (cart.length === 0) return alert(t.vacio);
+    let msg = `Hola, soy ${name || "un cliente"}. Me interesa comprar:\n` + cart.map(p => `- ${p.name} ($${p.price.toLocaleString()})`).join("\n");
+    window.open(`https://wa.me{encodeURIComponent(msg)}`);
   };
-
-  const renderSection = (title: string, type: string) => (
-    <div style={{ padding: "20px 5%", marginBottom: "40px" }}>
-      <h2 style={{ color: "#333", fontSize: "24px", fontWeight: "800", marginBottom: "20px", borderLeft: "5px solid #ffcc00", paddingLeft: "15px" }}>{title}</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px" }}>
-        {products.filter(p => p.category === type).map(product => (
-          <div key={product.id} onClick={() => setSelectedProduct(product)} style={{ background: "white", borderRadius: "12px", border: "1px solid #eee", overflow: "hidden", transition: "0.3s", cursor: "pointer", display: "flex", flexDirection: "column", boxShadow: "0 4px 6px rgba(0,0,0,0.05)" }}>
-            <div style={{ position: "relative" }}>
-              <img src={product.images[0]} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
-              <div style={{ position: "absolute", top: "10px", left: "10px", background: "#000", color: "white", padding: "2px 8px", fontSize: "12px", fontWeight: "bold", borderRadius: "4px" }}>-{Math.round((1 - product.price/product.oldPrice)*100)}%</div>
-            </div>
-            <div style={{ padding: "15px", flexGrow: 1 }}>
-              <p style={{ fontSize: "12px", color: "#888", marginBottom: "5px" }}>CASIO</p>
-              <h3 style={{ fontSize: "15px", color: "#333", margin: "0 0 10px 0", height: "40px", overflow: "hidden" }}>{product.name}</h3>
-              <p style={{ textDecoration: "line-through", color: "#bbb", fontSize: "13px", margin: 0 }}>${product.oldPrice.toLocaleString()}</p>
-              <p style={{ color: "#000", fontWeight: "bold", fontSize: "20px", margin: 0 }}>${product.price.toLocaleString()}</p>
-            </div>
-            <button onClick={(e) => { e.stopPropagation(); addToCart(product); }} style={{ width: "100%", padding: "12px", background: "#ff6d00", color: "white", border: "none", fontWeight: "bold", cursor: "pointer" }}>{t.agregar}</button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
 
   return (
-    <div style={{ background: "#f8f9fa", color: "#333", minHeight: "100vh", fontFamily: "system-ui, sans-serif" }}>
-      {/* HEADER TIPO ÉXITO */}
-      <header style={{ background: "#ffcc00", padding: "15px 5%", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
-        <h1 style={{ margin: 0, fontSize: "22px", fontWeight: "900", color: "#000" }}>⌚ LUXURY TIME</h1>
-        <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
-          <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ background: "white", border: "none", padding: "8px 12px", borderRadius: "20px", fontWeight: "bold", cursor: "pointer" }}>🌐 {lang.toUpperCase()}</button>
-          <button onClick={comprarTodo} style={{ background: "#000", color: "white", padding: "10px 20px", borderRadius: "20px", border: "none", fontWeight: "bold", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>🛒 <span>{cart.length}</span></button>
+    <div style={{ background: "#fff", color: "#0f1111", minHeight: "100vh", fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif" }}>
+      
+      {/* HEADER TIPO AMAZON/VERCEL */}
+      <header style={{ background: "#131921", padding: "10px 5%", display: "flex", alignItems: "center", gap: "20px", position: "sticky", top: 0, zIndex: 100 }}>
+        <h1 style={{ color: "#fff", margin: 0, fontSize: "20px", fontWeight: "bold", cursor: "pointer" }} onClick={() => window.location.reload()}>LUXURY TIME</h1>
+        
+        <div style={{ flexGrow: 1, display: "flex" }}>
+          <input 
+            placeholder={t.placeholder}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{ width: "100%", padding: "10px 15px", borderRadius: "4px 0 0 4px", border: "none", outline: "none" }} 
+          />
+          <button style={{ background: "#febd69", border: "none", padding: "0 15px", borderRadius: "0 4px 4px 0", cursor: "pointer" }}>🔍</button>
+        </div>
+
+        <div style={{ display: "flex", gap: "20px", alignItems: "center", color: "#fff" }}>
+          <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ background: "transparent", border: "1px solid #ccc", color: "#fff", padding: "5px 10px", borderRadius: "3px", cursor: "pointer" }}>{lang.toUpperCase()}</button>
+          <div onClick={enviarWhatsApp} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "5px" }}>
+            <span style={{ color: "#febd69", fontWeight: "bold", fontSize: "18px" }}>{cart.length}</span>
+            <span>{t.carrito}</span>
+          </div>
         </div>
       </header>
 
-      {/* BUSCADOR FICTICIO */}
-      <div style={{ padding: "30px 5% 10px 5%" }}>
-        <div style={{ position: "relative", maxWidth: "600px", margin: "0 auto" }}>
-          <input placeholder={t.placeholder} value={name} onChange={(e) => setName(e.target.value)} style={{ width: "100%", padding: "15px 25px", borderRadius: "30px", border: "1px solid #ddd", fontSize: "16px", outline: "none", boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }} />
+      {/* CUERPO DE LA PAGINA - SIN FILTROS LATERALES */}
+      <main style={{ padding: "20px 5%" }}>
+        <p style={{ fontSize: "14px", color: "#565959" }}>Resultados para <span style={{ color: "#c45500", fontWeight: "bold" }}>"{search || "Relojes de Lujo"}"</span></p>
+        
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "20px", marginTop: "20px" }}>
+          {products.filter(p => p.name.toLowerCase().includes(search.toLowerCase())).map(product => (
+            <div key={product.id} onClick={() => setSelectedProduct(product)} style={{ border: "1px solid #e7e7e7", borderRadius: "8px", padding: "15px", cursor: "pointer", transition: "0.2s" }} onMouseEnter={(e) => e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)"} onMouseLeave={(e) => e.currentTarget.style.boxShadow = "none"}>
+              <div style={{ height: "200px", display: "flex", justifyContent: "center", marginBottom: "15px" }}>
+                <img src={product.image} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+              </div>
+              <h3 style={{ fontSize: "16px", fontWeight: "500", margin: "0 0 5px 0", lineHeight: "1.4" }}>{product.name}</h3>
+              <div style={{ color: "#ffa41c", marginBottom: "5px" }}>{"★".repeat(product.rating)}{"☆".repeat(5-product.rating)}</div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
+                <span style={{ fontSize: "22px", fontWeight: "bold" }}>${product.price.toLocaleString()}</span>
+                <span style={{ fontSize: "14px", color: "#565959", textDecoration: "line-through" }}>${product.oldPrice.toLocaleString()}</span>
+              </div>
+              <p style={{ color: "#007185", fontSize: "13px" }}>Envío GRATIS</p>
+            </div>
+          ))}
         </div>
-        <p style={{ textAlign: "center", marginTop: "15px", color: "#666" }}>{t.saludo}, <strong>{name || (lang === "es" ? "cliente" : "customer")}</strong> 👋</p>
-      </div>
+      </main>
 
-      {/* SECCIONES */}
-      {renderSection(t.good, "good")}
-      {renderSection(t.premium, "premium")}
-
-      {/* MODAL DE PRODUCTO */}
+      {/* MODAL DETALLE DE PRODUCTO */}
       {selectedProduct && (
-        <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.7)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 1000, padding: "20px" }}>
-          <div style={{ background: "white", padding: "30px", borderRadius: "15px", maxWidth: "500px", width: "100%", position: "relative" }}>
-            <button onClick={() => setSelectedProduct(null)} style={{ position: "absolute", top: "15px", right: "15px", border: "none", background: "none", fontSize: "20px", cursor: "pointer" }}>✕</button>
-            <img src={selectedProduct.images[0]} style={{ width: "100%", borderRadius: "10px", marginBottom: "20px" }} />
-            <h2 style={{ margin: "0 0 10px 0" }}>{selectedProduct.name}</h2>
-            <p style={{ color: "#ff6d00", fontSize: "24px", fontWeight: "bold", margin: "0 0 15px 0" }}>${selectedProduct.price.toLocaleString()}</p>
-            <p style={{ color: "#666", lineHeight: "1.6", marginBottom: "25px" }}>{selectedProduct.description}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-              <button onClick={() => addToCart(selectedProduct)} style={{ padding: "15px", borderRadius: "10px", border: "2px solid #ff6d00", color: "#ff6d00", fontWeight: "bold", background: "white", cursor: "pointer" }}>{t.comprar}</button>
-              <button onClick={() => window.open(`https://wa.me, quiero el ${selectedProduct.name}`)} style={{ padding: "15px", borderRadius: "10px", border: "none", background: "#25D366", color: "white", fontWeight: "bold", cursor: "pointer" }}>WhatsApp</button>
+        <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.6)", zIndex: 200, display: "flex", justifyContent: "center", alignItems: "center", padding: "20px" }}>
+          <div style={{ background: "#fff", borderRadius: "10px", maxWidth: "900px", width: "100%", display: "grid", gridTemplateColumns: "1fr 1.2fr", overflow: "hidden", position: "relative" }}>
+            <button onClick={() => setSelectedProduct(null)} style={{ position: "absolute", top: "15px", right: "15px", border: "none", background: "none", fontSize: "24px", cursor: "pointer", zIndex: 10 }}>✕</button>
+            
+            <div style={{ background: "#f7f7f7", padding: "40px", display: "flex", justifyContent: "center" }}>
+              <img src={selectedProduct.image} style={{ width: "100%", objectFit: "contain" }} />
+            </div>
+
+            <div style={{ padding: "40px", display: "flex", flexDirection: "column", gap: "15px" }}>
+              <h2 style={{ margin: 0, fontSize: "24px" }}>{selectedProduct.name}</h2>
+              <div style={{ color: "#ffa41c" }}>{"★".repeat(selectedProduct.rating)}{"☆".repeat(5-selectedProduct.rating)} <span style={{ color: "#007185", fontSize: "14px", marginLeft: "10px" }}>2,453 calificaciones</span></div>
+              <hr style={{ border: "0.5px solid #eee", width: "100%" }} />
+              <div style={{ fontSize: "28px", color: "#B12704" }}>${selectedProduct.price.toLocaleString()}</div>
+              <div>
+                <p style={{ fontWeight: "bold", marginBottom: "5px" }}>{t.detalles}:</p>
+                <p style={{ fontSize: "14px", color: "#333" }}>{selectedProduct.specs}</p>
+              </div>
+
+              <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: "10px" }}>
+                <button onClick={() => addToCart(selectedProduct)} style={{ background: "#ffd814", border: "1px solid #fcd200", padding: "12px", borderRadius: "20px", fontWeight: "bold", cursor: "pointer" }}>{t.agregar}</button>
+                <button onClick={() => {
+                  window.open(`https://wa.me comprar el ${selectedProduct.name}`);
+                }} style={{ background: "#ffa41c", border: "1px solid #ff8f00", padding: "12px", borderRadius: "20px", fontWeight: "bold", cursor: "pointer" }}>Comprar ahora</button>
+              </div>
             </div>
           </div>
         </div>
@@ -117,5 +128,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
