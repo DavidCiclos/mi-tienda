@@ -15,7 +15,7 @@ export default function Home() {
   const products = [
     { 
       id: 1, 
-      name: "Submariner Date 'Starbucks'", 
+      name: "Rolex Submariner 'Starbucks'", 
       collection: "Oyster Perpetual",
       material: "Acero Oystersteel y Cerachrom",
       price: 68450000, 
@@ -29,7 +29,7 @@ export default function Home() {
     },
     { 
       id: 2, 
-      name: "Edifice Chronograph Gold", 
+      name: "Casio Edifice Chronograph", 
       collection: "Premium Series",
       material: "Acero Inoxidable Dorado",
       price: 1350000, 
@@ -43,7 +43,7 @@ export default function Home() {
     },
     { 
       id: 3, 
-      name: "Marq Driver Performance", 
+      name: "Garmin Marq Driver", 
       brand: "GARMIN",
       collection: "Luxury Tool Watch",
       material: "Titanio Grado 5",
@@ -61,62 +61,60 @@ export default function Home() {
     ? products 
     : products.filter(p => p.brand === filter);
 
+  // CORRECCIÓN WHATSAPP: Número sin espacios y enlace limpio
   const whatsappAction = (product: any) => {
-    const msg = `SOLICITUD DE PIEZA\n------------------------\nModelo: ${product.name}\nPrecio: $${product.price.toLocaleString()} COP\n\nHola, estoy interesado en adquirir esta pieza. ¿Podría darme más información?`;
-    window.open(`https://wa.me{encodeURIComponent(msg)}`);
+    const numero = "573126934247"; 
+    const texto = `SOLICITUD DE PIEZA\n------------------------\nModelo: ${product.name}\nPrecio: $${product.price.toLocaleString()} COP\n\nHola, estoy interesado en adquirir esta pieza de su colección.`;
+    const url = `https://whatsapp.com{numero}&text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
   };
 
   return (
-    <div style={{ background: "#fdfdfb", color: "#1a1a1a", minHeight: "100vh", fontFamily: "'Times New Roman', serif" }}>
+    <div style={{ background: "#fcfcfc", color: "#0a1128", minHeight: "100vh", fontFamily: "'Times New Roman', serif" }}>
       
-      {/* HEADER SIMPLIFICADO */}
+      {/* HEADER AZUL MEDIANOCHE */}
       <header style={{ 
         height: isScrolled ? "70px" : "90px",
         padding: "0 5%", 
         display: "flex", justifyContent: "center", alignItems: "center", 
-        borderBottom: "1px solid #eee", 
-        position: "sticky", top: 0, background: "rgba(255,255,255,0.9)", backdropFilter: "blur(10px)", zIndex: 100,
-        transition: "all 0.3s ease-out",
-        boxShadow: isScrolled ? "0 4px 20px rgba(0,0,0,0.05)" : "none"
+        position: "sticky", top: 0, background: "#0a1128", color: "white", zIndex: 100,
+        transition: "0.3s ease-out",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.1)"
       }}>
         <h1 style={{ 
           margin: 0, 
-          fontSize: isScrolled ? "20px" : "26px", 
-          letterSpacing: "10px", 
+          fontSize: isScrolled ? "18px" : "24px", 
+          letterSpacing: "12px", 
           fontWeight: "400", 
-          color: "#004225",
-          cursor: "pointer",
-          transition: "0.3s" 
+          color: "#b8926a",
+          cursor: "pointer"
         }} onClick={() => setFilter("TODOS")}>
           LUXURY TIME
         </h1>
       </header>
 
-      {/* HERO SECTION CON COLOR */}
+      {/* HERO SECTION */}
       <section style={{ 
-        height: "55vh", 
-        background: "linear-gradient(rgba(0,66,37,0.8), rgba(0,66,37,0.8)), url('https://unsplash.com') center/cover",
+        height: "50vh", 
+        background: "linear-gradient(rgba(10,17,40,0.7), rgba(10,17,40,0.7)), url('https://unsplash.com') center/cover",
         display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", color: "white" 
       }}>
-        <div style={{ padding: "0 20px" }}>
-          <p style={{ letterSpacing: "6px", fontSize: "12px", color: "#c5a059", marginBottom: "15px", fontWeight: "bold" }}>CURADURÍA DE ALTA RELOJERÍA</p>
-          <h2 style={{ fontSize: "clamp(30px, 6vw, 65px)", fontWeight: "400", marginBottom: "20px", letterSpacing: "-1px" }}>Colección Privada</h2>
-          <div style={{ width: "60px", height: "2px", background: "#c5a059", margin: "0 auto" }}></div>
+        <div>
+          <p style={{ letterSpacing: "8px", fontSize: "11px", color: "#b8926a", marginBottom: "15px" }}>EST. 2024 — CURADURÍA PRIVADA</p>
+          <h2 style={{ fontSize: "clamp(30px, 6vw, 60px)", fontWeight: "400" }}>Piezas de Inversión</h2>
         </div>
       </section>
 
       {/* FILTROS */}
-      <div style={{ display: "flex", justifyContent: "center", gap: "35px", padding: "30px 5%", background: "white", position: "sticky", top: isScrolled ? "70px" : "90px", zIndex: 90, borderBottom: "1px solid #f0f0f0" }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: "30px", padding: "25px 5%", background: "white", borderBottom: "1px solid #eee" }}>
         {["TODOS", "ROLEX", "CASIO", "GARMIN"].map(brand => (
           <span 
             key={brand} 
             onClick={() => setFilter(brand)}
             style={{ 
               fontSize: "11px", letterSpacing: "3px", cursor: "pointer", 
-              color: filter === brand ? "#004225" : "#999",
-              fontWeight: filter === brand ? "bold" : "normal",
-              transition: "0.2s",
-              borderBottom: filter === brand ? "2px solid #c5a059" : "none",
+              color: filter === brand ? "#0a1128" : "#999",
+              borderBottom: filter === brand ? "2px solid #b8926a" : "none",
               paddingBottom: "4px"
             }}
           >
@@ -125,73 +123,59 @@ export default function Home() {
         ))}
       </div>
 
-      {/* GRILLA */}
-      <main style={{ maxWidth: "1400px", margin: "0 auto", padding: "60px 5%" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "60px 40px" }}>
+      {/* LISTADO PRODUCTOS */}
+      <main style={{ maxWidth: "1300px", margin: "0 auto", padding: "60px 5%" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "50px" }}>
           {filteredProducts.map(p => (
-            <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer", transition: "0.3s" }} className="card-hover">
-              <div style={{ background: "#f9f9f7", padding: "40px", textAlign: "center", border: "1px solid #f0f0f0" }}>
-                <img src={p.images[0]} style={{ width: "100%", height: "320px", objectFit: "contain" }} />
+            <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer", textAlign: "center" }}>
+              <div style={{ background: "white", padding: "40px", border: "1px solid #f0f0f0", transition: "0.3s" }}>
+                <img src={p.images[0]} style={{ width: "100%", height: "300px", objectFit: "contain" }} />
               </div>
-              <div style={{ marginTop: "20px", textAlign: "center" }}>
-                <p style={{ margin: 0, fontSize: "10px", color: "#c5a059", letterSpacing: "3px", fontWeight: "bold" }}>{p.brand}</p>
-                <h4 style={{ fontSize: "18px", margin: "8px 0", fontWeight: "400", color: "#004225" }}>{p.name}</h4>
-                <p style={{ fontSize: "15px", fontWeight: "bold", color: "#333" }}>${p.price.toLocaleString()} COP</p>
-              </div>
+              <p style={{ marginTop: "20px", fontSize: "10px", color: "#b8926a", letterSpacing: "2px", fontWeight: "bold" }}>{p.brand}</p>
+              <h4 style={{ fontSize: "19px", margin: "5px 0", color: "#0a1128" }}>{p.name}</h4>
+              <p style={{ fontSize: "14px", color: "#555" }}>$ {p.price.toLocaleString()} COP</p>
             </div>
           ))}
         </div>
       </main>
 
-      {/* MODAL OPTIMIZADO PARA PC */}
+      {/* MODAL DETALLE */}
       {selectedProduct && (
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "white", zIndex: 1000, overflowY: "auto", display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-          <button onClick={() => setSelectedProduct(null)} style={{ position: "fixed", top: "30px", right: "5%", background: "#004225", color: "white", border: "none", fontSize: "18px", cursor: "pointer", zIndex: 1100, width: "45px", height: "45px", borderRadius: "50%" }}>✕</button>
+          <button onClick={() => setSelectedProduct(null)} style={{ position: "fixed", top: "30px", right: "5%", background: "#0a1128", color: "white", border: "none", width: "45px", height: "45px", borderRadius: "50%", cursor: "pointer", zIndex: 1100 }}>✕</button>
 
-          {/* IZQUIERDA: GALERÍA (50% en PC) */}
-          <div style={{ flex: "1 1 500px", background: "#f9f9f7", padding: "40px", display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div style={{ flex: "1 1 500px", background: "#f9f9f9", padding: "40px" }}>
             {selectedProduct.images.map((img: string, i: number) => (
-              <img key={i} src={img} style={{ width: "100%", height: "auto", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" }} />
+              <img key={i} src={img} style={{ width: "100%", marginBottom: "20px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" }} />
             ))}
           </div>
 
-          {/* DERECHA: INFO (50% en PC) */}
-          <div style={{ flex: "1 1 450px", padding: "80px 6%", display: "flex", flexDirection: "column", justifyContent: "center", background: "white" }}>
-            <div style={{ position: "sticky", top: "80px" }}>
-              <p style={{ letterSpacing: "4px", color: "#c5a059", fontSize: "12px", fontWeight: "bold" }}>{selectedProduct.brand}</p>
-              <h2 style={{ fontSize: "42px", fontWeight: "400", margin: "15px 0", color: "#004225", lineHeight: "1" }}>{selectedProduct.name}</h2>
-              <div style={{ width: "40px", height: "1px", background: "#c5a059", marginBottom: "30px" }}></div>
-              
-              <p style={{ fontSize: "16px", lineHeight: "1.8", color: "#444", marginBottom: "40px" }}>{selectedProduct.description}</p>
-              
-              <div style={{ marginBottom: "40px", borderLeft: "2px solid #c5a059", paddingLeft: "20px" }}>
-                <p style={{ fontWeight: "bold", fontSize: "12px", letterSpacing: "2px", marginBottom: "15px", color: "#004225" }}>ESPECIFICACIONES</p>
-                {selectedProduct.specs.map((spec: any, i: number) => (
-                  <p key={i} style={{ fontSize: "14px", margin: "8px 0", color: "#666" }}>{spec}</p>
-                ))}
-              </div>
-
-              <div style={{ fontSize: "26px", marginBottom: "40px", fontWeight: "400", color: "#1a1a1a" }}>$ {selectedProduct.price.toLocaleString()} COP</div>
-
-              <button 
-                onClick={() => whatsappAction(selectedProduct)}
-                style={{ 
-                  background: "#004225", color: "white", padding: "22px", border: "none", 
-                  cursor: "pointer", letterSpacing: "3px", fontSize: "13px", fontWeight: "bold",
-                  width: "100%", transition: "0.3s"
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = "#005a32"}
-                onMouseLeave={(e) => e.currentTarget.style.background = "#004225"}
-              >
-                ADQUIRIR PIEZA (WHATSAPP)
-              </button>
+          <div style={{ flex: "1 1 450px", padding: "60px 8%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <p style={{ letterSpacing: "4px", color: "#b8926a", fontSize: "12px", fontWeight: "bold" }}>{selectedProduct.brand}</p>
+            <h2 style={{ fontSize: "40px", color: "#0a1128", margin: "15px 0", lineHeight: "1" }}>{selectedProduct.name}</h2>
+            <p style={{ fontSize: "16px", color: "#444", lineHeight: "1.8", marginBottom: "40px" }}>{selectedProduct.description}</p>
+            
+            <div style={{ marginBottom: "40px", paddingLeft: "20px", borderLeft: "2px solid #b8926a" }}>
+              <p style={{ fontWeight: "bold", fontSize: "12px", color: "#0a1128", marginBottom: "10px" }}>ESPECIFICACIONES</p>
+              {selectedProduct.specs.map((spec: any, i: number) => (
+                <p key={i} style={{ fontSize: "14px", margin: "5px 0", color: "#666" }}>{spec}</p>
+              ))}
             </div>
+
+            <div style={{ fontSize: "28px", marginBottom: "40px", fontWeight: "bold" }}>$ {selectedProduct.price.toLocaleString()} COP</div>
+
+            <button 
+              onClick={() => whatsappAction(selectedProduct)}
+              style={{ background: "#0a1128", color: "white", padding: "22px", border: "none", letterSpacing: "3px", fontWeight: "bold", cursor: "pointer" }}
+            >
+              CONTACTAR ASESOR
+            </button>
           </div>
         </div>
       )}
 
-      <footer style={{ padding: "60px 5%", background: "#004225", textAlign: "center", fontSize: "11px", letterSpacing: "3px", color: "#c5a059" }}>
-        LUXURY TIME COLOMBIA — PIEZAS DE ALTA GAMA
+      <footer style={{ padding: "50px 5%", background: "#0a1128", color: "white", textAlign: "center", fontSize: "11px", letterSpacing: "3px" }}>
+        <span style={{ color: "#b8926a" }}>LUXURY TIME</span> — BOGOTÁ, COLOMBIA
       </footer>
     </div>
   );
