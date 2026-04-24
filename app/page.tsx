@@ -41,7 +41,7 @@ export default function Home() {
       {/* HEADER */}
       <header style={{ background: "#0D1B2A", padding: "40px 5%", textAlign: "center" }}>
         <h1 style={{ color: "#E0C56E", margin: 0, fontSize: "30px", letterSpacing: "8px", fontWeight: "300" }}>
-          AETERNA HOROLOGY
+          APEX TIME
         </h1>
         <div style={{ width: "60px", height: "1px", background: "#E0C56E", margin: "15px auto" }}></div>
         <p style={{ color: "#FFF", fontSize: "10px", letterSpacing: "3px", margin: 0 }}>PIEZAS DE ALTA GAMA</p>
