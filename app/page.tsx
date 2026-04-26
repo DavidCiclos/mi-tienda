@@ -48,11 +48,14 @@ export default function Home() {
 
   const filteredProducts = styleFilter === "TODOS" ? products : products.filter(p => p.style === styleFilter);
 
-  const whatsappAction = (product: any) => {
+    const whatsappAction = (product: any) => {
     const numero = "573126934247";
     const texto = `Hola APEX TIME, deseo adquirir esta pieza de la colección:\n⌚ *${product.name}*\n💰 Valor: $${product.price.toLocaleString()}\n¿Está disponible?`;
-    window.open(`https://wa.me{numero}?text=${encodeURIComponent(texto)}`, "_blank");
+    
+    // He corregido la sintaxis agregando el $ antes de {numero}
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, "_blank");
   };
+  
 
   return (
     <div style={{ background: "#fcfcfc", color: "#0D1B2A", minHeight: "100vh", fontFamily: "sans-serif" }}>
