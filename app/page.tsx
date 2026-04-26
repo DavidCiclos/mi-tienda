@@ -10,49 +10,53 @@ export default function Home() {
   const products = [
     { 
       id: 1, name: "Ocean Master 1.1", brand: "REALEZA", price: 950000, tier: "TOP TIER", gender: "HOMBRE",
-      images: ["https://unsplash.com"],
+      images: ["https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400"],
       specs: ["Maquinaria Automática Japonesa", "Acero Quirúrgico 316L", "Cristal de Zafiro", "Bisel Cerámico"],
       guarantee: "2 Años en Maquinaria"
     },
     { 
       id: 2, name: "Classic Urban V2", brand: "CURREN", price: 135000, tier: "ESSENTIAL", gender: "HOMBRE",
-      images: ["https://unsplash.com"],
+      images: ["https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=400"],
       specs: ["Movimiento de Cuarzo", "Caja de Aleación", "Resistente a Salpicaduras"],
       guarantee: "3 Meses en Maquinaria"
     },
     { 
       id: 3, name: "Minimal Rose", brand: "GEN", price: 75000, tier: "ESSENTIAL", gender: "MUJER",
-      images: ["https://unsplash.com"],
+      images: ["https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=400"],
       specs: ["Ultra Delgado", "Pulso ajustable", "Pila de larga duración"],
       guarantee: "30 Días"
     }
   ];
 
+  // LÓGICA DE FILTRADO CORREGIDA
   const filteredProducts = products.filter(p => {
     const matchTier = tierFilter === "TODOS" || p.tier === tierFilter;
     const matchGender = genderFilter === "TODOS" || p.gender === genderFilter;
-    return matchBrand && matchGender; // Corregido: brandFilter por matchTier si es necesario
+    return matchTier && matchGender; 
   });
 
+  // ACCIÓN DE WHATSAPP CORREGIDA
   const whatsappAction = (product: any) => {
     const numero = "573126934247";
     const texto = `Hola APEX TIME, deseo información sobre esta pieza de la colección:\n⌚ *${product.name}* (${product.tier})\n💰 Valor: $${product.price.toLocaleString()}\n¿Disponibilidad inmediata?`;
-    window.open(`https://wa.me{numero}?text=${encodeURIComponent(texto)}`, "_blank");
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, "_blank");
   };
 
   return (
-    <div style={{ background: "#FBFBFB", color: "#0D1B2A", minHeight: "100vh", fontFamily: "serif" }}>
+    <div style={{ background: "#FBFBFB", color: "#0D1B2A", minHeight: "100vh", fontFamily: "sans-serif" }}>
       
+      {/* HEADER */}
       <header style={{ background: "#0D1B2A", padding: "45px 5%", textAlign: "center" }}>
         <h1 style={{ color: "#E0C56E", margin: 0, fontSize: "32px", letterSpacing: "10px", fontWeight: "300" }}>APEX TIME</h1>
         <div style={{ width: "80px", height: "1px", background: "#E0C56E", margin: "15px auto" }}></div>
         <p style={{ color: "#FFF", fontSize: "10px", letterSpacing: "4px", margin: 0, opacity: 0.8 }}>CURADURÍA SELECTA DE ALTA RELOJERÍA</p>
       </header>
 
-      <nav style={{ padding: "20px 5%", background: "white", borderBottom: "1px solid #EEE", textAlign: "center" }}>
-        <div style={{ marginBottom: "15px", display: "flex", justifyContent: "center", gap: "10px", overflowX: "auto" }}>
+      {/* NAVEGACIÓN / FILTROS */}
+      <nav style={{ padding: "20px 5%", background: "white", borderBottom: "1px solid #EEE", textAlign: "center", position: "sticky", top: 0, zIndex: 90 }}>
+        <div style={{ marginBottom: "15px", display: "flex", justifyContent: "center", gap: "10px", overflowX: "auto", paddingBottom: "5px" }}>
           {["TODOS", "TOP TIER", "PREMIUM", "ESSENTIAL"].map(t => (
-            <button key={t} onClick={() => setTierFilter(t)} style={{ background: tierFilter === t ? "#0D1B2A" : "none", color: tierFilter === t ? "#E0C56E" : "#0D1B2A", border: "1px solid #0D1B2A", padding: "6px 15px", fontSize: "10px", cursor: "pointer" }}>{t}</button>
+            <button key={t} onClick={() => setTierFilter(t)} style={{ background: tierFilter === t ? "#0D1B2A" : "none", color: tierFilter === t ? "#E0C56E" : "#0D1B2A", border: "1px solid #0D1B2A", padding: "6px 15px", fontSize: "10px", cursor: "pointer", whiteSpace: "nowrap" }}>{t}</button>
           ))}
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
@@ -62,23 +66,27 @@ export default function Home() {
         </div>
       </nav>
 
+      {/* GRID DE PRODUCTOS */}
       <main style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px", padding: "15px", maxWidth: "1200px", margin: "0 auto" }}>
-        {products.filter(p => (tierFilter === "TODOS" || p.tier === tierFilter) && (genderFilter === "TODOS" || p.gender === genderFilter)).map(p => (
+        {filteredProducts.map(p => (
           <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ background: "#FFF", padding: "10px", border: "1px solid #F0F0F0", textAlign: "center", cursor: "pointer" }}>
             <div style={{ textAlign: "left", marginBottom: "5px" }}>
               <span style={{ fontSize: "7px", background: "#0D1B2A", color: "#E0C56E", padding: "2px 4px", fontWeight: "bold" }}>{p.tier}</span>
             </div>
-            <img src={p.images[0]} style={{ width: "100%", aspectRatio: "1/1", objectFit: "contain" }} />
+            <div style={{ background: "#f9f9f9", borderRadius: "4px" }}>
+                <img src={p.images[0]} alt={p.name} style={{ width: "100%", aspectRatio: "1/1", objectFit: "contain" }} />
+            </div>
             <h3 style={{ fontSize: "11px", margin: "10px 0 5px 0", height: "30px", overflow: "hidden", fontWeight: "400" }}>{p.name}</h3>
             <p style={{ fontSize: "14px", fontWeight: "bold" }}>${p.price.toLocaleString()}</p>
           </div>
         ))}
       </main>
 
+      {/* MODAL DE DETALLE */}
       {selectedProduct && (
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "white", zIndex: 1000, overflowY: "auto" }}>
-          <div style={{ padding: "20px", textAlign: "right", borderBottom: "1px solid #EEE" }}>
-            <button onClick={() => setSelectedProduct(null)} style={{ background: "#0D1B2A", color: "#FFF", border: "none", padding: "10px 20px", cursor: "pointer" }}>VOLVER</button>
+          <div style={{ padding: "20px", textAlign: "right", borderBottom: "1px solid #EEE", position: "sticky", top: 0, background: "white" }}>
+            <button onClick={() => setSelectedProduct(null)} style={{ background: "#0D1B2A", color: "#FFF", border: "none", padding: "10px 20px", cursor: "pointer", fontWeight: "bold" }}>VOLVER</button>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", padding: "20px 5% 100px 5%" }}>
             <div style={{ flex: "1 1 350px", textAlign: "center" }}>
@@ -94,21 +102,30 @@ export default function Home() {
               <div style={{ marginBottom: "30px" }}>
                 {selectedProduct.specs.map((s:any) => <p key={s} style={{ fontSize: "13px", margin: "8px 0" }}>• {s}</p>)}
               </div>
-              <p style={{ fontSize: "28px", fontWeight: "bold", color: "#0D1B2A" }}>$ {selectedProduct.price.toLocaleString()} COP</p>
-              <button onClick={() => whatsappAction(selectedProduct)} style={{ width: "100%", background: "#25D366", color: "white", padding: "20px", border: "none", fontWeight: "bold", cursor: "pointer" }}>WHATSAPP 📱</button>
+              <p style={{ fontSize: "28px", fontWeight: "bold", color: "#0D1B2A", marginBottom: "20px" }}>$ {selectedProduct.price.toLocaleString()} COP</p>
+              <button onClick={() => whatsappAction(selectedProduct)} style={{ width: "100%", background: "#25D366", color: "white", padding: "20px", border: "none", fontWeight: "bold", cursor: "pointer", borderRadius: "8px" }}>ADQUIRIR POR WHATSAPP 📱</button>
             </div>
           </div>
         </div>
       )}
 
+      {/* FOOTER */}
       <footer style={{ padding: "40px 5%", background: "#0D1B2A", color: "#E0C56E", textAlign: "center" }}>
-        <button onClick={() => setShowTerms(true)} style={{ background: "none", border: "1px solid #E0C56E", color: "#E0C56E", padding: "10px 20px", fontSize: "10px", cursor: "pointer" }}>TÉRMINOS</button>
+        <button onClick={() => setShowTerms(true)} style={{ background: "none", border: "1px solid #E0C56E", color: "#E0C56E", padding: "10px 20px", fontSize: "10px", cursor: "pointer" }}>TÉRMINOS Y CONDICIONES</button>
+        <p style={{ fontSize: "9px", marginTop: "15px", opacity: 0.6 }}>APEX TIME COLOMBIA © 2026</p>
       </footer>
 
+      {/* MODAL TÉRMINOS */}
       {showTerms && (
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "white", zIndex: 2000, padding: "40px 8%", overflowY: "auto" }}>
-          <h2 style={{ borderBottom: "2px solid #E0C56E" }}>TÉRMINOS</h2>
-          <p style={{ fontSize: "13px", marginTop: "20px" }}>APEX TIME: Piezas inspiradas en diseños clásicos. Garantía por maquinaria.</p>
+          <h2 style={{ borderBottom: "2px solid #E0C56E", paddingBottom: "10px" }}>AVISO LEGAL</h2>
+          <p style={{ fontSize: "14px", lineHeight: "1.6", marginTop: "20px" }}>
+            <strong>1. Naturaleza del Producto:</strong> APEX TIME ofrece piezas de alta ingeniería inspiradas en diseños clásicos. 
+            Las referencias "Top Tier" u "1.1" indican la máxima calidad en materiales y maquinaria.
+          </p>
+          <p style={{ fontSize: "14px", lineHeight: "1.6" }}>
+            <strong>2. Garantía:</strong> Cubre defectos de funcionamiento en la maquinaria según el nivel de la pieza. No cubre daños por mal uso o humedad no especificada.
+          </p>
           <button onClick={() => setShowTerms(false)} style={{ marginTop: "30px", background: "#0D1B2A", color: "white", padding: "15px 50px", border: "none", fontWeight: "bold", cursor: "pointer" }}>ENTENDIDO</button>
         </div>
       )}
