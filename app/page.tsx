@@ -49,7 +49,11 @@ export default function Home() {
       
       <header style={{ background: "#0D1B2A", padding: "45px 5%", textAlign: "center", borderBottom: "4px solid #D4AF37" }}>
         <h1 style={{ color: "#D4AF37", margin: 0, fontSize: "28px", letterSpacing: "10px", fontWeight: "300" }}>APEX TIME</h1>
-      </header>
+      {/* RELOJERIA DE ALTA GAMA */}
+  <p style={{ color: "#FFF", fontSize: "10px", letterSpacing: "4px", marginTop: "10px", opacity: 0.8 }}>
+    ALTA RELOJERÍA • CURADURÍA SELECTA
+  </p>
+</header>
 
       <nav style={{ background: "white", position: "sticky", top: 0, zIndex: 100, borderBottom: "1px solid #EEE", boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>
         <div style={{ display: "flex", overflowX: "auto", padding: "15px 5%", gap: "10px" }}>
