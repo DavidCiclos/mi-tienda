@@ -56,7 +56,7 @@ export default function Home() {
 </header>
 
       <nav style={{ background: "white", position: "sticky", top: 0, zIndex: 100, borderBottom: "1px solid #EEE", boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}>
-        <div style={{ display: "flex", overflowX: "auto", padding: "15px 5%", gap: "10px" }}>
+        <div style={{ display: "flex", overflowX: "auto", padding: "15px 5%", gap: "20px" }}>
           {["CROWN SERIES", "PREMIUM 1.1", "ESSENTIAL"].map(cat => (
             <button key={cat} onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }} style={{
               flex: 1, minWidth: "135px", padding: "12px", border: "2px solid #0D1B2A",
