@@ -47,11 +47,28 @@ export default function Home() {
   return (
     <div style={{ background: "#F4F4F4", minHeight: "100vh", fontFamily: "sans-serif" }}>
       
-      <header style={{ background: "#0D1B2A", padding: "45px 5%", textAlign: "center", borderBottom: "4px solid #D4AF37" }}>
-        <h1 style={{ color: "#D4AF37", margin: 0, fontSize: "28px", letterSpacing: "10px", fontWeight: "300" }}>APEX TIME</h1>
-      {/* RELOJERIA DE ALTA GAMA */}
-  <p style={{ color: "#FFF", fontSize: "10px", letterSpacing: "4px", marginTop: "10px", opacity: 0.8 }}>
-    ALTA RELOJERÍA • CURADURÍA SELECTA
+      <header style={{
+  padding: "30px 20px",
+  textAlign: "center",
+  borderBottom: "1px solid #eee",
+  background: "#fff"
+}}>
+  <h1 style={{
+    fontSize: "20px",
+    letterSpacing: "8px",
+    fontWeight: "500",
+    color: "#111"
+  }}>
+    APEX TIME
+  </h1>
+
+  <p style={{
+    fontSize: "11px",
+    letterSpacing: "3px",
+    color: "#888",
+    marginTop: "8px"
+  }}>
+    FINE WATCH CURATION
   </p>
 </header>
 
@@ -66,36 +83,96 @@ export default function Home() {
             }}>{cat}</button>
           ))}
         </div>
-        <div style={{ display: "flex", overflowX: "auto", padding: "0 5% 15px 5%", gap: "15px", justifyContent: "center" }}>
-          {availableBrands.map(brand => (
-            <span key={brand} onClick={() => setBrandFilter(brand)} style={{
-              fontSize: "11px", cursor: "pointer", color: brandFilter === brand ? "#D4AF37" : "#999",
-              fontWeight: "bold", borderBottom: brandFilter === brand ? "2px solid #D4AF37" : "none", textTransform: "uppercase"
-            }}>{brand}</span>
-          ))}
-        </div>
-      </nav>
+       <div style={{
+  display: "flex",
+  gap: "20px",
+  overflowX: "auto",
+  padding: "15px 20px",
+  borderBottom: "1px solid #eee"
+}}>
+  {availableBrands.map(brand => (
+    <span key={brand}
+      onClick={() => setBrandFilter(brand)}
+      style={{
+        fontSize: "12px",
+        whiteSpace: "nowrap",
+        cursor: "pointer",
+        color: brandFilter === brand ? "#000" : "#aaa",
+        borderBottom: brandFilter === brand ? "2px solid #000" : "none",
+        paddingBottom: "5px",
+        flexShrink: 0
+      }}
+    >
+      {brand}
+    </span>
+  ))}
+</div>
+      <main style={{
+  maxWidth: "1200px",
+  margin: "0 auto",
+  padding: "40px 20px",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+  gap: "40px"
+}}>
+  {filteredProducts.map(p => (
+    <div key={p.id}
+      onClick={() => { setSelectedProduct(p); setCurrentImgIndex(0); }}
+      style={{
+        background: "#fff",
+        borderRadius: "16px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.06)"
+      }}
+      onMouseEnter={(e:any) => e.currentTarget.style.transform = "translateY(-6px)"}
+      onMouseLeave={(e:any) => e.currentTarget.style.transform = "translateY(0)"}
+    >
+      
+      {/* Imagen */}
+      <div style={{
+        background: "#F8F8F8",
+        padding: "30px"
+      }}>
+        <img src={p.images[0]} style={{
+          width: "100%",
+          height: "220px",
+          objectFit: "contain"
+        }} />
+      </div>
 
-      <main style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
-        {filteredProducts.map(p => (
-          <div key={p.id} onClick={() => { setSelectedProduct(p); setCurrentImgIndex(0); }} style={{ 
-            background: "white", border: "10px solid #FFF", outline: "1px solid #E0E0E0",
-            marginBottom: "40px", cursor: "pointer", boxShadow: "0 15px 30px rgba(0,0,0,0.08)" 
-          }}>
-            <div style={{ padding: "20px", textAlign: "center" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
-                <span style={{ fontSize: "9px", background: "#0D1B2A", color: "#D4AF37", padding: "4px 10px", fontWeight: "bold" }}>{p.tier}</span>
-                {p.price >= 400000 && <span style={{ fontSize: "9px", background: "#D4AF37", color: "#0D1B2A", padding: "4px 10px", fontWeight: "bold" }}>ENVÍO GRATIS</span>}
-              </div>
-              <img src={p.images[0]} style={{ width: "100%", maxHeight: "350px", objectFit: "contain" }} />
-              <p style={{ color: "#D4AF37", fontSize: "11px", fontWeight: "bold", letterSpacing: "3px", marginTop: "10px" }}>{p.brand}</p>
-              <h3 style={{ fontSize: "20px", margin: "8px 0", color: "#0D1B2A", fontWeight: "400" }}>{p.name}</h3>
-              <p style={{ fontSize: "22px", fontWeight: "bold" }}>${p.price.toLocaleString()}</p>
-            </div>
-          </div>
-        ))}
-      </main>
+      {/* Info */}
+      <div style={{ padding: "20px" }}>
+        <p style={{
+          fontSize: "11px",
+          letterSpacing: "2px",
+          color: "#999",
+          marginBottom: "5px"
+        }}>
+          {p.brand}
+        </p>
 
+        <h3 style={{
+          fontSize: "18px",
+          fontWeight: "500",
+          color: "#111",
+          margin: "5px 0 10px 0"
+        }}>
+          {p.name}
+        </h3>
+
+        <p style={{
+          fontSize: "18px",
+          fontWeight: "600",
+          color: "#000"
+        }}>
+          ${p.price.toLocaleString()}
+        </p>
+      </div>
+    </div>
+  ))}
+</main>
       {selectedProduct && (
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "white", zIndex: 1000, overflowY: "auto" }}>
           <div style={{ padding: "20px", textAlign: "right", borderBottom: "1px solid #EEE", position: "sticky", top: 0, background: "white", zIndex: 20 }}>
@@ -121,11 +198,22 @@ export default function Home() {
                 <p style={{ color: "#D4AF37", fontWeight: "bold", marginTop: "15px" }}>😍 PAGOS CONTRA ENTREGA</p>
               </div>
               <p style={{ fontSize: "32px", fontWeight: "bold" }}>$ {selectedProduct.price.toLocaleString()} COP</p>
-              <button onClick={() => whatsappAction(selectedProduct)} style={{ width: "100%", background: "linear-gradient(90deg, #25D366, #128C7E)", color: "white", padding: "20px", border: "none", fontWeight: "bold", fontSize: "18px", borderRadius: "5px", marginTop: "20px" }}>SOLICITAR POR WHATSAPP 📱</button>
-            </div>
-          </div>
-        </div>
-      )}
+             <button
+  onClick={() => whatsappAction(selectedProduct)}
+  style={{
+    width: "100%",
+    background: "#111",
+    color: "#fff",
+    padding: "18px",
+    border: "none",
+    fontWeight: "500",
+    fontSize: "14px",
+    letterSpacing: "1px",
+    marginTop: "20px"
+  }}
+>
+  CONSULTAR DISPONIBILIDAD
+</button>
 
       <footer style={{ padding: "50px 5%", background: "#0D1B2A", textAlign: "center" }}>
         <button onClick={() => setShowTerms(true)} style={{ background: "none", border: "1px solid #D4AF37", color: "#D4AF37", padding: "12px 25px", fontWeight: "bold" }}>TÉRMINOS Y CONDICIONES</button>
