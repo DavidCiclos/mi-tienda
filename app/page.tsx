@@ -130,39 +130,41 @@ export default function Home() {
             <button onClick={() => setSelectedProduct(null)}>CERRAR</button>
           </div>
 
-        <div style={{
+       <div style={{
   padding: "25px",
   background: "#F9F9F9"
 }}>
 
   {/* IMAGEN PRINCIPAL */}
   <img 
-    src={selectedProduct.images[currentImgIndex]} 
+    src={selectedProduct.images?.[currentImgIndex] || selectedProduct.images?.[0]} 
     style={{ width: "100%", borderRadius: "12px" }} 
   />
 
-  {/* MINI IMÁGENES */}
-  <div style={{
-    display: "flex",
-    gap: "10px",
-    marginTop: "10px",
-    marginBottom: "15px"
-  }}>
-    {selectedProduct.images.map((img:any, i:number) => (
-      <img key={i}
-        src={img}
-        onClick={() => setCurrentImgIndex(i)}
-        style={{
-          width: "70px",
-          height: "70px",
-          objectFit: "cover",
-          borderRadius: "10px",
-          cursor: "pointer",
-          border: currentImgIndex === i ? "2px solid #000" : "1px solid #ddd"
-        }}
-      />
-    ))}
-  </div>
+  {/* MINI IMÁGENES SOLO SI HAY MÁS DE 1 */}
+  {selectedProduct.images && selectedProduct.images.length > 1 && (
+    <div style={{
+      display: "flex",
+      gap: "10px",
+      marginTop: "10px",
+      marginBottom: "15px"
+    }}>
+      {selectedProduct.images.map((img:any, i:number) => (
+        <img key={i}
+          src={img}
+          onClick={() => setCurrentImgIndex(i)}
+          style={{
+            width: "70px",
+            height: "70px",
+            objectFit: "cover",
+            borderRadius: "10px",
+            cursor: "pointer",
+            border: currentImgIndex === i ? "2px solid #000" : "1px solid #ddd"
+          }}
+        />
+      ))}
+    </div>
+  )}
 
   {/* ALERTA */}
   <p style={{
@@ -175,17 +177,16 @@ export default function Home() {
 
   {/* TITULO */}
   <h2 style={{
-    fontSize: "24px",
+    fontSize: "22px",
     fontWeight: "500",
-    color: "#111",
-    lineHeight: "1.3"
+    color: "#111"
   }}>
     {selectedProduct.name}
   </h2>
 
   {/* PRECIO */}
   <p style={{
-    fontSize: "26px",
+    fontSize: "24px",
     fontWeight: "600",
     margin: "10px 0 20px 0"
   }}>
@@ -205,7 +206,7 @@ export default function Home() {
     fontSize: "14px",
     marginBottom: "20px"
   }}>
-    💼 RELOJ TIPO LUXURY 🔥
+    💼 RELOJ TIPO LUXURY – IDEAL PARA EMPRENDER Y GANAR EN GRANDE 🔥
   </p>
 
   {/* CARACTERÍSTICAS */}
@@ -216,7 +217,7 @@ export default function Home() {
     CARACTERÍSTICAS DEL PRODUCTO:
   </p>
 
-  {selectedProduct.specs.map((s:any, i:number) => (
+  {selectedProduct.specs?.map((s:any, i:number) => (
     <p key={i} style={{
       marginBottom: "8px",
       color: "#555",
