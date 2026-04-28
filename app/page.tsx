@@ -205,7 +205,7 @@ export default function Home() {
     fontSize: "14px",
     marginBottom: "20px"
   }}>
-    💼 RELOJ TIPO LUXURY – IDEAL PARA EMPRENDER Y GANAR EN GRANDE 🔥
+    💼 RELOJ TIPO LUXURY 🔥
   </p>
 
   {/* CARACTERÍSTICAS */}
