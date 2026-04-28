@@ -130,24 +130,120 @@ export default function Home() {
             <button onClick={() => setSelectedProduct(null)}>CERRAR</button>
           </div>
 
-          <div style={{ padding: "20px" }}>
-            <img src={selectedProduct.images[0]} style={{ width: "100%" }} />
-            <h2>{selectedProduct.name}</h2>
-            <p>{selectedProduct.brand}</p>
-            <p>${selectedProduct.price.toLocaleString()}</p>
+        <div style={{
+  padding: "25px",
+  background: "#F9F9F9"
+}}>
 
-            <button onClick={() => whatsappAction(selectedProduct)}
-              style={{
-                width: "100%",
-                padding: "15px",
-                background: "#111",
-                color: "#fff",
-                border: "none"
-              }}>
-              COMPRAR
-            </button>
-          </div>
-        </div>
+  {/* IMAGEN PRINCIPAL */}
+  <img 
+    src={selectedProduct.images[currentImgIndex]} 
+    style={{ width: "100%", borderRadius: "12px" }} 
+  />
+
+  {/* MINI IMÁGENES */}
+  <div style={{
+    display: "flex",
+    gap: "10px",
+    marginTop: "10px",
+    marginBottom: "15px"
+  }}>
+    {selectedProduct.images.map((img:any, i:number) => (
+      <img key={i}
+        src={img}
+        onClick={() => setCurrentImgIndex(i)}
+        style={{
+          width: "70px",
+          height: "70px",
+          objectFit: "cover",
+          borderRadius: "10px",
+          cursor: "pointer",
+          border: currentImgIndex === i ? "2px solid #000" : "1px solid #ddd"
+        }}
+      />
+    ))}
+  </div>
+
+  {/* ALERTA */}
+  <p style={{
+    color: "#D32F2F",
+    fontSize: "13px",
+    marginBottom: "10px"
+  }}>
+    🔴 Casi agotado - solo quedan 3!
+  </p>
+
+  {/* TITULO */}
+  <h2 style={{
+    fontSize: "24px",
+    fontWeight: "500",
+    color: "#111",
+    lineHeight: "1.3"
+  }}>
+    {selectedProduct.name}
+  </h2>
+
+  {/* PRECIO */}
+  <p style={{
+    fontSize: "26px",
+    fontWeight: "600",
+    margin: "10px 0 20px 0"
+  }}>
+    ${selectedProduct.price.toLocaleString()} COP
+  </p>
+
+  <hr style={{
+    border: "none",
+    borderTop: "1px solid #E0E0E0",
+    margin: "20px 0"
+  }} />
+
+  {/* TEXTO VENTA */}
+  <p style={{
+    textAlign: "center",
+    fontWeight: "600",
+    fontSize: "14px",
+    marginBottom: "20px"
+  }}>
+    💼 RELOJ TIPO LUXURY – IDEAL PARA EMPRENDER Y GANAR EN GRANDE 🔥
+  </p>
+
+  {/* CARACTERÍSTICAS */}
+  <p style={{
+    fontWeight: "700",
+    marginBottom: "10px"
+  }}>
+    CARACTERÍSTICAS DEL PRODUCTO:
+  </p>
+
+  {selectedProduct.specs.map((s:any, i:number) => (
+    <p key={i} style={{
+      marginBottom: "8px",
+      color: "#555",
+      fontSize: "14px"
+    }}>
+      ✔ {s}
+    </p>
+  ))}
+
+  {/* BOTÓN */}
+  <button
+    onClick={() => whatsappAction(selectedProduct)}
+    style={{
+      marginTop: "20px",
+      width: "100%",
+      padding: "16px",
+      background: "#111",
+      color: "#fff",
+      border: "none",
+      borderRadius: "8px",
+      fontWeight: "600"
+    }}
+  >
+    CONSULTAR POR WHATSAPP
+  </button>
+
+</div>
       )}
 
       {/* FOOTER */}
