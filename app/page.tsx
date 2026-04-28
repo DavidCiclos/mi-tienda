@@ -206,7 +206,7 @@ export default function Home() {
     fontSize: "14px",
     marginBottom: "20px"
   }}>
-    💼 RELOJ TIPO LUXURY 🔥
+     RELOJ TIPO LUXURY 🔥
   </p>
 
   {/* CARACTERÍSTICAS */}
