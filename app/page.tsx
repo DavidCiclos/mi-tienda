@@ -115,46 +115,140 @@ export default function Home() {
 
       {/* MODAL LIMPIO */}
       {selectedProduct && (
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(0,0,0,0.6)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1000
-        }}>
-          <div style={{
-            background: "#fff",
-            maxWidth: "500px",
-            width: "90%",
-            borderRadius: "12px",
-            padding: "30px"
-          }}>
-            <button onClick={() => setSelectedProduct(null)} style={{ float: "right" }}>✕</button>
+  <div style={{
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.6)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+    padding: "20px"
+  }}>
+    
+    <div style={{
+      background: "#fff",
+      borderRadius: "20px",
+      width: "100%",
+      maxWidth: "500px",
+      overflow: "hidden",
+      boxShadow: "0 20px 60px rgba(0,0,0,0.3)"
+    }}>
 
-            <img src={selectedProduct.image} style={{ width: "100%", borderRadius: "10px" }} />
+      {/* IMAGEN PRINCIPAL */}
+      <div style={{ background: "#000" }}>
+        <img 
+          src={selectedProduct.images[0]} 
+          style={{ width: "100%", height: "220px", objectFit: "cover" }} 
+        />
+      </div>
 
-            <h2 style={{ marginTop: "20px" }}>{selectedProduct.name}</h2>
-            <p>{selectedProduct.brand}</p>
-            <p style={{ fontWeight: "bold", marginTop: "10px" }}>
-              ${selectedProduct.price.toLocaleString()}
-            </p>
+      {/* CONTENIDO */}
+      <div style={{ padding: "20px" }}>
 
-            <button style={{
-              width: "100%",
-              marginTop: "20px",
-              padding: "15px",
-              background: "#111",
-              color: "#fff",
-              border: "none"
-            }}>
-              CONSULTAR
-            </button>
-          </div>
+        {/* MINI IMÁGENES */}
+        <div style={{ display: "flex", gap: "10px", marginBottom: "15px" }}>
+          {selectedProduct.images.map((img:any, i:number) => (
+            <img key={i}
+              src={img}
+              onClick={() => setCurrentImgIndex(i)}
+              style={{
+                width: "70px",
+                height: "70px",
+                objectFit: "cover",
+                borderRadius: "10px",
+                cursor: "pointer",
+                border: currentImgIndex === i ? "2px solid #000" : "1px solid #ddd"
+              }}
+            />
+          ))}
         </div>
-      )}
 
+        {/* ALERTA */}
+        <p style={{
+          color: "red",
+          fontWeight: "500",
+          marginBottom: "10px"
+        }}>
+          🔴 Casi agotado - solo quedan 3!
+        </p>
+
+        {/* TITULO */}
+        <h2 style={{
+          fontSize: "24px",
+          fontWeight: "600",
+          marginBottom: "10px"
+        }}>
+          {selectedProduct.name}
+        </h2>
+
+        {/* PRECIO */}
+        <p style={{
+          fontSize: "26px",
+          fontWeight: "700",
+          marginBottom: "20px"
+        }}>
+          ${selectedProduct.price.toLocaleString()} COP
+        </p>
+
+        <hr style={{ margin: "20px 0", border: "none", borderTop: "1px solid #eee" }} />
+
+        {/* TEXTO VENTA */}
+        <p style={{
+          fontWeight: "600",
+          textAlign: "center",
+          marginBottom: "20px"
+        }}>
+          💼 RELOJ TIPO LUXURY – IDEAL PARA EMPRENDER Y GANAR EN GRANDE 🔥
+        </p>
+
+        {/* CARACTERISTICAS */}
+        <div>
+          <p style={{ fontWeight: "700", marginBottom: "10px" }}>
+            CARACTERÍSTICAS DEL PRODUCTO:
+          </p>
+
+          {selectedProduct.specs.map((s:any, i:number) => (
+            <p key={i} style={{ marginBottom: "8px", color: "#555" }}>
+              ✔ {s}
+            </p>
+          ))}
+        </div>
+
+        {/* BOTON */}
+        <button
+          onClick={() => whatsappAction(selectedProduct)}
+          style={{
+            marginTop: "20px",
+            width: "100%",
+            padding: "15px",
+            background: "#111",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "600"
+          }}
+        >
+          CONSULTAR POR WHATSAPP
+        </button>
+
+        {/* CERRAR */}
+        <button
+          onClick={() => setSelectedProduct(null)}
+          style={{
+            marginTop: "10px",
+            width: "100%",
+            padding: "10px",
+            background: "none",
+            border: "none",
+            color: "#888",
+            cursor: "pointer"
+          }}
+        >
+          Cerrar
+        </button>
+
+      </div>
     </div>
-  );
-}
+  </div>
+)}
