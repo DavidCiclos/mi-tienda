@@ -28,9 +28,10 @@ export default function Home() {
       (brandFilter === "TODAS" || p.brand === brandFilter)
     );
   }, [categoryFilter, brandFilter]);
-
-  return (
-    <div style={{ background: "#fff", color: "#111", fontFamily: "sans-serif" }}>
+  
+  return ( 
+   
+    <div style={{ background: "#fff", color: "#111", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" }}>
 
       {/* HERO (marca, no tienda) */}
       <section style={{ padding: "80px 20px", textAlign: "center" }}>
@@ -113,48 +114,96 @@ export default function Home() {
         ))}
       </main>
 
-      {/* MODAL LIMPIO */}
-      {selectedProduct && (
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(0,0,0,0.6)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1000
-        }}>
-          <div style={{
-            background: "#fff",
-            maxWidth: "500px",
-            width: "90%",
-            borderRadius: "12px",
-            padding: "30px"
-          }}>
-            <button onClick={() => setSelectedProduct(null)} style={{ float: "right" }}>✕</button>
+{/* MODAL LIMPIO */}
+{selectedProduct && (
+  <div style={{
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.4)",
+    backdropFilter: "blur(8px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1000
+  }}>
+    <div style={{
+    background: "#fff",
+    maxWidth: "500px",
+    width: "90%",
+    borderRadius: "16px",
+    padding: "30px",
+    transform: "translateY(20px)",
+    transition: "all 0.3s ease"
+  }}>
 
-            <img src={selectedProduct.image} style={{ width: "100%", borderRadius: "10px" }} />
+      {/* SOLO UN BOTÓN */}
+      <button onClick={() => setSelectedProduct(null)} style={{ float: "right" }}>✕</button>
 
-            <h2 style={{ marginTop: "20px" }}>{selectedProduct.name}</h2>
-            <p>{selectedProduct.brand}</p>
-            <p style={{ fontWeight: "bold", marginTop: "10px" }}>
-              ${selectedProduct.price.toLocaleString()}
-            </p>
+      <img src={selectedProduct.image} style={{ width: "100%", borderRadius: "12px" }} />
 
-            <button style={{
-              width: "100%",
-              marginTop: "20px",
-              padding: "15px",
-              background: "#111",
-              color: "#fff",
-              border: "none"
-            }}>
-              CONSULTAR
-            </button>
-          </div>
-        </div>
-      )}
+      <p style={{
+        color: "#D32F2F",
+        fontSize: "13px",
+        marginTop: "10px"
+      }}>
+        🔴 Almost sold out - only 3 left!
+      </p>
+
+      <h2 style={{
+        marginTop: "10px",
+        fontWeight: "500",
+        lineHeight: "1.3"
+      }}>
+        {selectedProduct.name}
+      </h2>
+
+      <p style={{
+        fontSize: "24px",
+        fontWeight: "600",
+        margin: "10px 0"
+      }}>
+        ${selectedProduct.price.toLocaleString()} COP
+      </p>
+
+      <hr style={{
+        border: "none",
+        borderTop: "1px solid #eee",
+        margin: "20px 0"
+      }} />
+
+      <p style={{
+        textAlign: "center",
+        fontWeight: "600",
+        fontSize: "14px",
+        marginBottom: "20px"
+      }}>
+        💼 LUXURY STYLE WATCH – PERFECT TO RESELL & PROFIT 🔥
+      </p>
+
+      <p style={{ fontWeight: "700", marginBottom: "10px" }}>
+        PRODUCT FEATURES:
+      </p>
+
+      <p style={{ fontSize: "14px", color: "#555" }}>✔ Analog Display</p>
+      <p style={{ fontSize: "14px", color: "#555" }}>✔ Resistant Mineral Glass</p>
+      <p style={{ fontSize: "14px", color: "#555" }}>✔ Includes Presentation Box</p>
+
+      <button style={{
+        width: "100%",
+        marginTop: "25px",
+        padding: "16px",
+        background: "#111",
+        color: "#fff",
+        border: "none",
+        borderRadius: "8px",
+        fontWeight: "600",
+        letterSpacing: "1px"
+      }}>
+        CONSULT VIA WHATSAPP
+      </button>
 
     </div>
-  );
-}
+  </div>
+)}
+</div>
+);
