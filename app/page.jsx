@@ -161,8 +161,16 @@ export default function Home() {
                 <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
               </div>
               <button onClick={() => {
-                const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:\n\n⌚ *Modelo:* ${selectedProduct.name}\n🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}\n💰 *Precio:* $${selectedProduct.price.toLocaleString()}\n\n¿Está disponible?`;
-                window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
+               const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
+
+⌚ *Modelo:* ${selectedProduct.name}
+🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
+💰 *Precio:* $${selectedProduct.price.toLocaleString()} COP
+🛡️ *Garantía:* ${selectedProduct.warranty || "A convenir"}
+
+*He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
+
+window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
               }}
               style={{ width: "100%", padding: "16px", background: "#25D366", color: "#fff", border: "none", borderRadius: "12px", fontWeight: "700", cursor: "pointer" }}>
                 SOLICITAR POR WHATSAPP 📱
