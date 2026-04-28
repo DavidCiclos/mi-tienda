@@ -2,7 +2,7 @@
 import { useState, useMemo } from "react";
 
 export default function Home() {
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("CROWN SERIES");
   const [brandFilter, setBrandFilter] = useState("TODAS");
 
