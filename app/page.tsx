@@ -113,8 +113,7 @@ export default function Home() {
         ))}
       </main>
 
-      {/* MODAL LIMPIO */}
-     {selectedProduct && (
+      {selectedProduct && (
   <div style={{
     position: "fixed",
     inset: 0,
