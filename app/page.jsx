@@ -6,6 +6,7 @@ export default function Home() {
   const [categoryFilter, setCategoryFilter] = useState("CROWN SERIES");
   const [brandFilter, setBrandFilter] = useState("TODAS");
 
+  // Base de datos de productos
   const products = [
     { id: 1, name: "Daytona S-Clon", brand: "ROLEX", line: "CROWN SERIES", price: 3450000, image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800" },
     { id: 2, name: "Santos Skeleton", brand: "CARTIER", line: "PREMIUM 1.1", price: 950000, image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800" },
@@ -14,7 +15,7 @@ export default function Home() {
   ];
 
   const availableBrands = useMemo(() => {
-    const map: any = {
+    const map = {
       "CROWN SERIES": ["ROLEX"],
       "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE"],
       "ESSENTIAL": ["CASIO", "ROLEX"]
@@ -27,23 +28,22 @@ export default function Home() {
       p => p.line === categoryFilter &&
       (brandFilter === "TODAS" || p.brand === brandFilter)
     );
-  }, [categoryFilter, brandFilter]);
-  
-  return ( 
-   
-    <div style={{ background: "#fff", color: "#111", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" }}>
+  }, [categoryFilter, brandFilter, products]);
 
-      {/* HERO (marca, no tienda) */}
-      <section style={{ padding: "80px 20px", textAlign: "center" }}>
-        <h1 style={{ letterSpacing: "10px", fontWeight: 500 }}>APEX TIME</h1>
-        <p style={{ marginTop: "10px", color: "#777", letterSpacing: "3px" }}>
-          CURATED WATCH COLLECTION
+  return (
+    <div style={{ background: "#fff", color: "#111", fontFamily: "-apple-system, sans-serif", minHeight: "100vh" }}>
+
+      {/* HERO SECTION */}
+      <section style={{ padding: "60px 20px", textAlign: "center" }}>
+        <h1 style={{ letterSpacing: "10px", fontWeight: 500, margin: 0 }}>APEX TIME</h1>
+        <p style={{ marginTop: "10px", color: "#777", letterSpacing: "3px", fontSize: "12px" }}>
+          ALTA RELOJERÍA • CURADURÍA SELECTA
         </p>
       </section>
 
-      {/* NAV */}
-      <nav style={{ borderTop: "1px solid #eee", borderBottom: "1px solid #eee" }}>
-        <div style={{ display: "flex", gap: "10px", padding: "15px", overflowX: "auto" }}>
+      {/* NAVEGACIÓN PRINCIPAL */}
+      <nav style={{ borderTop: "1px solid #eee", borderBottom: "1px solid #eee", position: "sticky", top: 0, background: "#fff", zIndex: 100 }}>
+        <div style={{ display: "flex", gap: "10px", padding: "15px", overflowX: "auto", scrollbarWidth: "none" }}>
           {["CROWN SERIES", "PREMIUM 1.1", "ESSENTIAL"].map(cat => (
             <button key={cat}
               onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
@@ -54,14 +54,24 @@ export default function Home() {
                 background: categoryFilter === cat ? "#111" : "#fff",
                 color: categoryFilter === cat ? "#fff" : "#111",
                 cursor: "pointer",
-                flexShrink: 0
+                flexShrink: 0,
+                fontSize: "12px",
+                fontWeight: "600"
               }}>
               {cat}
             </button>
           ))}
         </div>
 
-        <div style={{ display: "flex", gap: "15px", padding: "10px 15px", overflowX: "auto" }}>
+        {/* SUB-NAV DE MARCAS (CORREGIDO PARA QUE NO CORTE ROLEX) */}
+        <div style={{ 
+          display: "flex", 
+          gap: "20px", 
+          padding: "10px 20px", 
+          overflowX: "auto", 
+          scrollbarWidth: "none",
+          borderTop: "1px solid #f9f9f9"
+        }}>
           {availableBrands.map(brand => (
             <span key={brand}
               onClick={() => setBrandFilter(brand)}
@@ -71,7 +81,10 @@ export default function Home() {
                 whiteSpace: "nowrap",
                 color: brandFilter === brand ? "#000" : "#aaa",
                 borderBottom: brandFilter === brand ? "2px solid #000" : "none",
-                flexShrink: 0
+                flexShrink: 0, // Esto evita que se corte el texto
+                paddingBottom: "5px",
+                fontWeight: "bold",
+                textTransform: "uppercase"
               }}>
               {brand}
             </span>
@@ -79,131 +92,113 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* GRID PREMIUM */}
+      {/* GRID DE PRODUCTOS */}
       <main style={{
         maxWidth: "1100px",
-        margin: "60px auto",
+        margin: "40px auto",
         padding: "0 20px",
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-        gap: "50px"
+        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+        gap: "40px"
       }}>
         {filteredProducts.map(p => (
           <div key={p.id}
             onClick={() => setSelectedProduct(p)}
-            style={{
-              cursor: "pointer",
-              transition: "all 0.3s ease"
-            }}
-            onMouseEnter={(e:any) => e.currentTarget.style.transform = "scale(1.03)"}
-            onMouseLeave={(e:any) => e.currentTarget.style.transform = "scale(1)"}
+            style={{ cursor: "pointer" }}
           >
-            <img src={p.image} style={{
-              width: "100%",
-              height: "260px",
-              objectFit: "cover",
-              borderRadius: "10px"
-            }} />
+            <div style={{ overflow: "hidden", borderRadius: "12px", background: "#f0f0f0" }}>
+                <img src={p.image} alt={p.name} style={{
+                width: "100%",
+                height: "320px",
+                objectFit: "cover",
+                display: "block"
+                }} />
+            </div>
 
-            <div style={{ marginTop: "15px" }}>
-              <p style={{ fontSize: "11px", color: "#888", letterSpacing: "2px" }}>{p.brand}</p>
-              <h3 style={{ fontWeight: 500 }}>{p.name}</h3>
-              <p style={{ marginTop: "5px", fontWeight: 600 }}>${p.price.toLocaleString()}</p>
+            <div style={{ marginTop: "15px", textAlign: "center" }}>
+              <p style={{ fontSize: "10px", color: "#888", letterSpacing: "2px", textTransform: "uppercase" }}>{p.brand}</p>
+              <h3 style={{ fontWeight: 500, fontSize: "18px", margin: "5px 0" }}>{p.name}</h3>
+              <p style={{ fontWeight: 700, fontSize: "16px" }}>${p.price.toLocaleString()}</p>
             </div>
           </div>
         ))}
       </main>
 
-{/* MODAL LIMPIO */}
-{selectedProduct && (
-  <div style={{
-    position: "fixed",
-    inset: 0,
-    background: "rgba(0,0,0,0.4)",
-    backdropFilter: "blur(8px)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 1000
-  }}>
-    <div style={{
-    background: "#fff",
-    maxWidth: "500px",
-    width: "90%",
-    borderRadius: "16px",
-    padding: "30px",
-    transform: "translateY(20px)",
-    transition: "all 0.3s ease"
-  }}>
+      {/* MODAL DE PRODUCTO */}
+      {selectedProduct && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          background: "rgba(0,0,0,0.6)",
+          backdropFilter: "blur(4px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 1000,
+          padding: "20px"
+        }}>
+          <div style={{
+            background: "#fff",
+            maxWidth: "450px",
+            width: "100%",
+            borderRadius: "20px",
+            padding: "25px",
+            position: "relative",
+            maxHeight: "90vh",
+            overflowY: "auto"
+          }}>
+            <button 
+              onClick={() => setSelectedProduct(null)} 
+              style={{ 
+                position: "absolute", 
+                top: "15px", 
+                right: "15px", 
+                background: "#eee", 
+                border: "none", 
+                borderRadius: "50%", 
+                width: "30px", 
+                height: "30px", 
+                cursor: "pointer" 
+              }}>✕</button>
 
-      {/* SOLO UN BOTÓN */}
-      <button onClick={() => setSelectedProduct(null)} style={{ float: "right" }}>✕</button>
+            <img src={selectedProduct.image} alt={selectedProduct.name} style={{ width: "100%", borderRadius: "12px" }} />
 
-      <img src={selectedProduct.image} style={{ width: "100%", borderRadius: "12px" }} />
+            <div style={{ marginTop: "20px" }}>
+                <span style={{ background: "#ffebee", color: "#d32f2f", padding: "4px 8px", borderRadius: "4px", fontSize: "11px", fontWeight: "bold" }}>
+                    🔴 POCAS UNIDADES
+                </span>
+                
+                <h2 style={{ marginTop: "15px", fontWeight: "600", fontSize: "22px" }}>{selectedProduct.name}</h2>
+                <p style={{ fontSize: "24px", fontWeight: "700", margin: "10px 0", color: "#111" }}>
+                    ${selectedProduct.price.toLocaleString()} COP
+                </p>
 
-      <p style={{
-        color: "#D32F2F",
-        fontSize: "13px",
-        marginTop: "10px"
-      }}>
-        🔴 Almost sold out - only 3 left!
-      </p>
+                <div style={{ margin: "20px 0", padding: "15px", background: "#f9f9f9", borderRadius: "10px" }}>
+                    <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px", color: "#555" }}>CARACTERÍSTICAS:</p>
+                    <p style={{ fontSize: "14px", margin: "5px 0" }}>✅ Cristal Mineral Resistente</p>
+                    <p style={{ fontSize: "14px", margin: "5px 0" }}>✅ Movimiento de Alta Precisión</p>
+                    <p style={{ fontSize: "14px", margin: "5px 0" }}>✅ Incluye Estuche de Lujo</p>
+                </div>
 
-      <h2 style={{
-        marginTop: "10px",
-        fontWeight: "500",
-        lineHeight: "1.3"
-      }}>
-        {selectedProduct.name}
-      </h2>
-
-      <p style={{
-        fontSize: "24px",
-        fontWeight: "600",
-        margin: "10px 0"
-      }}>
-        ${selectedProduct.price.toLocaleString()} COP
-      </p>
-
-      <hr style={{
-        border: "none",
-        borderTop: "1px solid #eee",
-        margin: "20px 0"
-      }} />
-
-      <p style={{
-        textAlign: "center",
-        fontWeight: "600",
-        fontSize: "14px",
-        marginBottom: "20px"
-      }}>
-        💼 LUXURY STYLE WATCH – PERFECT TO RESELL & PROFIT 🔥
-      </p>
-
-      <p style={{ fontWeight: "700", marginBottom: "10px" }}>
-        PRODUCT FEATURES:
-      </p>
-
-      <p style={{ fontSize: "14px", color: "#555" }}>✔ Analog Display</p>
-      <p style={{ fontSize: "14px", color: "#555" }}>✔ Resistant Mineral Glass</p>
-      <p style={{ fontSize: "14px", color: "#555" }}>✔ Includes Presentation Box</p>
-
-      <button style={{
-        width: "100%",
-        marginTop: "25px",
-        padding: "16px",
-        background: "#111",
-        color: "#fff",
-        border: "none",
-        borderRadius: "8px",
-        fontWeight: "600",
-        letterSpacing: "1px"
-      }}>
-        CONSULT VIA WHATSAPP
-      </button>
-
+                <button 
+                  onClick={() => window.open(`https://wa.me/573126934247?text=Hola, me interesa el ${selectedProduct.name}`, "_blank")}
+                  style={{
+                    width: "100%",
+                    padding: "16px",
+                    background: "#111",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "12px",
+                    fontWeight: "600",
+                    cursor: "pointer",
+                    fontSize: "16px"
+                  }}>
+                  SOLICITAR POR WHATSAPP
+                </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-)}
-</div>
-);
+  );
+}
