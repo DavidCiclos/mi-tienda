@@ -82,32 +82,33 @@ export default function Home() {
   padding: "25px 0 15px",
   flexWrap: "wrap" 
 }}>
-  
   {/* CATEGORÍAS CLONES */}
-  {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
-    <button key={cat}
-      onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
-     style={{
-          padding: "12px 24px",
-          borderRadius: "4px",
-          border: categoryFilter === cat ? "1px solid #000" : "1px solid #e0e0e0",
-          background: categoryFilter === cat ? "#000" : "#fbfbfb", 
-          color: categoryFilter === cat ? "#fff" : "#666",
-          cursor: "pointer",
-          fontSize: "11px",
-          fontWeight: 700,
-          letterSpacing: "2px",
-          textTransform: "uppercase",
-          transition: "all 0.2s ease",
-          outline: "none",
-          boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none",
-        }}
-      {cat}
-    </button>
-  ))}
+        {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
+          <button 
+            key={cat}
+            onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
+            style={{
+              padding: "12px 24px",
+              borderRadius: "4px",
+              border: categoryFilter === cat ? "1px solid #000" : "1px solid #e0e0e0",
+              background: categoryFilter === cat ? "#000" : "#fbfbfb", 
+              color: categoryFilter === cat ? "#fff" : "#666",
+              cursor: "pointer",
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              transition: "all 0.2s ease",
+              outline: "none",
+              boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none"
+            }}
+          >
+            {cat}
+          </button>
+        ))}
 
-  {/* SEPARADOR ELEGANTE */}
-  <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
+        {/* SEPARADOR ELEGANTE */}
+        <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
 
   {/* SELECTOR DE TODAS LAS MARCAS ORIGINALES */}
   <div style={{ position: "relative" }}>
