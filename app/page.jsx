@@ -87,20 +87,21 @@ export default function Home() {
   {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
     <button key={cat}
       onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
-      style={{
-        padding: "10px 18px",
-        borderRadius: "2px",
-        border: "none",
-        background: categoryFilter === cat ? "#111" : "#f8f8f8", 
-        color: categoryFilter === cat ? "#fff" : "#888",
-        cursor: "pointer",
-        fontSize: "10px",
-        fontWeight: 600,
-        letterSpacing: "2px",
-        textTransform: "uppercase",
-        transition: "all 0.3s ease",
-        outline: "none"
-      }}>
+     style={{
+          padding: "12px 24px",
+          borderRadius: "4px",
+          border: categoryFilter === cat ? "1px solid #000" : "1px solid #e0e0e0",
+          background: categoryFilter === cat ? "#000" : "#fbfbfb", 
+          color: categoryFilter === cat ? "#fff" : "#666",
+          cursor: "pointer",
+          fontSize: "11px",
+          fontWeight: 700,
+          letterSpacing: "2px",
+          textTransform: "uppercase",
+          transition: "all 0.2s ease",
+          outline: "none",
+          boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none",
+        }}
       {cat}
     </button>
   ))}
@@ -116,21 +117,23 @@ export default function Home() {
         setCategoryFilter(e.target.value);
         setBrandFilter("TODAS");
       }}
-      style={{
-        padding: "10px 20px",
-        borderRadius: "2px",
-        border: "1px solid #111",
-        background: categoryFilter.includes("ORIGINAL") ? "#111" : "transparent",
-        color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#111",
-        fontSize: "10px",
-        fontWeight: 700,
+     style={{
+        padding: "12px 24px",
+        borderRadius: "4px",
+        border: "2px solid #000", 
+        background: categoryFilter.includes("ORIGINAL") ? "#000" : "#fff",
+        color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#000",
+        fontSize: "11px",
+        fontWeight: categoryFilter.includes("ORIGINAL") ? 700 : 600,
         letterSpacing: "1.5px",
         textTransform: "uppercase",
         cursor: "pointer",
         outline: "none",
         appearance: "none",
         textAlign: "center",
-        minWidth: "180px"
+        minWidth: "200px",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+        transition: "all 0.2s ease",
       }}
     >
       <option value="" disabled selected hidden>✨ ORIGINALES ▼</option>
