@@ -62,150 +62,63 @@ export default function Home() {
         </p>
       </section>
 
-      {/* --- NAVEGACIÓN (Lo que mejoramos para que no sea simple) --- */}
+{/* --- NAVEGACIÓN --- */}
       <nav style={{ 
-        position: "sticky", 
-        top: 0, 
-        background: "rgba(255,255,255,0.98)", 
-        zIndex: 100,
-        boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", // Sombra mucho más sutil
-        borderBottom: "1px solid #f0f0f0"
+        position: "sticky", top: 0, background: "rgba(255,255,255,0.98)", zIndex: 100, 
+        boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", borderBottom: "1px solid #f0f0f0" 
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
           
-        {/* --- FILA DE CATEGORÍAS (Tus 3 pilares + Las 17 Originales) --- */}
-<div style={{ 
-  display: "flex", 
-  justifyContent: "center", 
-  alignItems: "center",
-  gap: "8px", 
-  padding: "25px 0 15px",
-  flexWrap: "wrap" 
-}}>
-  {/* CATEGORÍAS CLONES */}
-        {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
-          <button 
-            key={cat}
-            onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
-            style={{
-              padding: "12px 24px",
-              borderRadius: "4px",
-              border: categoryFilter === cat ? "1px solid #000" : "1px solid #e0e0e0",
-              background: categoryFilter === cat ? "#000" : "#fbfbfb", 
-              color: categoryFilter === cat ? "#fff" : "#666",
-              cursor: "pointer",
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              transition: "all 0.2s ease",
-              outline: "none",
-              boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none"
-            }}
-          >
-            {cat}
-          </button>
-        ))}
+          {/* Fila 1: Categorías y Selector de Originales */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", padding: "25px 0 15px", flexWrap: "wrap" }}>
+            {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
+              <button key={cat} onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
+                style={{
+                  padding: "12px 24px", borderRadius: "4px",
+                  border: categoryFilter === cat ? "1px solid #000" : "1px solid #e0e0e0",
+                  background: categoryFilter === cat ? "#000" : "#fbfbfb", 
+                  color: categoryFilter === cat ? "#fff" : "#666",
+                  cursor: "pointer", fontSize: "11px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", transition: "all 0.2s ease", outline: "none",
+                  boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none"
+                }}>{cat}</button>
+            ))}
+            
+            <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
+            
+            <select 
+              value={categoryFilter.includes("ORIGINAL") ? categoryFilter : ""} 
+              onChange={(e) => { setCategoryFilter(e.target.value); setBrandFilter("TODAS"); }}
+              style={{ padding: "12px 24px", borderRadius: "4px", border: "2px solid #000", background: categoryFilter.includes("ORIGINAL") ? "#000" : "#fff", color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#000", fontSize: "11px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", cursor: "pointer", outline: "none", appearance: "none", textAlign: "center", minWidth: "200px" }}>
+              <option value="" disabled hidden>✨ ORIGINALES ▼</option>
+              {["CHRONOS", "CURREN", "NAVIFORCE", "CASIO", "PULSO", "BENYAR", "G-SHOCK", "SCOTTIE", "ONOLA", "SKMEI", "SANDA", "FOXBOX", "CASSRAY", "Q&Q", "KOSMO", "EXPONI", "RD"].sort().map(marca => (
+                <option key={marca} value={`${marca}-ORIGINAL`}>{marca} (ORIGINAL)</option>
+              ))}
+            </select>
+          </div>
 
-        {/* SEPARADOR ELEGANTE */}
-        <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
-
-  {/* SELECTOR DE TODAS LAS MARCAS ORIGINALES */}
-  <div style={{ position: "relative" }}>
-    <select 
-      value={categoryFilter.includes("ORIGINAL") ? categoryFilter : ""}
-      onChange={(e) => {
-        setCategoryFilter(e.target.value);
-        setBrandFilter("TODAS");
-      }}
-     style={{
-        padding: "12px 24px",
-        borderRadius: "4px",
-        border: "2px solid #000", 
-        background: categoryFilter.includes("ORIGINAL") ? "#000" : "#fff",
-        color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#000",
-        fontSize: "11px",
-        fontWeight: categoryFilter.includes("ORIGINAL") ? 700 : 600,
-        letterSpacing: "1.5px",
-        textTransform: "uppercase",
-        cursor: "pointer",
-        outline: "none",
-        appearance: "none",
-        textAlign: "center",
-        minWidth: "200px",
-        boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-        transition: "all 0.2s ease",
-      }}
-    >
-      <option value="" disabled selected hidden>✨ ORIGINALES ▼</option>
-      {[
-        "CHRONOS", "CURREN", "NAVIFORCE", "CASIO", "PULSO", 
-        "BENYAR", "G-SHOCK", "SCOTTIE", "ONOLA", "SKMEI", 
-        "SANDA", "FOXBOX", "CASSRAY", "Q&Q", "KOSMO", 
-        "EXPONI", "RD"
-      ].sort().map(marca => (
-        <option key={marca} value={`${marca}-ORIGINAL`} style={{ color: "#000", background: "#fff" }}>
-          {marca} (ORIGINAL)
-        </option>
-      ))}
-    </select>
-  </div>
-</div>
-          
-         {/* Fila 2: Marcas con línea de selección fina */}
+          {/* Fila 2: Marcas con scroll lateral corregido */}
           <div style={{ 
-            display: "flex", 
-            gap: "35px", 
-            padding: "15px 20px", 
-            overflowX: "auto", 
-            scrollbarWidth: "none", 
-            msOverflowStyle: "none",
-            justifyContent: "flex-start", // Cambiado a flex-start para que el scroll funcione
-            width: "100%",
+            display: "flex", gap: "35px", padding: "15px 0 25px", 
+            overflowX: "auto", scrollbarWidth: "none", 
+            justifyContent: "flex-start", 
             WebkitOverflowScrolling: "touch" 
           }}>
             <style>{`div::-webkit-scrollbar { display: none; }`}</style>
-            
             {availableBrands.map(brand => (
-              <span 
-                key={brand}
-                onClick={() => setBrandFilter(brand)}
-                style={{
-                  cursor: "pointer", 
-                  fontSize: "11px", 
-                  whiteSpace: "nowrap",
-                  letterSpacing: "2px", 
-                  textTransform: "uppercase",
-                  fontWeight: 700, // Subimos el grosor para mejorar la vista
-                  color: brandFilter === brand ? "#000" : "#ccc",
-                  position: "relative",
-                  paddingBottom: "8px",
-                  transition: "all 0.3s ease",
-                  flexShrink: 0 // ESTO evita que las marcas se corten en el celular
-                }}
-              >
+              <span key={brand} onClick={() => setBrandFilter(brand)}
+                style={{ 
+                  cursor: "pointer", fontSize: "11px", whiteSpace: "nowrap", 
+                  letterSpacing: "2px", textTransform: "uppercase", fontWeight: 700, 
+                  color: brandFilter === brand ? "#000" : "#ccc", 
+                  position: "relative", paddingBottom: "8px", 
+                  flexShrink: 0 
+                }}>
                 {brand}
-                {brandFilter === brand && (
-                  <span style={{ 
-                    position: "absolute", 
-                    bottom: 0, 
-                    left: "0", 
-                    width: "100%", 
-                    height: "1px", 
-                    background: "#000" 
-                  }}></span>
-                )}
+                {brandFilter === brand && <span style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "2px", background: "#000" }}></span>}
               </span>
             ))}
           </div>
-                {brand}
-                {brandFilter === brand && (
-                  <span style={{ position: "absolute", bottom: 0, left: "25%", width: "50%", height: "1px", background: "#000" }}></span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
+        </div> 
       </nav>
 
       {/* --- GRID DE PRODUCTOS --- */}
