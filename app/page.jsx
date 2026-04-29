@@ -47,7 +47,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
 
   const availableBrands = useMemo(() => {
     const map = {
-      "CROWN SERIES": ["ROLEX"],
+      "SUIZOS S-CLON": ["ROLEX"],
       "PREMIUM 1.1": [
         "ROLEX", 
         "CARTIER", 
@@ -59,7 +59,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
         "OMEGA", 
         "Q&Q"
       ],
-      "ESSENTIAL": [
+      "AAA": [
         "CASIO", 
         "Q&Q",
         "TISSOT",
