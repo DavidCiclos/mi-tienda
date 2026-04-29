@@ -2,12 +2,13 @@
 import { useState, useMemo } from "react";
 
 export default function Home() {
-  const [selectedProduct, setSelectedProduct] = useState(null);
+const [selectedProduct, setSelectedProduct] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("CROWN SERIES");
   const [brandFilter, setBrandFilter] = useState("TODAS");
   // ESTADO PARA LA GALERÍA
   const [currentImage, setCurrentImage] = useState(null);
-
+  // ESTADO PARA LOS TÉRMINOS (Añade esta línea abajo)
+  const [showTerms, setShowTerms] = useState(false);
   // Base de datos de productos (ACTUALIZADA A ARREGLOS DE IMÁGENES)
   const products = [
     { 
@@ -160,6 +161,40 @@ export default function Home() {
                 <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
                 <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
               </div>
+              {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
+<div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
+  <div 
+    onClick={() => setShowTerms(!showTerms)} 
+    style={{ 
+      cursor: "pointer", 
+      display: "flex", 
+      justifyContent: "space-between", 
+      alignItems: "center",
+      padding: "12px 0"
+    }}
+  >
+    <span style={{ fontSize: "12px", fontWeight: "700", color: "#333" }}>
+      📄 TÉRMINOS, GARANTÍA Y DEVOLUCIONES
+    </span>
+    <span style={{ fontSize: "12px" }}>{showTerms ? "▲" : "▼"}</span>
+  </div>
+
+  {showTerms && (
+    <div style={{ 
+      fontSize: "11px", 
+      color: "#666", 
+      lineHeight: "1.4", 
+      padding: "12px", 
+      background: "#f9f9f9", 
+      borderRadius: "10px",
+      marginBottom: "10px"
+    }}>
+      <p style={{ marginBottom: "5px" }}>• ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty || "6 meses"} por maquinaria.</p>
+      <p style={{ marginBottom: "5px" }}>• 🔍 <strong>Peritaje:</strong> No se aceptan cambios por satisfacción si la pieza tiene rayones o marcas de uso.</p>
+      <p>• 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.</p>
+    </div>
+  )}
+</div>
               <button onClick={() => {
                const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
 
@@ -172,7 +207,7 @@ export default function Home() {
 
 window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
               }}
-              style={{ width: "100%", padding: "16px", background: "#25D366", color: "#fff", border: "none", borderRadius: "12px", fontWeight: "700", cursor: "pointer" }}>
+              style={{ width: "100%", padding: "16px", background: "#25D366", color: "#fff", border: "none", borderRadius: "12px", fontWeight: "700", cursor: "pointer", marginTop: "10px" }}>
                 SOLICITAR POR WHATSAPP 📱
               </button>
             </div>
