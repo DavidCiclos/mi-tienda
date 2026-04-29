@@ -47,33 +47,17 @@ const [selectedProduct, setSelectedProduct] = useState(null);
 
   const availableBrands = useMemo(() => {
     const map = {
-      "CROWN SERIES": ["ROLEX"],
+      "SUIZOS-S": ["ROLEX", "CARTIER", "RICHARD MILLE", "OMEGA", "HUBLOT"], // Reemplaza a CROWN SERIES
       "PREMIUM 1.1": [
-        "ROLEX", 
-        "CARTIER", 
-        "RICHARD MILLE", 
-        "BREITLING", 
-        "HUBLOT", 
-        "CASIO",
-        "TISSOT", 
-        "OMEGA", 
-        "Q&Q"
+        "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"
       ],
-      "ESSENTIAL": [
-        "CASIO", 
-        "Q&Q",
-        "TISSOT",
-        "OMEGA",
-        "ROLEX", 
-        "CARTIER", 
-        "RICHARD MILLE",
-        "BREITLING",
-        "HUBLOT"
+      " AAA": [ // Reemplaza a ESSENTIAL
+        "CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"
       ]
     };
     return ["TODAS", ...(map[categoryFilter] || [])];
   }, [categoryFilter]);
-
+  
   const filteredProducts = useMemo(() => {
     return products.filter(
       p => p.line === categoryFilter &&
@@ -95,7 +79,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       {/* NAVEGACIÓN */}
       <nav style={{ borderTop: "1px solid #eee", borderBottom: "1px solid #eee", position: "sticky", top: 0, background: "#fff", zIndex: 100 }}>
         <div style={{ display: "flex", gap: "10px", padding: "15px", overflowX: "auto", scrollbarWidth: "none" }}>
-          {["CROWN SERIES", "PREMIUM 1.1", "ESSENTIAL"].map(cat => (
+          {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
             <button key={cat}
               onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
               style={{
