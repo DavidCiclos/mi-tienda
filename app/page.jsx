@@ -15,7 +15,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       id: 1, 
       name: "Daytona S-Clon", 
       brand: "ROLEX", 
-      line: "CROWN SERIES", 
+      line: "SUIZOS-S", 
       price: 3450000, 
       images: ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800", "https://images.unsplash.com/photo-1547996160-81dfa63595dd?w=800"] 
     },
@@ -39,7 +39,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       id: 4, 
       name: "F91-W Gold", 
       brand: "CASIO", 
-      line: "ESSENTIAL", 
+      line: "AAA", 
       price: 85000, 
       images: ["https://images.unsplash.com/photo-1508685096489-7aac291bd5b3?w=800"] 
     }
@@ -47,7 +47,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
 
   const availableBrands = useMemo(() => {
     const map = {
-      "SUIZOS-S": ["ROLEX", "CARTIER", "RICHARD MILLE", "OMEGA", "HUBLOT"], // Reemplaza a CROWN SERIES
+      "SUIZOS-S": ["ROLEX"], // Reemplaza a CROWN SERIES
       "PREMIUM 1.1": [
         "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"
       ],
