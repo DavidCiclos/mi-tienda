@@ -10,14 +10,25 @@ export default function Home() {
 
   // Tus productos (Mantén tu lista de 200 aquí)
   const products = [
+    // Ejemplo para SUIZOS-S
     { 
       id: 1, 
       name: "Daytona S-Clon", 
       brand: "ROLEX", 
       line: "SUIZOS-S", 
       price: 3450000, 
-      warranty: "2 años", // Asegúrate de que todos tengan este campo
+      warranty: "2 años", 
       images: ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800"] 
+    },
+    // Ejemplo para ORIGINALES (Copia y pega este para probar el selector)
+    { 
+      id: 2, 
+      name: "Reloj Original Test", 
+      brand: "CASIO", 
+      line: "CASIO-ORIGINAL", 
+      price: 250000, 
+      warranty: "1 año", 
+      images: ["https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800"] 
     },
   ];
 
@@ -62,31 +73,81 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
           
-          {/* Fila 1: Categorías con estilo minimalista */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "25px 0 15px" }}>
-            {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
-              <button 
-                key={cat}
-                onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
-                style={{
-                  padding: "12px 25px",
-                  borderRadius: "1px", // Rectangular para más seriedad
-                  border: "none",
-                  background: categoryFilter === cat ? "#111" : "#f8f8f8", 
-                  color: categoryFilter === cat ? "#fff" : "#888",
-                  cursor: "pointer",
-                  fontSize: "10px",
-                  fontWeight: 600,
-                  letterSpacing: "3px",
-                  textTransform: "uppercase",
-                  transition: "all 0.4s ease"
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+        {/* --- FILA DE CATEGORÍAS (Tus 3 pilares + Las 17 Originales) --- */}
+<div style={{ 
+  display: "flex", 
+  justifyContent: "center", 
+  alignItems: "center",
+  gap: "8px", 
+  padding: "25px 0 15px",
+  flexWrap: "wrap" 
+}}>
+  
+  {/* CATEGORÍAS CLONES */}
+  {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
+    <button key={cat}
+      onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
+      style={{
+        padding: "10px 18px",
+        borderRadius: "2px",
+        border: "none",
+        background: categoryFilter === cat ? "#111" : "#f8f8f8", 
+        color: categoryFilter === cat ? "#fff" : "#888",
+        cursor: "pointer",
+        fontSize: "10px",
+        fontWeight: 600,
+        letterSpacing: "2px",
+        textTransform: "uppercase",
+        transition: "all 0.3s ease",
+        outline: "none"
+      }}>
+      {cat}
+    </button>
+  ))}
 
+  {/* SEPARADOR ELEGANTE */}
+  <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
+
+  {/* SELECTOR DE TODAS LAS MARCAS ORIGINALES */}
+  <div style={{ position: "relative" }}>
+    <select 
+      value={categoryFilter.includes("ORIGINAL") ? categoryFilter : ""}
+      onChange={(e) => {
+        setCategoryFilter(e.target.value);
+        setBrandFilter("TODAS");
+      }}
+      style={{
+        padding: "10px 20px",
+        borderRadius: "2px",
+        border: "1px solid #111",
+        background: categoryFilter.includes("ORIGINAL") ? "#111" : "transparent",
+        color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#111",
+        fontSize: "10px",
+        fontWeight: 700,
+        letterSpacing: "1.5px",
+        textTransform: "uppercase",
+        cursor: "pointer",
+        outline: "none",
+        appearance: "none",
+        textAlign: "center",
+        minWidth: "180px"
+      }}
+    >
+      <option value="" disabled selected hidden>✨ ORIGINALES ▼</option>
+      {[
+        "CHRONOS", "CURREN", "NAVIFORCE", "CASIO", "PULSO", 
+        "BENYAR", "G-SHOCK", "SCOTTIE", "ONOLA", "SKMEI", 
+        "SANDA", "FOXBOX", "CASSRAY", "Q&Q", "KOSMO", 
+        "EXPONI", "RD"
+      ].sort().map(marca => (
+        <option key={marca} value={`${marca}-ORIGINAL`} style={{ color: "#000", background: "#fff" }}>
+          {marca} (ORIGINAL)
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
+          
           {/* Fila 2: Marcas con línea de selección fina */}
           <div style={{ display: "flex", gap: "35px", padding: "10px 0 25px", overflowX: "auto", scrollbarWidth: "none", justifyContent: "center" }}>
             {availableBrands.map(brand => (
