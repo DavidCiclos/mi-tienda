@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 
 export default function Home() {
 const [selectedProduct, setSelectedProduct] = useState(null);
-  const [categoryFilter, setCategoryFilter] = useState("CROWN SERIES");
+  const [categoryFilter, setCategoryFilter] = useState("SUIZOS-S");
   const [brandFilter, setBrandFilter] = useState("TODAS");
   // ESTADO PARA LA GALERÍA
   const [currentImage, setCurrentImage] = useState(null);
