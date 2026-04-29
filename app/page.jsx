@@ -8,7 +8,7 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(null);
   const [showTerms, setShowTerms] = useState(false);
 
-  // Tus productos (estos quedan igual)
+  // Tus productos (Mantén tu lista de 200 aquí)
   const products = [
     { 
       id: 1, 
@@ -16,20 +16,16 @@ export default function Home() {
       brand: "ROLEX", 
       line: "SUIZOS-S", 
       price: 3450000, 
+      warranty: "2 años", // Asegúrate de que todos tengan este campo
       images: ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800"] 
     },
-    // ... agrega tus otros productos aquí ...
   ];
 
   const availableBrands = useMemo(() => {
     const map = {
       "SUIZOS-S": ["ROLEX"],
-      "PREMIUM 1.1": [
-        "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"
-      ],
-      "AAA": [
-        "CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"
-      ]
+      "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"],
+      "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"]
     };
     return ["TODAS", ...(map[categoryFilter] || [])];
   }, [categoryFilter]);
@@ -42,58 +38,48 @@ export default function Home() {
   }, [categoryFilter, brandFilter, products]);
 
   return (
-    <div style={{ background: "#fff", color: "#111", fontFamily: "-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif", minHeight: "100vh" }}>
+    // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
+    <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
 
-      {/* --- EL HEADER (Lo que te gusta encerrado en amarillo) --- */}
-      <section style={{ padding: "80px 20px", textAlign: "center", position: "relative" }}>
-        <h1 style={{ letterSpacing: "12px", fontWeight: 300, margin: 0, fontSize: "28px", textTransform: "uppercase" }}>
+      {/* --- HEADER (Elegancia minimalista) --- */}
+      <section style={{ padding: "100px 20px 60px", textAlign: "center" }}>
+        <h1 style={{ letterSpacing: "15px", fontWeight: 200, margin: 0, fontSize: "35px", textTransform: "uppercase" }}>
           APEX TIME
         </h1>
-        <p style={{ marginTop: "15px", color: "#777", letterSpacing: "4px", fontSize: "11px", fontWeight: 400, textTransform: "uppercase" }}>
+        <p style={{ marginTop: "15px", color: "#888", letterSpacing: "6px", fontSize: "10px", fontWeight: 400, textTransform: "uppercase" }}>
           ALTA RELOJERÍA • CURADURÍA SELECTA
         </p>
       </section>
 
-      {/* --- NUEVA BARRA DE NAVEGACIÓN PREMIUM (Reemplazo total de lo simple) --- */}
+      {/* --- NAVEGACIÓN (Lo que mejoramos para que no sea simple) --- */}
       <nav style={{ 
         position: "sticky", 
         top: 0, 
-        background: "rgba(255,255,255,0.95)", 
+        background: "rgba(255,255,255,0.98)", 
         zIndex: 100,
-        boxShadow: "0 10px 30px -10px rgba(0,0,0,0.05)",
-        borderTop: "1px solid #f0f0f0",
+        boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", // Sombra mucho más sutil
         borderBottom: "1px solid #f0f0f0"
       }}>
-        {/* Contenedor Centrado */}
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
           
-          {/* Fila 1: Las Categorías (Lo que estaba encerrado en rojo) */}
-          <div style={{ 
-            display: "flex", 
-            justifyContent: "center", 
-            gap: "5px", 
-            padding: "20px 0 15px", 
-            borderBottom: "1px solid #f9f9f9"
-          }}>
+          {/* Fila 1: Categorías con estilo minimalista */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "25px 0 15px" }}>
             {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
               <button 
                 key={cat}
                 onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
                 style={{
-                  padding: "10px 22px",
-                  borderRadius: "2px", // Menos redondeado
+                  padding: "12px 25px",
+                  borderRadius: "1px", // Rectangular para más seriedad
                   border: "none",
-                  // Fondo oscuro solo si está seleccionado
-                  background: categoryFilter === cat ? "#111" : "#fbfbfb", 
-                  // Texto blanco o negro según selección
-                  color: categoryFilter === cat ? "#fff" : "#555",
+                  background: categoryFilter === cat ? "#111" : "#f8f8f8", 
+                  color: categoryFilter === cat ? "#fff" : "#888",
                   cursor: "pointer",
-                  fontSize: "11px",
+                  fontSize: "10px",
                   fontWeight: 600,
-                  letterSpacing: "2.5px", // Más espacio entre letras
+                  letterSpacing: "3px",
                   textTransform: "uppercase",
-                  transition: "all 0.3s ease", // Animación suave
-                  outline: "none"
+                  transition: "all 0.4s ease"
                 }}
               >
                 {cat}
@@ -101,44 +87,25 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Fila 2: Las Marcas (Más premium y espaciadas) */}
-          <div style={{ 
-            display: "flex", 
-            gap: "25px", // Más espacio
-            padding: "15px 0 20px", 
-            overflowX: "auto", 
-            scrollbarWidth: "none", // Ocultar scrollbar
-            justifyContent: "center" // Centrar marcas
-          }}>
+          {/* Fila 2: Marcas con línea de selección fina */}
+          <div style={{ display: "flex", gap: "35px", padding: "10px 0 25px", overflowX: "auto", scrollbarWidth: "none", justifyContent: "center" }}>
             {availableBrands.map(brand => (
               <span 
                 key={brand}
                 onClick={() => setBrandFilter(brand)}
                 style={{
-                  cursor: "pointer", 
-                  fontSize: "11px", 
-                  whiteSpace: "nowrap",
-                  letterSpacing: "3px", // Más espacio entre letras
-                  textTransform: "uppercase",
-                  transition: "all 0.3s ease",
+                  cursor: "pointer", fontSize: "10px", whiteSpace: "nowrap",
+                  letterSpacing: "3px", textTransform: "uppercase",
                   fontWeight: 500,
-                  color: brandFilter === brand ? "#000" : "#bbb",
+                  color: brandFilter === brand ? "#000" : "#ccc",
                   position: "relative",
-                  paddingBottom: "5px"
+                  paddingBottom: "8px",
+                  transition: "all 0.3s ease"
                 }}
               >
                 {brand}
-                {/* Línea inferior de selección más fina y premium */}
                 {brandFilter === brand && (
-                  <span style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "1px", // Más delgada
-                    background: "#000",
-                    transition: "all 0.3s ease"
-                  }}></span>
+                  <span style={{ position: "absolute", bottom: 0, left: "25%", width: "50%", height: "1px", background: "#000" }}></span>
                 )}
               </span>
             ))}
@@ -146,17 +113,23 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* --- GRID DE PRODUCTOS (Sin cambios, pero ahora se ve mejor por la nav) --- */}
-      <main style={{ maxWidth: "1200px", margin: "60px auto", padding: "0 20px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "50px" }}>
+      {/* --- GRID DE PRODUCTOS --- */}
+      <main style={{ maxWidth: "1200px", margin: "60px auto", padding: "0 20px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "60px" }}>
         {filteredProducts.map(p => (
-          <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer", transition: "transform 0.3s ease" }}>
-            <div style={{ overflow: "hidden", borderRadius: "2px", background: "#fbfbfb" }}>
-              <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "360px", objectFit: "cover", display: "block" }} />
+          <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer" }}>
+            <div style={{ overflow: "hidden", background: "#fbfbfb" }}>
+              <img 
+                src={p.images[0]} 
+                alt={p.name} 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+                onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+              />
             </div>
-            <div style={{ marginTop: "20px", textAlign: "center" }}>
-              <p style={{ fontSize: "10px", color: "#888", letterSpacing: "3px", textTransform: "uppercase", fontWeight: 400 }}>{p.brand}</p>
-              <h3 style={{ fontWeight: 400, fontSize: "19px", margin: "8px 0", letterSpacing: "0.5px" }}>{p.name}</h3>
-              <p style={{ fontWeight: 600, fontSize: "17px", color: "#222" }}>${p.price.toLocaleString()}</p>
+            <div style={{ marginTop: "25px", textAlign: "center" }}>
+              <p style={{ fontSize: "9px", color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "8px" }}>{p.brand}</p>
+              <h3 style={{ fontWeight: 300, fontSize: "20px", margin: "0", letterSpacing: "1px" }}>{p.name}</h3>
+              <p style={{ fontWeight: 600, fontSize: "16px", marginTop: "10px", color: "#333" }}>${p.price.toLocaleString()} COP</p>
             </div>
           </div>
         ))}
