@@ -51,7 +51,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       "PREMIUM 1.1": [
         "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"
       ],
-      " AAA": [ // Reemplaza a ESSENTIAL
+      "AAA": [ // Reemplaza a ESSENTIAL
         "CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"
       ]
     };
