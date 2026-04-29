@@ -152,22 +152,52 @@ export default function Home() {
   </div>
 </div>
           
-          {/* Fila 2: Marcas con línea de selección fina */}
-          <div style={{ display: "flex", gap: "35px", padding: "10px 0 25px", overflowX: "auto", scrollbarWidth: "none", justifyContent: "center" }}>
+         {/* Fila 2: Marcas con línea de selección fina */}
+          <div style={{ 
+            display: "flex", 
+            gap: "35px", 
+            padding: "15px 20px", 
+            overflowX: "auto", 
+            scrollbarWidth: "none", 
+            msOverflowStyle: "none",
+            justifyContent: "flex-start", // Cambiado a flex-start para que el scroll funcione
+            width: "100%",
+            WebkitOverflowScrolling: "touch" 
+          }}>
+            <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+            
             {availableBrands.map(brand => (
               <span 
                 key={brand}
                 onClick={() => setBrandFilter(brand)}
                 style={{
-                  cursor: "pointer", fontSize: "10px", whiteSpace: "nowrap",
-                  letterSpacing: "3px", textTransform: "uppercase",
-                  fontWeight: 500,
+                  cursor: "pointer", 
+                  fontSize: "11px", 
+                  whiteSpace: "nowrap",
+                  letterSpacing: "2px", 
+                  textTransform: "uppercase",
+                  fontWeight: 700, // Subimos el grosor para mejorar la vista
                   color: brandFilter === brand ? "#000" : "#ccc",
                   position: "relative",
                   paddingBottom: "8px",
-                  transition: "all 0.3s ease"
+                  transition: "all 0.3s ease",
+                  flexShrink: 0 // ESTO evita que las marcas se corten en el celular
                 }}
               >
+                {brand}
+                {brandFilter === brand && (
+                  <span style={{ 
+                    position: "absolute", 
+                    bottom: 0, 
+                    left: "0", 
+                    width: "100%", 
+                    height: "1px", 
+                    background: "#000" 
+                  }}></span>
+                )}
+              </span>
+            ))}
+          </div>
                 {brand}
                 {brandFilter === brand && (
                   <span style={{ position: "absolute", bottom: 0, left: "25%", width: "50%", height: "1px", background: "#000" }}></span>
