@@ -17,6 +17,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       brand: "ROLEX", 
       line: "SUIZOS-S", 
       price: 3450000, 
+      warranty: "2 años", // <--- Garantía de gama alta
       images: ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800", "https://images.unsplash.com/photo-1547996160-81dfa63595dd?w=800"] 
     },
     { 
@@ -25,6 +26,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       brand: "CARTIER", 
       line: "PREMIUM 1.1", 
       price: 950000, 
+      warranty: "6 meses", // <--- Garantía estándar
       images: ["https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800"] 
     },
     { 
@@ -33,6 +35,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       brand: "RICHARD MILLE", 
       line: "PREMIUM 1.1", 
       price: 1250000, 
+      warranty: "6 meses", // <--- Garantía estándar
       images: ["https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=800"] 
     },
     { 
@@ -41,6 +44,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       brand: "CASIO", 
       line: "AAA", 
       price: 85000, 
+      warranty: "3 meses", // <--- Garantía básica para genéricos
       images: ["https://images.unsplash.com/photo-1508685096489-7aac291bd5b3?w=800"] 
     }
   ];
@@ -193,27 +197,48 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       borderRadius: "10px",
       marginBottom: "10px"
     }}>
-      <p style={{ marginBottom: "5px" }}>• ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty || "6 meses"} por maquinaria.</p>
-      <p style={{ marginBottom: "5px" }}>• 🔍 <strong>Peritaje:</strong> No se aceptan cambios por satisfacción si la pieza tiene rayones o marcas de uso.</p>
-      <p>• 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.</p>
+      {/* 1. LÍNEA DE GARANTÍA DINÁMICA (SOLO UNA) */}
+      <p style={{ marginBottom: "5px" }}>
+        • ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty} por maquinaria.
+      </p>
+      
+      <p style={{ marginBottom: "5px" }}>
+        • 🔍 <strong>Peritaje:</strong> No se aceptan cambios por satisfacción si la pieza tiene rayones o marcas de uso.
+      </p>
+      
+      <p>
+        • 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.
+      </p>
     </div>
   )}
 </div>
-              <button onClick={() => {
-               const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
+
+<button onClick={() => {
+  const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
 
 ⌚ *Modelo:* ${selectedProduct.name}
 🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
 💰 *Precio:* $${selectedProduct.price.toLocaleString()} COP
-🛡️ *Garantía:* ${selectedProduct.warranty || "A convenir"}
+🛡️ *Garantía:* ${selectedProduct.warranty}
 
 *He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
 
-window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
-              }}
-              style={{ width: "100%", padding: "16px", background: "#25D366", color: "#fff", border: "none", borderRadius: "12px", fontWeight: "700", cursor: "pointer", marginTop: "10px" }}>
-                SOLICITAR POR WHATSAPP 📱
-              </button>
+  window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
+}}
+style={{ 
+  width: "100%", 
+  padding: "16px", 
+  background: "#25D366", 
+  color: "#fff", 
+  border: "none", 
+  borderRadius: "12px", 
+  fontWeight: "700", 
+  cursor: "pointer", 
+  marginTop: "10px" 
+}}>
+  SOLICITAR POR WHATSAPP 📱
+</button>
+
             </div>
           </div>
         </div>
