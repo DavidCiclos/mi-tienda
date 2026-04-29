@@ -48,8 +48,28 @@ const [selectedProduct, setSelectedProduct] = useState(null);
   const availableBrands = useMemo(() => {
     const map = {
       "CROWN SERIES": ["ROLEX"],
-      "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE"],
-      "ESSENTIAL": ["CASIO", "ROLEX"]
+      "PREMIUM 1.1": [
+        "ROLEX", 
+        "CARTIER", 
+        "RICHARD MILLE", 
+        "BREITLING", 
+        "HUBLOT", 
+        "CASIO",
+        "TISSOT", 
+        "OMEGA", 
+        "Q&Q"
+      ],
+      "ESSENTIAL": [
+        "CASIO", 
+        "Q&Q",
+        "TISSOT",
+        "OMEGA",
+        "ROLEX", 
+        "CARTIER", 
+        "RICHARD MILLE",
+        "BREITLING",
+        "HUBLOT"
+      ]
     };
     return ["TODAS", ...(map[categoryFilter] || [])];
   }, [categoryFilter]);
