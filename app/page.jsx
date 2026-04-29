@@ -203,7 +203,8 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       </p>
       
       <p style={{ marginBottom: "5px" }}>
-        • 🔍 <strong>Peritaje:</strong> No se aceptan cambios por satisfacción si la pieza tiene rayones o marcas de uso.
+        • 🔍 <strong>Peritaje:</strong> No se aceptan cambios si la pieza devuelta tiene rayones o marcas de uso. En caso de que se arrepienta 
+        su compra y quiera devolver la pieza el cliente devera asumir los costos de envio.
       </p>
       
       <p>
