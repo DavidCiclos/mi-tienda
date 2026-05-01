@@ -52,16 +52,70 @@ export default function Home() {
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
 
-      {/* --- HEADER (Elegancia minimalista) --- */}
-      <section style={{ padding: "100px 20px 60px", textAlign: "center" }}>
-        <h1 style={{ letterSpacing: "15px", fontWeight: 200, margin: 0, fontSize: "35px", textTransform: "uppercase" }}>
+     {/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
+      <section style={{ 
+        position: "relative",
+        height: "60vh", // Altura impactante pero controlada
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=2000&auto=format&fit=crop')`, // Imagen de relojería de lujo
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed", // Efecto Parallax elegante
+        color: "#fff",
+        padding: "0 20px",
+        overflow: "hidden"
+      }}>
+        {/* Línea decorativa superior estilo minimalista */}
+        <div style={{ width: "1px", height: "60px", background: "rgba(255,255,255,0.3)", marginBottom: "30px" }}></div>
+
+        <h1 style={{ 
+          letterSpacing: "20px", 
+          fontWeight: 200, 
+          margin: 0, 
+          fontSize: "clamp(30px, 5vw, 60px)", // Tamaño fluido para celular y PC
+          textTransform: "uppercase",
+          textShadow: "0 10px 30px rgba(0,0,0,0.5)"
+        }}>
           APEX TIME
         </h1>
-        <p style={{ marginTop: "15px", color: "#888", letterSpacing: "6px", fontSize: "10px", fontWeight: 400, textTransform: "uppercase" }}>
-          ALTA RELOJERÍA • CURADURÍA SELECTA
-        </p>
-      </section>
 
+        <div style={{
+          height: "1px",
+          width: "100px",
+          background: "#fff",
+          margin: "25px 0",
+          opacity: 0.5
+        }}></div>
+
+        <p style={{ 
+          color: "#eee", 
+          letterSpacing: "8px", 
+          fontSize: "11px", 
+          fontWeight: 400, 
+          textTransform: "uppercase",
+          maxWidth: "600px",
+          lineHeight: "2"
+        }}>
+          ALTA RELOJERÍA <span style={{ margin: "0 15px", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
+        </p>
+
+        {/* Detalle estético en la esquina inferior para romper la monotonía */}
+        <div style={{ 
+          position: "absolute", 
+          bottom: "30px", 
+          right: "30px", 
+          fontSize: "9px", 
+          letterSpacing: "3px", 
+          opacity: 0.4,
+          textTransform: "uppercase"
+        }}>
+          EST. 2026
+        </div>
+      </section>
 {/* --- NAVEGACIÓN --- */}
       <nav style={{ 
         position: "sticky", top: 0, background: "rgba(255,255,255,0.98)", zIndex: 100, 
@@ -144,10 +198,12 @@ export default function Home() {
             onMouseEnter={(e) => {
               e.currentTarget.style.zIndex = "10";
               e.currentTarget.style.outline = "4px solid #000"; // Marco negro fuerte al pasar el mouse
+              e.currentTarget.querySelector('.hover-line').style.width = "100%"; // <--- AÑADIR ESTA LÍNEA
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.zIndex = "1";
               e.currentTarget.style.outline = "none";
+              e.currentTarget.querySelector('.hover-line').style.width = "0%"; // <--- AÑADIR ESTA LÍNEA
             }}
           >
             
