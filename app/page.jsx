@@ -121,14 +121,14 @@ export default function Home() {
         </div> 
       </nav>
 
-  {/* --- GRID DE PRODUCTOS (PREMIUM BOUTIQUE) --- */}
+ {/* --- GRID DE PRODUCTOS (ARQUITECTÓNICO / LUXURY BRUTALIST) --- */}
       <main style={{ 
-        maxWidth: "1200px", 
-        margin: "50px auto", 
+        maxWidth: "1300px", 
+        margin: "40px auto", 
         padding: "0 20px", 
         display: "grid", 
-        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-        gap: "50px 30px" 
+        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+        gap: "0px" // Sin espacio entre cuadros para crear un efecto de muro de lujo
       }}>
         {filteredProducts.map(p => (
           <div key={p.id} 
@@ -136,32 +136,27 @@ export default function Home() {
             style={{ 
               cursor: "pointer",
               background: "#fff",
-              borderRadius: "16px",
-              padding: "12px",
-              transition: "all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
-              border: "1px solid #f0f0f0"
+              border: "0.5px solid #e5e5e5", // Líneas finas y rígidas
+              position: "relative",
+              overflow: "hidden",
+              transition: "all 0.5s cubic-bezier(0.19, 1, 0.22, 1)"
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-8px)";
-              e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.08)";
+              e.currentTarget.style.zIndex = "10";
+              e.currentTarget.style.outline = "4px solid #000"; // Marco negro fuerte al pasar el mouse
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 4px 6px rgba(0,0,0,0.02)";
+              e.currentTarget.style.zIndex = "1";
+              e.currentTarget.style.outline = "none";
             }}
           >
             
-            {/* Contenedor de Imagen con Efecto Glass */}
+            {/* Contenedor de Imagen Recto y Crudo */}
             <div style={{ 
               position: "relative",
-              overflow: "hidden", 
-              background: "#f9f9f9",
-              borderRadius: "12px", 
               aspectRatio: "1/1",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
+              overflow: "hidden",
+              background: "#f2f2f2"
             }}>
               <img 
                 src={p.images[0]} 
@@ -170,76 +165,76 @@ export default function Home() {
                   width: "100%", 
                   height: "100%", 
                   objectFit: "cover", 
-                  transition: "transform 0.8s ease" 
+                  filter: "grayscale(20%)", // Estilo visual más serio
+                  transition: "transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)" 
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.15)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
               />
               
-              {/* Badge de Categoría con efecto desenfoque */}
+              {/* Etiqueta de Categoría (Estilo Industrial) */}
               <div style={{
                 position: "absolute",
-                bottom: "12px",
-                right: "12px",
-                background: "rgba(255, 255, 255, 0.7)",
-                backdropFilter: "blur(8px)",
-                padding: "6px 12px",
+                top: "0",
+                left: "0",
+                background: "#000",
+                color: "#fff",
+                padding: "8px 15px",
                 fontSize: "10px",
-                fontWeight: "800",
-                letterSpacing: "1px",
-                borderRadius: "20px",
-                color: "#000",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-                border: "1px solid rgba(255,255,255,0.3)"
+                fontWeight: "900",
+                letterSpacing: "2px",
+                textTransform: "uppercase"
               }}>
                 {p.line.split('-')[0]}
               </div>
             </div>
 
-            {/* Detalles con Tipografía Curada */}
+            {/* Bloque de Información Minimalista */}
             <div style={{ 
-              marginTop: "20px", 
-              textAlign: "center",
-              paddingBottom: "10px"
+              padding: "30px 20px", 
+              textAlign: "left", // Alineación lateral para romper lo común
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: "140px"
             }}>
-              <p style={{ 
-                fontSize: "11px", 
-                color: "#D4AF37", // Color Dorado Relojería
-                letterSpacing: "4px", 
-                textTransform: "uppercase", 
-                fontWeight: "700",
-                margin: "0 0 10px 0" 
-              }}>
-                {p.brand}
-              </p>
-              
-              <h3 style={{ 
-                fontWeight: "300", 
-                fontSize: "19px", 
-                margin: "0", 
-                color: "#1a1a1a",
-                fontFamily: "serif", // Toque clásico
-                letterSpacing: "0.5px"
-              }}>
-                {p.name}
-              </h3>
+              <div>
+                <p style={{ 
+                  fontSize: "10px", 
+                  color: "#888", 
+                  letterSpacing: "4px", 
+                  margin: "0 0 5px 0",
+                  textTransform: "uppercase"
+                }}>
+                  {p.brand}
+                </p>
+                <h3 style={{ 
+                  fontWeight: "700", 
+                  fontSize: "18px", 
+                  margin: "0", 
+                  color: "#000",
+                  letterSpacing: "-0.5px",
+                  lineHeight: "1"
+                }}>
+                  {p.name.toUpperCase()}
+                </h3>
+              </div>
 
-              <div style={{
-                width: "40px",
-                height: "1px",
-                background: "linear-gradient(90deg, transparent, #D4AF37, transparent)",
-                margin: "15px auto"
-              }}></div>
-
-              <p style={{ 
-                fontWeight: "700", 
-                fontSize: "18px", 
-                color: "#000",
-                margin: "0" 
-              }}>
-                ${p.price.toLocaleString()} <span style={{ fontSize: "11px", color: "#888", fontWeight: "400" }}>COP</span>
-              </p>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <p style={{ 
+                  fontWeight: "900", 
+                  fontSize: "16px", 
+                  color: "#000",
+                  margin: "0" 
+                }}>
+                  ${p.price.toLocaleString()}
+                </p>
+                <span style={{ fontSize: "9px", fontWeight: "700", color: "#ccc" }}>COP</span>
+              </div>
             </div>
+
+            {/* Efecto de barra de carga estética al fondo */}
+            <div style={{ width: "0%", height: "2px", background: "#000", transition: "width 0.4s ease" }} className="hover-line"></div>
           </div>
         ))}
       </main>
