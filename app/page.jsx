@@ -128,27 +128,27 @@ export default function Home() {
         padding: "0 20px", 
         display: "grid", 
         gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-        gap: "40px 25px" // Espacio elegante entre filas y columnas
+        gap: "40px 25px" 
       }}>
         {filteredProducts.map(p => (
           <div key={p.id} 
             onClick={() => setSelectedProduct(p)} 
             style={{ 
               cursor: "pointer",
-              group: "product-card",
               transition: "transform 0.3s ease"
             }}>
             
-            {/* Contenedor de Imagen con Proporción Áurea */}
+            {/* Contenedor de Imagen con Proporción Fija */}
             <div style={{ 
               position: "relative",
               overflow: "hidden", 
               background: "#f7f7f7",
-              borderRadius: "8px", // Bordes sutiles
-              aspectRatio: "3/4", // Todas las imágenes tendrán el mismo tamaño
+              borderRadius: "12px", 
+              aspectRatio: "1/1", // Imagen cuadrada perfecta para uniformidad
               display: "flex",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.05)"
             }}>
               <img 
                 src={p.images[0]} 
@@ -164,62 +164,54 @@ export default function Home() {
                 onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
               />
               
-              {/* Etiqueta flotante de Categoría */}
+              {/* Etiqueta sutil de línea */}
               <div style={{
                 position: "absolute",
                 top: "12px",
-                left: "12px",
+                right: "12px",
                 background: "rgba(255,255,255,0.9)",
-                padding: "4px 10px",
-                fontSize: "9px",
-                fontWeight: "700",
+                padding: "4px 8px",
+                fontSize: "8px",
+                fontWeight: "800",
                 letterSpacing: "1px",
-                borderRadius: "2px",
-                color: "#000"
+                borderRadius: "4px",
+                color: "#000",
+                textTransform: "uppercase"
               }}>
-                {p.line.replace("-ORIGINAL", "").replace("-S", "")}
+                {p.line.split('-')[0]}
               </div>
             </div>
 
-            {/* Información del Reloj con alineación centrada */}
+            {/* Información con jerarquía clara */}
             <div style={{ 
-              marginTop: "18px", 
-              textAlign: "center",
-              padding: "0 10px"
+              marginTop: "20px", 
+              textAlign: "center"
             }}>
               <p style={{ 
                 fontSize: "10px", 
                 color: "#999", 
                 letterSpacing: "3px", 
                 textTransform: "uppercase", 
-                margin: "0 0 8px 0" 
+                margin: "0 0 6px 0" 
               }}>
                 {p.brand}
               </p>
               
               <h3 style={{ 
-                fontWeight: "400", 
-                fontSize: "17px", 
+                fontWeight: "500", 
+                fontSize: "16px", 
                 margin: "0", 
-                letterSpacing: "0.5px",
                 color: "#1a1a1a",
                 lineHeight: "1.2"
               }}>
                 {p.name}
               </h3>
 
-              <div style={{
-                width: "20px",
-                height: "1px",
-                background: "#e0e0e0",
-                margin: "12px auto"
-              }}></div>
-
               <p style={{ 
                 fontWeight: "700", 
                 fontSize: "15px", 
                 color: "#000",
-                margin: "0" 
+                marginTop: "10px" 
               }}>
                 ${p.price.toLocaleString()} <span style={{ fontSize: "10px", fontWeight: "400" }}>COP</span>
               </p>
