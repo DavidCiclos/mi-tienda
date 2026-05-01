@@ -121,34 +121,47 @@ export default function Home() {
         </div> 
       </nav>
 
-   {/* --- GRID DE PRODUCTOS (DISEÑO BOUTIQUE) --- */}
+  {/* --- GRID DE PRODUCTOS (PREMIUM BOUTIQUE) --- */}
       <main style={{ 
         maxWidth: "1200px", 
-        margin: "40px auto", 
+        margin: "50px auto", 
         padding: "0 20px", 
         display: "grid", 
         gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-        gap: "40px 25px" 
+        gap: "50px 30px" 
       }}>
         {filteredProducts.map(p => (
           <div key={p.id} 
             onClick={() => setSelectedProduct(p)} 
             style={{ 
               cursor: "pointer",
-              transition: "transform 0.3s ease"
-            }}>
+              background: "#fff",
+              borderRadius: "16px",
+              padding: "12px",
+              transition: "all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
+              boxShadow: "0 4px 6px rgba(0,0,0,0.02)",
+              border: "1px solid #f0f0f0"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 6px rgba(0,0,0,0.02)";
+            }}
+          >
             
-            {/* Contenedor de Imagen con Proporción Fija */}
+            {/* Contenedor de Imagen con Efecto Glass */}
             <div style={{ 
               position: "relative",
               overflow: "hidden", 
-              background: "#f7f7f7",
+              background: "#f9f9f9",
               borderRadius: "12px", 
-              aspectRatio: "1/1", // Imagen cuadrada perfecta para uniformidad
+              aspectRatio: "1/1",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 4px 15px rgba(0,0,0,0.05)"
+              justifyContent: "center"
             }}>
               <img 
                 src={p.images[0]} 
@@ -157,63 +170,74 @@ export default function Home() {
                   width: "100%", 
                   height: "100%", 
                   objectFit: "cover", 
-                  display: "block", 
-                  transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)" 
+                  transition: "transform 0.8s ease" 
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.08)"}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
               />
               
-              {/* Etiqueta sutil de línea */}
+              {/* Badge de Categoría con efecto desenfoque */}
               <div style={{
                 position: "absolute",
-                top: "12px",
+                bottom: "12px",
                 right: "12px",
-                background: "rgba(255,255,255,0.9)",
-                padding: "4px 8px",
-                fontSize: "8px",
+                background: "rgba(255, 255, 255, 0.7)",
+                backdropFilter: "blur(8px)",
+                padding: "6px 12px",
+                fontSize: "10px",
                 fontWeight: "800",
                 letterSpacing: "1px",
-                borderRadius: "4px",
+                borderRadius: "20px",
                 color: "#000",
-                textTransform: "uppercase"
+                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                border: "1px solid rgba(255,255,255,0.3)"
               }}>
                 {p.line.split('-')[0]}
               </div>
             </div>
 
-            {/* Información con jerarquía clara */}
+            {/* Detalles con Tipografía Curada */}
             <div style={{ 
               marginTop: "20px", 
-              textAlign: "center"
+              textAlign: "center",
+              paddingBottom: "10px"
             }}>
               <p style={{ 
-                fontSize: "10px", 
-                color: "#999", 
-                letterSpacing: "3px", 
+                fontSize: "11px", 
+                color: "#D4AF37", // Color Dorado Relojería
+                letterSpacing: "4px", 
                 textTransform: "uppercase", 
-                margin: "0 0 6px 0" 
+                fontWeight: "700",
+                margin: "0 0 10px 0" 
               }}>
                 {p.brand}
               </p>
               
               <h3 style={{ 
-                fontWeight: "500", 
-                fontSize: "16px", 
+                fontWeight: "300", 
+                fontSize: "19px", 
                 margin: "0", 
                 color: "#1a1a1a",
-                lineHeight: "1.2"
+                fontFamily: "serif", // Toque clásico
+                letterSpacing: "0.5px"
               }}>
                 {p.name}
               </h3>
 
+              <div style={{
+                width: "40px",
+                height: "1px",
+                background: "linear-gradient(90deg, transparent, #D4AF37, transparent)",
+                margin: "15px auto"
+              }}></div>
+
               <p style={{ 
                 fontWeight: "700", 
-                fontSize: "15px", 
+                fontSize: "18px", 
                 color: "#000",
-                marginTop: "10px" 
+                margin: "0" 
               }}>
-                ${p.price.toLocaleString()} <span style={{ fontSize: "10px", fontWeight: "400" }}>COP</span>
+                ${p.price.toLocaleString()} <span style={{ fontSize: "11px", color: "#888", fontWeight: "400" }}>COP</span>
               </p>
             </div>
           </div>
