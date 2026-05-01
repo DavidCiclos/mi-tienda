@@ -121,23 +121,108 @@ export default function Home() {
         </div> 
       </nav>
 
-      {/* --- GRID DE PRODUCTOS --- */}
-      <main style={{ maxWidth: "1200px", margin: "60px auto", padding: "0 20px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "60px" }}>
+   {/* --- GRID DE PRODUCTOS (DISEÑO BOUTIQUE) --- */}
+      <main style={{ 
+        maxWidth: "1200px", 
+        margin: "40px auto", 
+        padding: "0 20px", 
+        display: "grid", 
+        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+        gap: "40px 25px" // Espacio elegante entre filas y columnas
+      }}>
         {filteredProducts.map(p => (
-          <div key={p.id} onClick={() => setSelectedProduct(p)} style={{ cursor: "pointer" }}>
-            <div style={{ overflow: "hidden", background: "#fbfbfb" }}>
+          <div key={p.id} 
+            onClick={() => setSelectedProduct(p)} 
+            style={{ 
+              cursor: "pointer",
+              group: "product-card",
+              transition: "transform 0.3s ease"
+            }}>
+            
+            {/* Contenedor de Imagen con Proporción Áurea */}
+            <div style={{ 
+              position: "relative",
+              overflow: "hidden", 
+              background: "#f7f7f7",
+              borderRadius: "8px", // Bordes sutiles
+              aspectRatio: "3/4", // Todas las imágenes tendrán el mismo tamaño
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
               <img 
                 src={p.images[0]} 
                 alt={p.name} 
-                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+                style={{ 
+                  width: "100%", 
+                  height: "100%", 
+                  objectFit: "cover", 
+                  display: "block", 
+                  transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)" 
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.08)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
               />
+              
+              {/* Etiqueta flotante de Categoría */}
+              <div style={{
+                position: "absolute",
+                top: "12px",
+                left: "12px",
+                background: "rgba(255,255,255,0.9)",
+                padding: "4px 10px",
+                fontSize: "9px",
+                fontWeight: "700",
+                letterSpacing: "1px",
+                borderRadius: "2px",
+                color: "#000"
+              }}>
+                {p.line.replace("-ORIGINAL", "").replace("-S", "")}
+              </div>
             </div>
-            <div style={{ marginTop: "25px", textAlign: "center" }}>
-              <p style={{ fontSize: "9px", color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "8px" }}>{p.brand}</p>
-              <h3 style={{ fontWeight: 300, fontSize: "20px", margin: "0", letterSpacing: "1px" }}>{p.name}</h3>
-              <p style={{ fontWeight: 600, fontSize: "16px", marginTop: "10px", color: "#333" }}>${p.price.toLocaleString()} COP</p>
+
+            {/* Información del Reloj con alineación centrada */}
+            <div style={{ 
+              marginTop: "18px", 
+              textAlign: "center",
+              padding: "0 10px"
+            }}>
+              <p style={{ 
+                fontSize: "10px", 
+                color: "#999", 
+                letterSpacing: "3px", 
+                textTransform: "uppercase", 
+                margin: "0 0 8px 0" 
+              }}>
+                {p.brand}
+              </p>
+              
+              <h3 style={{ 
+                fontWeight: "400", 
+                fontSize: "17px", 
+                margin: "0", 
+                letterSpacing: "0.5px",
+                color: "#1a1a1a",
+                lineHeight: "1.2"
+              }}>
+                {p.name}
+              </h3>
+
+              <div style={{
+                width: "20px",
+                height: "1px",
+                background: "#e0e0e0",
+                margin: "12px auto"
+              }}></div>
+
+              <p style={{ 
+                fontWeight: "700", 
+                fontSize: "15px", 
+                color: "#000",
+                margin: "0" 
+              }}>
+                ${p.price.toLocaleString()} <span style={{ fontSize: "10px", fontWeight: "400" }}>COP</span>
+              </p>
             </div>
           </div>
         ))}
