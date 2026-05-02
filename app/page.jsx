@@ -203,48 +203,75 @@ export default function Home() {
           transition: "all 0.6s cubic-bezier(0.19, 1, 0.22, 1)",
         }}
       >
-       {/* CONTENEDOR DE IMAGEN CON EFECTO DE CAPAS */}
-<div style={{ 
-  position: "relative",
-  aspectRatio: "1/1",
-  overflow: "hidden",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: isSuizo ? "#000" : "#f9f9f9" 
-}}>
-  
-  {/* Capa 1: El Reflejo de fondo */}
-  <img 
-    src={p.images[0]} 
-    alt="Reflejo"
-    style={{ 
-      position: "absolute",
-      width: "130%", 
-      height: "130%", 
-      objectFit: "cover",
-      filter: "blur(18px) opacity(0.25)", // Desenfoque suave
-      zIndex: 1
-    }} 
-  />
-
-  {/* Capa 2: El Cuadro Principal (Ajustado a 82% para ser "Medio-Grande") */}
-  <div style={{
+{/* --- CONTENEDOR DE PRODUCTO MÁS GRANDE Y CUADRADO --- */}
+<div key={p.id} 
+  onClick={() => setSelectedProduct(p)} 
+  style={{ 
+    cursor: "pointer",
+    background: isSuizo ? "#0a0a0a" : "#fff",
+    border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
     position: "relative",
-    width: "82%", // <--- Este es el tamaño que buscabas
-    height: "82%",
-    zIndex: 2,
-    boxShadow: "0 15px 35px rgba(0,0,0,0.25)",
-    border: isSuizo ? "0.5px solid rgba(212, 175, 55, 0.5)" : "1px solid #fff",
     overflow: "hidden",
-    borderRadius: "4px",
-    background: "#fff"
+    borderRadius: "0px", // <--- Eliminamos redondez para un look más técnico
+    transition: "all 0.4s ease",
+  }}
+>
+  {/* CONTENEDOR DE IMAGEN (Ahora más imponente) */}
+  <div style={{ 
+    position: "relative",
+    aspectRatio: "1/1",
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: isSuizo ? "#000" : "#f0f0f0" 
   }}>
+    
+    {/* Capa 1: El Reflejo de fondo */}
     <img 
       src={p.images[0]} 
-      alt={p.name} 
-      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      alt="Reflejo"
+      style={{ 
+        position: "absolute",
+        width: "120%", 
+        height: "120%", 
+        objectFit: "cover",
+        filter: "blur(25px) opacity(0.2)", // Más sutil para dar protagonismo al frente
+        zIndex: 1
+      }} 
     />
+
+    {/* Capa 2: El Cuadro Principal (Casi llena todo el espacio pero mantiene el efecto) */}
+    <div style={{
+      position: "relative",
+      width: "92%", // <--- Ahora es mucho más grande dentro del cuadro
+      height: "92%",
+      zIndex: 2,
+      boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+      border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
+      overflow: "hidden",
+      borderRadius: "0px", // <--- Totalmente cuadrado
+      background: "#fff"
+    }}>
+      <img 
+        src={p.images[0]} 
+        alt={p.name} 
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    </div>
+  </div>
+
+  {/* INFO DEBAJO (Ajustada para mantener la proporción) */}
+  <div style={{ padding: "15px 10px", textAlign: "center" }}>
+    <p style={{ fontSize: "9px", color: isSuizo ? "#D4AF37" : "#888", letterSpacing: "3px", margin: "0 0 5px 0" }}>
+      {p.brand}
+    </p>
+    <h3 style={{ fontWeight: "800", fontSize: "14px", color: isSuizo ? "#fff" : "#000", margin: "0" }}>
+      {p.name.toUpperCase()}
+    </h3>
+    <p style={{ fontWeight: "900", fontSize: "15px", color: isSuizo ? "#D4AF37" : "#000", margin: "10px 0 0 0" }}>
+      ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '10px'}}>COP</span>
+    </p>
   </div>
 </div>
 
