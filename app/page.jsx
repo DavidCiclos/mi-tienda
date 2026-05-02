@@ -52,76 +52,23 @@ export default function Home() {
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
 
-    {/* --- HEADER (HERO SECTION LUXURY MINIMAL) --- */}
-<section style={{ 
-  position: "relative",
-  height: "65vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
-  color: "#fff",
-  padding: "0 20px",
-  overflow: "hidden"
-}}>
-
-  {/* Imagen de fondo */}
-  <div style={{
-    position: "absolute",
-    inset: 0,
-    backgroundImage: "url(https://images.unsplash.com/photo-1526045431048-2b5a1b7b1c0d)",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    filter: "grayscale(100%) contrast(120%) brightness(0.6)",
-    transform: "scale(1.05)"
-  }} />
-
-  {/* Overlay elegante oscuro */}
-  <div style={{
-    position: "absolute",
-    inset: 0,
-    background: "linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75))"
-  }} />
-
-  {/* Contenido */}
-  <div style={{ position: "relative", zIndex: 2 }}>
-
-    <div style={{
-      width: "1px",
-      height: "60px",
-      background: "rgba(255,255,255,0.3)",
-      margin: "0 auto 25px"
-    }} />
-
-    <h1 style={{ 
-      letterSpacing: "18px",
-      fontWeight: 200,
-      margin: 0,
-      fontSize: "clamp(32px, 5vw, 64px)",
-      textTransform: "uppercase"
-    }}>
-      APEX TIME
-    </h1>
-
-    <div style={{
-      width: "120px",
-      height: "1px",
-      background: "rgba(255,255,255,0.4)",
-      margin: "25px auto"
-    }} />
-
-    <p style={{
-      letterSpacing: "6px",
-      fontSize: "11px",
-      opacity: 0.8,
-      textTransform: "uppercase"
-    }}>
-      Alta relojería · Curaduría minimalista · Precisión
-    </p>
-
-  </div>
-</section>
+     {/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
+      <section style={{ 
+        position: "relative",
+        height: "60vh", // Altura impactante pero controlada
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center"
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://upload.wikimedia.org/wikipedia/commons/1/14/Mechanical_watch_movement.jpg')`, // Imagen de relojería de lujo
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed", // Efecto Parallax elegante
+        color: "#fff",
+        padding: "0 20px",
+        overflow: "hidden"
+      }}>
         {/* Línea decorativa superior estilo minimalista */}
         <div style={{ width: "1px", height: "60px", background: "rgba(255,255,255,0.3)", marginBottom: "30px" }}></div>
 
@@ -175,7 +122,7 @@ export default function Home() {
         boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", borderBottom: "1px solid #f0f0f0" 
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-          
+
           {/* Fila 1: Categorías y Selector de Originales */}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", padding: "25px 0 15px", flexWrap: "wrap" }}>
             {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
@@ -189,9 +136,9 @@ export default function Home() {
                   boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none"
                 }}>{cat}</button>
             ))}
-            
+
             <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
-            
+
             <select 
               value={categoryFilter.includes("ORIGINAL") ? categoryFilter : ""} 
               onChange={(e) => { setCategoryFilter(e.target.value); setBrandFilter("TODAS"); }}
@@ -259,7 +206,7 @@ export default function Home() {
               e.currentTarget.querySelector('.hover-line').style.width = "0%"; // <--- AÑADIR ESTA LÍNEA
             }}
           >
-            
+
             {/* Contenedor de Imagen Recto y Crudo */}
             <div style={{ 
               position: "relative",
@@ -280,7 +227,7 @@ export default function Home() {
                 onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.15)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
               />
-              
+
               {/* Etiqueta de Categoría (Estilo Industrial) */}
               <div style={{
                 position: "absolute",
@@ -352,7 +299,7 @@ export default function Home() {
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
           <div style={{ background: "#fff", maxWidth: "450px", width: "100%", borderRadius: "20px", padding: "25px", position: "relative", maxHeight: "90vh", overflowY: "auto" }}>
-            
+
             <button onClick={() => { setSelectedProduct(null); setCurrentImage(null); }} 
               style={{ position: "absolute", top: "15px", right: "15px", background: "#eee", border: "none", borderRadius: "50%", width: "30px", height: "30px", cursor: "pointer", zIndex: 10 }}>✕</button>
 
@@ -415,11 +362,11 @@ export default function Home() {
       <p style={{ marginBottom: "5px" }}>
         • ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty} por maquinaria.
       </p>
-      
+
       <p style={{ marginBottom: "5px" }}>
         • 🔍 <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
       </p>
-      
+
       <p>
         • 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.
       </p>
