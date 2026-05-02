@@ -115,8 +115,9 @@ export default function Home() {
         }}>
           EST. 2026
         </div>
-      </section>
-{/* --- NAVEGACIÓN --- */}
+      </section>  
+      
+ {/* --- NAVEGACIÓN --- */}
       <nav style={{ 
         position: "sticky", top: 0, background: "rgba(255,255,255,0.98)", zIndex: 100, 
         boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", borderBottom: "1px solid #f0f0f0" 
@@ -175,126 +176,150 @@ export default function Home() {
         </div> 
       </nav>
 
- {/* --- GRID DE PRODUCTOS (ARQUITECTÓNICO / LUXURY BRUTALIST) --- */}
-      <main style={{ 
-        maxWidth: "1300px", 
-        margin: "40px auto", 
-        padding: "0 20px", 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
-        gap: "0px" // Sin espacio entre cuadros para crear un efecto de muro de lujo
-      }}>
-        {filteredProducts.map(p => (
-          <div key={p.id} 
-            onClick={() => setSelectedProduct(p)} 
+{/* --- GRID DE PRODUCTOS DINÁMICO (ADAPTABLE POR CATEGORÍA) --- */}
+<main style={{ 
+  maxWidth: "1300px", 
+  margin: "40px auto", 
+  padding: "0 20px", 
+  display: "grid", 
+  // Si es Suizo, damos más aire; si no, mantenemos el muro compacto
+  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+  gap: categoryFilter === "SUIZOS-S" ? "40px" : "0px",
+  transition: "all 0.5s ease"
+}}>
+  {filteredProducts.map(p => {
+    const isSuizo = p.line === "SUIZOS-S";
+    
+    return (
+      <div key={p.id} 
+        onClick={() => setSelectedProduct(p)} 
+        style={{ 
+          cursor: "pointer",
+          // DISEÑO DINÁMICO: Negro para Suizos, Blanco para el resto
+          background: isSuizo ? "#0a0a0a" : "#fff",
+          border: isSuizo ? "1px solid #D4AF37" : "0.5px solid #e5e5e5",
+          position: "relative",
+          overflow: "hidden",
+          transition: "all 0.6s cubic-bezier(0.19, 1, 0.22, 1)",
+          boxShadow: isSuizo ? "0 20px 50px rgba(0,0,0,0.3)" : "none",
+          transform: isSuizo ? "scale(0.98)" : "scale(1)"
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.zIndex = "10";
+          e.currentTarget.style.transform = isSuizo ? "scale(1.02)" : "scale(1)";
+          e.currentTarget.style.outline = isSuizo ? "2px solid #D4AF37" : "4px solid #000";
+          e.currentTarget.querySelector('.hover-line').style.width = "100%";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.zIndex = "1";
+          e.currentTarget.style.transform = isSuizo ? "scale(0.98)" : "scale(1)";
+          e.currentTarget.style.outline = "none";
+          e.currentTarget.querySelector('.hover-line').style.width = "0%";
+        }}
+      >
+
+        {/* Contenedor de Imagen */}
+        <div style={{ 
+          position: "relative",
+          aspectRatio: "1/1",
+          overflow: "hidden",
+          background: isSuizo ? "#000" : "#f2f2f2"
+        }}>
+          <img 
+            src={p.images[0]} 
+            alt={p.name} 
             style={{ 
-              cursor: "pointer",
-              background: "#fff",
-              border: "0.5px solid #e5e5e5", // Líneas finas y rígidas
-              position: "relative",
-              overflow: "hidden",
-              transition: "all 0.5s cubic-bezier(0.19, 1, 0.22, 1)"
+              width: "100%", 
+              height: "100%", 
+              objectFit: "cover", 
+              // Los suizos tienen un look más dramático y contrastado
+              filter: isSuizo ? "brightness(0.9) contrast(1.1)" : "grayscale(20%)",
+              transition: "transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)" 
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.zIndex = "10";
-              e.currentTarget.style.outline = "4px solid #000"; // Marco negro fuerte al pasar el mouse
-              e.currentTarget.querySelector('.hover-line').style.width = "100%"; // <--- AÑADIR ESTA LÍNEA
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.zIndex = "1";
-              e.currentTarget.style.outline = "none";
-              e.currentTarget.querySelector('.hover-line').style.width = "0%"; // <--- AÑADIR ESTA LÍNEA
-            }}
-          >
+            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
+            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+          />
 
-            {/* Contenedor de Imagen Recto y Crudo */}
-            <div style={{ 
-              position: "relative",
-              aspectRatio: "1/1",
-              overflow: "hidden",
-              background: "#f2f2f2"
-            }}>
-              <img 
-                src={p.images[0]} 
-                alt={p.name} 
-                style={{ 
-                  width: "100%", 
-                  height: "100%", 
-                  objectFit: "cover", 
-                  filter: "grayscale(20%)", // Estilo visual más serio
-                  transition: "transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)" 
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.15)"}
-                onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
-              />
-
-              {/* Etiqueta de Categoría (Estilo Industrial) */}
-              <div style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                background: "#000",
-                color: "#fff",
-                padding: "8px 15px",
-                fontSize: "10px",
-                fontWeight: "900",
-                letterSpacing: "2px",
-                textTransform: "uppercase"
-              }}>
-                {p.line.split('-')[0]}
-              </div>
-            </div>
-
-            {/* Bloque de Información Minimalista */}
-            <div style={{ 
-              padding: "30px 20px", 
-              textAlign: "left", // Alineación lateral para romper lo común
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              height: "140px"
-            }}>
-              <div>
-                <p style={{ 
-                  fontSize: "10px", 
-                  color: "#888", 
-                  letterSpacing: "4px", 
-                  margin: "0 0 5px 0",
-                  textTransform: "uppercase"
-                }}>
-                  {p.brand}
-                </p>
-                <h3 style={{ 
-                  fontWeight: "700", 
-                  fontSize: "18px", 
-                  margin: "0", 
-                  color: "#000",
-                  letterSpacing: "-0.5px",
-                  lineHeight: "1"
-                }}>
-                  {p.name.toUpperCase()}
-                </h3>
-              </div>
-
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <p style={{ 
-                  fontWeight: "900", 
-                  fontSize: "16px", 
-                  color: "#000",
-                  margin: "0" 
-                }}>
-                  ${p.price.toLocaleString()}
-                </p>
-                <span style={{ fontSize: "9px", fontWeight: "700", color: "#ccc" }}>COP</span>
-              </div>
-            </div>
-
-            {/* Efecto de barra de carga estética al fondo */}
-            <div style={{ width: "0%", height: "2px", background: "#000", transition: "width 0.4s ease" }} className="hover-line"></div>
+          {/* Etiqueta de Categoría Dinámica */}
+          <div style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            background: isSuizo ? "#D4AF37" : "#000",
+            color: isSuizo ? "#000" : "#fff",
+            padding: "10px 20px",
+            fontSize: "10px",
+            fontWeight: "900",
+            letterSpacing: "3px",
+            textTransform: "uppercase"
+          }}>
+            {isSuizo ? "EDICIÓN S-CLON" : p.line.split('-')[0]}
           </div>
-        ))}
-      </main>
+        </div>
 
+        {/* Bloque de Información Adaptable */}
+        <div style={{ 
+          padding: "35px 25px", 
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: "160px"
+        }}>
+          <div>
+            <p style={{ 
+              fontSize: "10px", 
+              color: isSuizo ? "#D4AF37" : "#888", 
+              letterSpacing: "5px", 
+              margin: "0 0 8px 0",
+              textTransform: "uppercase",
+              fontWeight: isSuizo ? "600" : "400"
+            }}>
+              {p.brand}
+            </p>
+            <h3 style={{ 
+              fontWeight: isSuizo ? "300" : "700", 
+              fontSize: isSuizo ? "22px" : "18px", 
+              margin: "0", 
+              color: isSuizo ? "#fff" : "#000",
+              letterSpacing: isSuizo ? "2px" : "-0.5px",
+              lineHeight: "1.1"
+            }}>
+              {p.name.toUpperCase()}
+            </h3>
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div>
+              <p style={{ 
+                fontWeight: "900", 
+                fontSize: "18px", 
+                color: isSuizo ? "#D4AF37" : "#000",
+                margin: "0" 
+              }}>
+                ${p.price.toLocaleString()}
+              </p>
+              {isSuizo && <span style={{ fontSize: "9px", color: "#D4AF37", opacity: 0.8, letterSpacing: "1px" }}>INCLUYE BOX PREMIUM</span>}
+            </div>
+            <span style={{ fontSize: "9px", fontWeight: "700", color: isSuizo ? "#444" : "#ccc" }}>COP</span>
+          </div>
+        </div>
+
+        {/* Barra decorativa inferior */}
+        <div 
+          className="hover-line"
+          style={{ 
+            width: "0%", 
+            height: "3px", 
+            background: isSuizo ? "#D4AF37" : "#000", 
+            transition: "width 0.5s ease",
+            position: "absolute",
+            bottom: 0
+          }} 
+        ></div>
+      </div>
+    );
+  })}
+</main>
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
