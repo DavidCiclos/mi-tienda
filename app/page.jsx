@@ -61,7 +61,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-       backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1600')`, // Imagen de relojería de lujo
+       backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), urlbackgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1600&q=80')`, // Imagen de relojería de lujo
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed", // Efecto Parallax elegante
