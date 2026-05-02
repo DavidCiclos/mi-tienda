@@ -51,20 +51,21 @@ export default function Home() {
   return (
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
-
-     {/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
+      
+{/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
       <section style={{ 
         position: "relative",
-        height: "60vh", // Altura impactante pero controlada
+        height: "60vh", 
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        textAlign: "center"
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://upload.wikimedia.org/wikipedia/commons/1/14/Mechanical_watch_movement.jpg')`, // Imagen de relojería de lujo
+        textAlign: "center", // <--- AQUÍ FALTABA LA COMA
+        /* OPCIÓN DE IMAGEN ACTUALIZADA (Maquinaria técnica nítida) */
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1600')`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed", // Efecto Parallax elegante
+        backgroundAttachment: "fixed", 
         color: "#fff",
         padding: "0 20px",
         overflow: "hidden"
@@ -76,7 +77,7 @@ export default function Home() {
           letterSpacing: "20px", 
           fontWeight: 200, 
           margin: 0, 
-          fontSize: "clamp(30px, 5vw, 60px)", // Tamaño fluido para celular y PC
+          fontSize: "clamp(30px, 5vw, 60px)", 
           textTransform: "uppercase",
           textShadow: "0 10px 30px rgba(0,0,0,0.5)"
         }}>
@@ -103,7 +104,6 @@ export default function Home() {
           ALTA RELOJERÍA <span style={{ margin: "0 15px", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
         </p>
 
-        {/* Detalle estético en la esquina inferior para romper la monotonía */}
         <div style={{ 
           position: "absolute", 
           bottom: "30px", 
