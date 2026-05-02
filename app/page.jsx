@@ -231,8 +231,8 @@ export default function Home() {
           {/* Capa 2: El Cuadro Principal (Más pequeño para flotar) */}
           <div style={{
             position: "relative",
-            width: "75%", 
-            height: "75%",
+            width: "85%", 
+            height: "85%",
             zIndex: 2,
             boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
             border: isSuizo ? "0.5px solid rgba(212, 175, 55, 0.5)" : "0.5px solid #fff",
