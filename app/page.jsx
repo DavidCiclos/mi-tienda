@@ -61,7 +61,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://yankodesign.com/images/design_news/2023/10/ming-lw-01-watch/ming-lw-01-watch-1.jpg')`, // Imagen de relojería de lujo
+       backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1600')`, // Imagen de relojería de lujo
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed", // Efecto Parallax elegante
