@@ -216,7 +216,20 @@ export default function Home() {
     transition: "all 0.4s ease",
   }}
 >
-  {/* CONTENEDOR DE IMAGEN (Ahora más imponente) */}
+ {/* --- TARJETA DE PRODUCTO ÚNICA (SIN DUPLICADOS) --- */}
+<div key={p.id} 
+  onClick={() => setSelectedProduct(p)} 
+  style={{ 
+    cursor: "pointer",
+    background: isSuizo ? "#0a0a0a" : "#fff",
+    border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: "0px",
+    transition: "all 0.4s ease",
+  }}
+>
+  {/* 1. CONTENEDOR DE IMAGEN (EFECTO DE PROFUNDIDAD) */}
   <div style={{ 
     position: "relative",
     aspectRatio: "1/1",
@@ -226,8 +239,6 @@ export default function Home() {
     justifyContent: "center",
     background: isSuizo ? "#000" : "#f0f0f0" 
   }}>
-    
-    {/* Capa 1: El Reflejo de fondo */}
     <img 
       src={p.images[0]} 
       alt="Reflejo"
@@ -236,30 +247,55 @@ export default function Home() {
         width: "120%", 
         height: "120%", 
         objectFit: "cover",
-        filter: "blur(25px) opacity(0.2)", // Más sutil para dar protagonismo al frente
+        filter: "blur(25px) opacity(0.2)", 
         zIndex: 1
       }} 
     />
-
-    {/* Capa 2: El Cuadro Principal (Casi llena todo el espacio pero mantiene el efecto) */}
     <div style={{
       position: "relative",
-      width: "92%", // <--- Ahora es mucho más grande dentro del cuadro
+      width: "92%", 
       height: "92%",
       zIndex: 2,
       boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
       border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
       overflow: "hidden",
-      borderRadius: "0px", // <--- Totalmente cuadrado
+      borderRadius: "0px", 
       background: "#fff"
     }}>
-      <img 
-        src={p.images[0]} 
-        alt={p.name} 
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-      />
+      <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
     </div>
   </div>
+
+  {/* 2. ESTA ES LA INFO QUE TE GUSTÓ (SOLO UNA VEZ) */}
+  <div style={{ padding: "15px 10px", textAlign: "center" }}>
+    <p style={{ 
+      fontSize: "9px", 
+      color: isSuizo ? "#D4AF37" : "#888", 
+      letterSpacing: "3px", 
+      margin: "0 0 5px 0",
+      textTransform: "uppercase" 
+    }}>
+      {p.brand}
+    </p>
+    <h3 style={{ 
+      fontWeight: "200", // Estilo más fino y elegante como en la foto
+      fontSize: "14px", 
+      color: isSuizo ? "#ccc" : "#000", 
+      margin: "0",
+      letterSpacing: "1px"
+    }}>
+      {p.name.toUpperCase()}
+    </h3>
+    <p style={{ 
+      fontWeight: "900", 
+      fontSize: "15px", 
+      color: isSuizo ? "#D4AF37" : "#000", 
+      margin: "10px 0 0 0" 
+    }}>
+      ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '10px', fontWeight: '400'}}>COP</span>
+    </p>
+  </div>
+</div>
 
   {/* INFO DEBAJO (Ajustada para mantener la proporción) */}
   <div style={{ padding: "15px 10px", textAlign: "center" }}>
