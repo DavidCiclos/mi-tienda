@@ -203,49 +203,50 @@ export default function Home() {
           transition: "all 0.6s cubic-bezier(0.19, 1, 0.22, 1)",
         }}
       >
-        {/* CONTENEDOR DE IMAGEN CON EFECTO DE CAPAS */}
-        <div style={{ 
-          position: "relative",
-          aspectRatio: "1/1",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: isSuizo ? "#000" : "#f9f9f9" 
-        }}>
-          
-          {/* Capa 1: El Reflejo/Aura de fondo */}
-          <img 
-            src={p.images[0]} 
-            alt="Reflejo"
-            style={{ 
-              position: "absolute",
-              width: "140%", 
-              height: "140%", 
-              objectFit: "cover",
-              filter: "blur(20px) opacity(0.25)", 
-              zIndex: 1
-            }} 
-          />
+       {/* CONTENEDOR DE IMAGEN CON EFECTO DE CAPAS */}
+<div style={{ 
+  position: "relative",
+  aspectRatio: "1/1",
+  overflow: "hidden",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  background: isSuizo ? "#000" : "#f9f9f9" 
+}}>
+  
+  {/* Capa 1: El Reflejo de fondo */}
+  <img 
+    src={p.images[0]} 
+    alt="Reflejo"
+    style={{ 
+      position: "absolute",
+      width: "130%", 
+      height: "130%", 
+      objectFit: "cover",
+      filter: "blur(18px) opacity(0.25)", // Desenfoque suave
+      zIndex: 1
+    }} 
+  />
 
-          {/* Capa 2: El Cuadro Principal (Más pequeño para flotar) */}
-          <div style={{
-            position: "relative",
-            width: "85%", 
-            height: "85%",
-            zIndex: 2,
-            boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-            border: isSuizo ? "0.5px solid rgba(212, 175, 55, 0.5)" : "0.5px solid #fff",
-            overflow: "hidden",
-            borderRadius: "4px"
-          }}>
-            <img 
-              src={p.images[0]} 
-              alt={p.name} 
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          </div>
-        </div>
+  {/* Capa 2: El Cuadro Principal (Ajustado a 82% para ser "Medio-Grande") */}
+  <div style={{
+    position: "relative",
+    width: "82%", // <--- Este es el tamaño que buscabas
+    height: "82%",
+    zIndex: 2,
+    boxShadow: "0 15px 35px rgba(0,0,0,0.25)",
+    border: isSuizo ? "0.5px solid rgba(212, 175, 55, 0.5)" : "1px solid #fff",
+    overflow: "hidden",
+    borderRadius: "4px",
+    background: "#fff"
+  }}>
+    <img 
+      src={p.images[0]} 
+      alt={p.name} 
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    />
+  </div>
+</div>
 
         {/* INFO REDUCIDA (Para no ocupar tanto espacio vertical) */}
         <div style={{ padding: "12px", textAlign: "center" }}>
