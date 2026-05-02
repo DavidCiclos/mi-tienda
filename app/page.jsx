@@ -176,146 +176,110 @@ export default function Home() {
         </div> 
       </nav>
 
-{/* --- GRID DE PRODUCTOS DINÁMICO (ADAPTABLE POR CATEGORÍA) --- */}
+{/* --- GRID DE PRODUCTOS AJUSTADO (MÁS PEQUEÑO Y CON PROFUNDIDAD) --- */}
 <main style={{ 
-  maxWidth: "1300px", 
-  margin: "40px auto", 
-  padding: "0 20px", 
+  maxWidth: "1200px", 
+  margin: "20px auto", 
+  padding: "0 15px", 
   display: "grid", 
-  // Si es Suizo, damos más aire; si no, mantenemos el muro compacto
-  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
-  gap: categoryFilter === "SUIZOS-S" ? "40px" : "0px",
+  // Reducimos el ancho mínimo de 300px a 160px para que en celular quepan 2 columnas cómodamente
+  gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", 
+  gap: categoryFilter === "SUIZOS-S" ? "25px" : "10px", 
   transition: "all 0.5s ease"
 }}>
   {filteredProducts.map(p => {
-    const isSuizo = p.line === "SUIZOS-S";
+    const isSuizo = categoryFilter === "SUIZOS-S";
     
     return (
       <div key={p.id} 
         onClick={() => setSelectedProduct(p)} 
         style={{ 
           cursor: "pointer",
-          // DISEÑO DINÁMICO: Negro para Suizos, Blanco para el resto
           background: isSuizo ? "#0a0a0a" : "#fff",
-          border: isSuizo ? "1px solid #D4AF37" : "0.5px solid #e5e5e5",
+          border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
           position: "relative",
           overflow: "hidden",
+          borderRadius: "8px", // Un poco de redondez suaviza el impacto visual
           transition: "all 0.6s cubic-bezier(0.19, 1, 0.22, 1)",
-          boxShadow: isSuizo ? "0 20px 50px rgba(0,0,0,0.3)" : "none",
-          transform: isSuizo ? "scale(0.98)" : "scale(1)"
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.zIndex = "10";
-          e.currentTarget.style.transform = isSuizo ? "scale(1.02)" : "scale(1)";
-          e.currentTarget.style.outline = isSuizo ? "2px solid #D4AF37" : "4px solid #000";
-          e.currentTarget.querySelector('.hover-line').style.width = "100%";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.zIndex = "1";
-          e.currentTarget.style.transform = isSuizo ? "scale(0.98)" : "scale(1)";
-          e.currentTarget.style.outline = "none";
-          e.currentTarget.querySelector('.hover-line').style.width = "0%";
         }}
       >
-
-        {/* Contenedor de Imagen */}
+        {/* CONTENEDOR DE IMAGEN CON EFECTO DE CAPAS */}
         <div style={{ 
           position: "relative",
           aspectRatio: "1/1",
           overflow: "hidden",
-          background: isSuizo ? "#000" : "#f2f2f2"
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: isSuizo ? "#000" : "#f9f9f9" 
         }}>
+          
+          {/* Capa 1: El Reflejo/Aura de fondo */}
           <img 
             src={p.images[0]} 
-            alt={p.name} 
+            alt="Reflejo"
             style={{ 
-              width: "100%", 
-              height: "100%", 
-              objectFit: "cover", 
-              // Los suizos tienen un look más dramático y contrastado
-              filter: isSuizo ? "brightness(0.9) contrast(1.1)" : "grayscale(20%)",
-              transition: "transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)" 
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
-            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+              position: "absolute",
+              width: "140%", 
+              height: "140%", 
+              objectFit: "cover",
+              filter: "blur(20px) opacity(0.25)", 
+              zIndex: 1
+            }} 
           />
 
-          {/* Etiqueta de Categoría Dinámica */}
+          {/* Capa 2: El Cuadro Principal (Más pequeño para flotar) */}
           <div style={{
-            position: "absolute",
-            top: "0",
-            left: "0",
-            background: isSuizo ? "#D4AF37" : "#000",
-            color: isSuizo ? "#000" : "#fff",
-            padding: "10px 20px",
-            fontSize: "10px",
-            fontWeight: "900",
-            letterSpacing: "3px",
-            textTransform: "uppercase"
+            position: "relative",
+            width: "75%", 
+            height: "75%",
+            zIndex: 2,
+            boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+            border: isSuizo ? "0.5px solid rgba(212, 175, 55, 0.5)" : "0.5px solid #fff",
+            overflow: "hidden",
+            borderRadius: "4px"
           }}>
-            {isSuizo ? "EDICIÓN S-CLON" : p.line.split('-')[0]}
+            <img 
+              src={p.images[0]} 
+              alt={p.name} 
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
           </div>
         </div>
 
-        {/* Bloque de Información Adaptable */}
-        <div style={{ 
-          padding: "35px 25px", 
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          height: "160px"
-        }}>
-          <div>
-            <p style={{ 
-              fontSize: "10px", 
-              color: isSuizo ? "#D4AF37" : "#888", 
-              letterSpacing: "5px", 
-              margin: "0 0 8px 0",
-              textTransform: "uppercase",
-              fontWeight: isSuizo ? "600" : "400"
-            }}>
-              {p.brand}
-            </p>
-            <h3 style={{ 
-              fontWeight: isSuizo ? "300" : "700", 
-              fontSize: isSuizo ? "22px" : "18px", 
-              margin: "0", 
-              color: isSuizo ? "#fff" : "#000",
-              letterSpacing: isSuizo ? "2px" : "-0.5px",
-              lineHeight: "1.1"
-            }}>
-              {p.name.toUpperCase()}
-            </h3>
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div>
-              <p style={{ 
-                fontWeight: "900", 
-                fontSize: "18px", 
-                color: isSuizo ? "#D4AF37" : "#000",
-                margin: "0" 
-              }}>
-                ${p.price.toLocaleString()}
-              </p>
-              {isSuizo && <span style={{ fontSize: "9px", color: "#D4AF37", opacity: 0.8, letterSpacing: "1px" }}>INCLUYE BOX PREMIUM</span>}
-            </div>
-            <span style={{ fontSize: "9px", fontWeight: "700", color: isSuizo ? "#444" : "#ccc" }}>COP</span>
-          </div>
+        {/* INFO REDUCIDA (Para no ocupar tanto espacio vertical) */}
+        <div style={{ padding: "12px", textAlign: "center" }}>
+          <p style={{ 
+            fontSize: "8px", 
+            color: isSuizo ? "#D4AF37" : "#999", 
+            letterSpacing: "2px", 
+            margin: "0 0 4px 0",
+            textTransform: "uppercase" 
+          }}>
+            {p.brand}
+          </p>
+          <h3 style={{ 
+            fontWeight: isSuizo ? "300" : "700", 
+            fontSize: "13px", 
+            margin: "0", 
+            color: isSuizo ? "#fff" : "#000",
+            lineHeight: "1.2",
+            height: "32px", // Reserva espacio para 2 líneas
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}>
+            {p.name.toUpperCase()}
+          </h3>
+          <p style={{ 
+            fontWeight: "900", 
+            fontSize: "14px", 
+            color: isSuizo ? "#D4AF37" : "#000",
+            margin: "8px 0 0 0" 
+          }}>
+            ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '9px', fontWeight: '400'}}>COP</span>
+          </p>
         </div>
-
-        {/* Barra decorativa inferior */}
-        <div 
-          className="hover-line"
-          style={{ 
-            width: "0%", 
-            height: "3px", 
-            background: isSuizo ? "#D4AF37" : "#000", 
-            transition: "width 0.5s ease",
-            position: "absolute",
-            bottom: 0
-          }} 
-        ></div>
       </div>
     );
   })}
