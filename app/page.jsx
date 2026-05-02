@@ -61,7 +61,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?')`, // Imagen de relojería de lujo
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?')`, // Imagen de relojería de lujo
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed", // Efecto Parallax elegante
