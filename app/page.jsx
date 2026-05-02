@@ -52,23 +52,76 @@ export default function Home() {
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
 
-     {/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
-      <section style={{ 
-        position: "relative",
-        height: "60vh", // Altura impactante pero controlada
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1523170335258-f5ed11844a49)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed", // Efecto Parallax elegante
-        color: "#fff",
-        padding: "0 20px",
-        overflow: "hidden"
-      }}>
+    {/* --- HEADER (HERO SECTION LUXURY MINIMAL) --- */}
+<section style={{ 
+  position: "relative",
+  height: "65vh",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  color: "#fff",
+  padding: "0 20px",
+  overflow: "hidden"
+}}>
+
+  {/* Imagen de fondo */}
+  <div style={{
+    position: "absolute",
+    inset: 0,
+    backgroundImage: "url(https://images.unsplash.com/photo-1526045431048-2b5a1b7b1c0d)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    filter: "grayscale(100%) contrast(120%) brightness(0.6)",
+    transform: "scale(1.05)"
+  }} />
+
+  {/* Overlay elegante oscuro */}
+  <div style={{
+    position: "absolute",
+    inset: 0,
+    background: "linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75))"
+  }} />
+
+  {/* Contenido */}
+  <div style={{ position: "relative", zIndex: 2 }}>
+
+    <div style={{
+      width: "1px",
+      height: "60px",
+      background: "rgba(255,255,255,0.3)",
+      margin: "0 auto 25px"
+    }} />
+
+    <h1 style={{ 
+      letterSpacing: "18px",
+      fontWeight: 200,
+      margin: 0,
+      fontSize: "clamp(32px, 5vw, 64px)",
+      textTransform: "uppercase"
+    }}>
+      APEX TIME
+    </h1>
+
+    <div style={{
+      width: "120px",
+      height: "1px",
+      background: "rgba(255,255,255,0.4)",
+      margin: "25px auto"
+    }} />
+
+    <p style={{
+      letterSpacing: "6px",
+      fontSize: "11px",
+      opacity: 0.8,
+      textTransform: "uppercase"
+    }}>
+      Alta relojería · Curaduría minimalista · Precisión
+    </p>
+
+  </div>
+</section>
         {/* Línea decorativa superior estilo minimalista */}
         <div style={{ width: "1px", height: "60px", background: "rgba(255,255,255,0.3)", marginBottom: "30px" }}></div>
 
