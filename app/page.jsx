@@ -61,7 +61,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<a href="https://ibb.co/4RQKkczx"><img src="https://i.ibb.co/v4tV9bp8/GEMINI.jpg" alt="GEMINI" border="0"></a><br /><a target='_blank' href='https://es.imgbb.com/'>subir imágenes con títulos</a><br />')`, // Imagen de relojería de lujo
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://upload.wikimedia.org/wikipedia/commons/1/14/Mechanical_watch_movement.jpg')`, // Imagen de relojería de lujo
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed", // Efecto Parallax elegante
