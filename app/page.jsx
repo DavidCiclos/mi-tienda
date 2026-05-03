@@ -216,7 +216,7 @@ export default function Home() {
     transition: "all 0.4s ease",
   }}
 >
- {/* --- TARJETA DE PRODUCTO ÚNICA (SIN DUPLICADOS) --- */}
+{/* --- TARJETA DE PRODUCTO LIMPIA Y ÚNICA --- */}
 <div key={p.id} 
   onClick={() => setSelectedProduct(p)} 
   style={{ 
@@ -225,11 +225,11 @@ export default function Home() {
     border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
     position: "relative",
     overflow: "hidden",
-    borderRadius: "0px",
+    borderRadius: "0px", 
     transition: "all 0.4s ease",
   }}
 >
-  {/* 1. CONTENEDOR DE IMAGEN (EFECTO DE PROFUNDIDAD) */}
+  {/* 1. SECCIÓN DE IMAGEN CON PROFUNDIDAD */}
   <div style={{ 
     position: "relative",
     aspectRatio: "1/1",
@@ -239,6 +239,7 @@ export default function Home() {
     justifyContent: "center",
     background: isSuizo ? "#000" : "#f0f0f0" 
   }}>
+    {/* Reflejo de fondo */}
     <img 
       src={p.images[0]} 
       alt="Reflejo"
@@ -251,6 +252,7 @@ export default function Home() {
         zIndex: 1
       }} 
     />
+    {/* Cuadro Central */}
     <div style={{
       position: "relative",
       width: "92%", 
@@ -265,6 +267,38 @@ export default function Home() {
       <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
     </div>
   </div>
+
+  {/* 2. SECCIÓN DE TEXTO (ESTILO APEX TIME) */}
+  <div style={{ padding: "15px 10px", textAlign: "center" }}>
+    <p style={{ 
+      fontSize: "9px", 
+      color: isSuizo ? "#D4AF37" : "#888", 
+      letterSpacing: "3px", 
+      margin: "0 0 5px 0",
+      textTransform: "uppercase" 
+    }}>
+      {p.brand}
+    </p>
+    <h3 style={{ 
+      fontWeight: "200", // Letra delgada y elegante
+      fontSize: "14px", 
+      color: isSuizo ? "#ccc" : "#000", 
+      margin: "0",
+      letterSpacing: "1px"
+    }}>
+      {p.name.toUpperCase()}
+    </h3>
+    <p style={{ 
+      fontWeight: "900", 
+      fontSize: "15px", 
+      color: isSuizo ? "#D4AF37" : "#000", 
+      margin: "10px 0 0 0" 
+    }}>
+      ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '10px', fontWeight: '400'}}>COP</span>
+    </p>
+  </div>
+</div>
+  
 
   {/* 2. ESTA ES LA INFO QUE TE GUSTÓ (SOLO UNA VEZ) */}
   <div style={{ padding: "15px 10px", textAlign: "center" }}>
