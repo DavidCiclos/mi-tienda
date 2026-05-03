@@ -8,7 +8,7 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(null);
   const [showTerms, setShowTerms] = useState(false);
 
-  // Tus productos (Mantén tu lista de 200 aquí)
+  // Tus productos (MantÃ©n tu lista de 200 aquÃ­)
   const products = [
     // Ejemplo para SUIZOS-S
     { 
@@ -17,7 +17,7 @@ export default function Home() {
       brand: "ROLEX", 
       line: "SUIZOS-S", 
       price: 3450000, 
-      warranty: "2 años", 
+      warranty: "2 aÃ±os", 
       images: ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800"] 
     },
     // Ejemplo para ORIGINALES (Copia y pega este para probar el selector)
@@ -27,7 +27,7 @@ export default function Home() {
       brand: "CASIO", 
       line: "CASIO-ORIGINAL", 
       price: 250000, 
-      warranty: "1 año", 
+      warranty: "1 aÃ±o", 
       images: ["https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800"] 
     },
   ];
@@ -49,7 +49,7 @@ export default function Home() {
   }, [categoryFilter, brandFilter, products]);
 
   return (
-    // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
+    // CAMBIO: Fuente Inter o System-ui para un look mÃ¡s moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
       
 {/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
@@ -60,8 +60,8 @@ export default function Home() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        textAlign: "center", // <--- AQUÍ FALTABA LA COMA
-        /* OPCIÓN DE IMAGEN ACTUALIZADA (Maquinaria técnica nítida) */
+        textAlign: "center", // <--- AQUÃ FALTABA LA COMA
+        /* OPCIÃ“N DE IMAGEN ACTUALIZADA (Maquinaria tÃ©cnica nÃ­tida) */
         backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1600')`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -70,7 +70,7 @@ export default function Home() {
         padding: "0 20px",
         overflow: "hidden"
       }}>
-        {/* Línea decorativa superior estilo minimalista */}
+        {/* LÃ­nea decorativa superior estilo minimalista */}
         <div style={{ width: "1px", height: "60px", background: "rgba(255,255,255,0.3)", marginBottom: "30px" }}></div>
 
         <h1 style={{ 
@@ -101,7 +101,7 @@ export default function Home() {
           maxWidth: "600px",
           lineHeight: "2"
         }}>
-          ALTA RELOJERÍA <span style={{ margin: "0 15px", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
+          ALTA RELOJERÃA <span style={{ margin: "0 15px", opacity: 0.3 }}>|</span> CURADURÃA SELECTA
         </p>
 
         <div style={{ 
@@ -117,14 +117,14 @@ export default function Home() {
         </div>
       </section>  
       
- {/* --- NAVEGACIÓN --- */}
+ {/* --- NAVEGACIÃ“N --- */}
       <nav style={{ 
         position: "sticky", top: 0, background: "rgba(255,255,255,0.98)", zIndex: 100, 
         boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", borderBottom: "1px solid #f0f0f0" 
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
 
-          {/* Fila 1: Categorías y Selector de Originales */}
+          {/* Fila 1: CategorÃ­as y Selector de Originales */}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", padding: "25px 0 15px", flexWrap: "wrap" }}>
             {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
               <button key={cat} onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
@@ -144,7 +144,7 @@ export default function Home() {
               value={categoryFilter.includes("ORIGINAL") ? categoryFilter : ""} 
               onChange={(e) => { setCategoryFilter(e.target.value); setBrandFilter("TODAS"); }}
               style={{ padding: "12px 24px", borderRadius: "4px", border: "2px solid #000", background: categoryFilter.includes("ORIGINAL") ? "#000" : "#fff", color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#000", fontSize: "11px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", cursor: "pointer", outline: "none", appearance: "none", textAlign: "center", minWidth: "200px" }}>
-              <option value="" disabled hidden>✨ ORIGINALES ▼</option>
+              <option value="" disabled hidden>âœ¨ ORIGINALES â–¼</option>
               {["CHRONOS", "CURREN", "NAVIFORCE", "CASIO", "PULSO", "BENYAR", "G-SHOCK", "SCOTTIE", "ONOLA", "SKMEI", "SANDA", "FOXBOX", "CASSRAY", "Q&Q", "KOSMO", "EXPONI", "RD"].sort().map(marca => (
                 <option key={marca} value={`${marca}-ORIGINAL`}>{marca} (ORIGINAL)</option>
               ))}
@@ -176,13 +176,13 @@ export default function Home() {
         </div> 
       </nav>
 
-{/* --- GRID DE PRODUCTOS AJUSTADO (MÁS PEQUEÑO Y CON PROFUNDIDAD) --- */}
+{/* --- GRID DE PRODUCTOS AJUSTADO (MÃS PEQUEÃ‘O Y CON PROFUNDIDAD) --- */}
 <main style={{ 
   maxWidth: "1200px", 
   margin: "20px auto", 
   padding: "0 15px", 
   display: "grid", 
-  // Reducimos el ancho mínimo de 300px a 160px para que en celular quepan 2 columnas cómodamente
+  // Reducimos el ancho mÃ­nimo de 300px a 160px para que en celular quepan 2 columnas cÃ³modamente
   gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", 
   gap: categoryFilter === "SUIZOS-S" ? "25px" : "10px", 
   transition: "all 0.5s ease"
@@ -203,7 +203,7 @@ export default function Home() {
           transition: "all 0.6s cubic-bezier(0.19, 1, 0.22, 1)",
         }}
       >
-{/* --- CONTENEDOR DE PRODUCTO MÁS GRANDE Y CUADRADO --- */}
+{/* --- CONTENEDOR DE PRODUCTO MÃS GRANDE Y CUADRADO --- */}
 <div key={p.id} 
   onClick={() => setSelectedProduct(p)} 
   style={{ 
@@ -212,11 +212,11 @@ export default function Home() {
     border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
     position: "relative",
     overflow: "hidden",
-    borderRadius: "0px", // <--- Eliminamos redondez para un look más técnico
+    borderRadius: "0px", // <--- Eliminamos redondez para un look mÃ¡s tÃ©cnico
     transition: "all 0.4s ease",
   }}
 >
-{/* --- TARJETA DE PRODUCTO LIMPIA Y ÚNICA --- */}
+ {/* --- TARJETA DE PRODUCTO ÃšNICA (SIN DUPLICADOS) --- */}
 <div key={p.id} 
   onClick={() => setSelectedProduct(p)} 
   style={{ 
@@ -225,11 +225,11 @@ export default function Home() {
     border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
     position: "relative",
     overflow: "hidden",
-    borderRadius: "0px", 
+    borderRadius: "0px",
     transition: "all 0.4s ease",
   }}
 >
-  {/* 1. SECCIÓN DE IMAGEN CON PROFUNDIDAD */}
+  {/* 1. CONTENEDOR DE IMAGEN (EFECTO DE PROFUNDIDAD) */}
   <div style={{ 
     position: "relative",
     aspectRatio: "1/1",
@@ -239,7 +239,6 @@ export default function Home() {
     justifyContent: "center",
     background: isSuizo ? "#000" : "#f0f0f0" 
   }}>
-    {/* Reflejo de fondo */}
     <img 
       src={p.images[0]} 
       alt="Reflejo"
@@ -252,7 +251,6 @@ export default function Home() {
         zIndex: 1
       }} 
     />
-    {/* Cuadro Central */}
     <div style={{
       position: "relative",
       width: "92%", 
@@ -268,7 +266,7 @@ export default function Home() {
     </div>
   </div>
 
-  {/* 2. SECCIÓN DE TEXTO (ESTILO APEX TIME) */}
+  {/* 2. ESTA ES LA INFO QUE TE GUSTÃ“ (SOLO UNA VEZ) */}
   <div style={{ padding: "15px 10px", textAlign: "center" }}>
     <p style={{ 
       fontSize: "9px", 
@@ -280,39 +278,7 @@ export default function Home() {
       {p.brand}
     </p>
     <h3 style={{ 
-      fontWeight: "200", // Letra delgada y elegante
-      fontSize: "14px", 
-      color: isSuizo ? "#ccc" : "#000", 
-      margin: "0",
-      letterSpacing: "1px"
-    }}>
-      {p.name.toUpperCase()}
-    </h3>
-    <p style={{ 
-      fontWeight: "900", 
-      fontSize: "15px", 
-      color: isSuizo ? "#D4AF37" : "#000", 
-      margin: "10px 0 0 0" 
-    }}>
-      ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '10px', fontWeight: '400'}}>COP</span>
-    </p>
-  </div>
-</div>
-  
-
-  {/* 2. ESTA ES LA INFO QUE TE GUSTÓ (SOLO UNA VEZ) */}
-  <div style={{ padding: "15px 10px", textAlign: "center" }}>
-    <p style={{ 
-      fontSize: "9px", 
-      color: isSuizo ? "#D4AF37" : "#888", 
-      letterSpacing: "3px", 
-      margin: "0 0 5px 0",
-      textTransform: "uppercase" 
-    }}>
-      {p.brand}
-    </p>
-    <h3 style={{ 
-      fontWeight: "200", // Estilo más fino y elegante como en la foto
+      fontWeight: "200", // Estilo mÃ¡s fino y elegante como en la foto
       fontSize: "14px", 
       color: isSuizo ? "#ccc" : "#000", 
       margin: "0",
@@ -331,7 +297,7 @@ export default function Home() {
   </div>
 </div>
 
-  {/* INFO DEBAJO (Ajustada para mantener la proporción) */}
+  {/* INFO DEBAJO (Ajustada para mantener la proporciÃ³n) */}
   <div style={{ padding: "15px 10px", textAlign: "center" }}>
     <p style={{ fontSize: "9px", color: isSuizo ? "#D4AF37" : "#888", letterSpacing: "3px", margin: "0 0 5px 0" }}>
       {p.brand}
@@ -362,7 +328,7 @@ export default function Home() {
             margin: "0", 
             color: isSuizo ? "#fff" : "#000",
             lineHeight: "1.2",
-            height: "32px", // Reserva espacio para 2 líneas
+            height: "32px", // Reserva espacio para 2 lÃ­neas
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
@@ -388,9 +354,9 @@ export default function Home() {
           <div style={{ background: "#fff", maxWidth: "450px", width: "100%", borderRadius: "20px", padding: "25px", position: "relative", maxHeight: "90vh", overflowY: "auto" }}>
 
             <button onClick={() => { setSelectedProduct(null); setCurrentImage(null); }} 
-              style={{ position: "absolute", top: "15px", right: "15px", background: "#eee", border: "none", borderRadius: "50%", width: "30px", height: "30px", cursor: "pointer", zIndex: 10 }}>✕</button>
+              style={{ position: "absolute", top: "15px", right: "15px", background: "#eee", border: "none", borderRadius: "50%", width: "30px", height: "30px", cursor: "pointer", zIndex: 10 }}>âœ•</button>
 
-            {/* GALERÍA */}
+            {/* GALERÃA */}
             <div style={{ width: "100%", marginTop: "10px" }}>
               <div style={{ overflow: "hidden", borderRadius: "12px", cursor: "zoom-in", background: "#f9f9f9", marginBottom: "15px" }}>
                 <img src={currentImage || selectedProduct.images[0]} 
@@ -408,16 +374,16 @@ export default function Home() {
 
             {/* INFO */}
             <div style={{ marginTop: "10px" }}>
-              <span style={{ background: "#ffebee", color: "#d32f2f", padding: "4px 8px", borderRadius: "4px", fontSize: "11px", fontWeight: "bold" }}>🔴 CASI AGOTADO</span>
+              <span style={{ background: "#ffebee", color: "#d32f2f", padding: "4px 8px", borderRadius: "4px", fontSize: "11px", fontWeight: "bold" }}>ðŸ”´ CASI AGOTADO</span>
               <h2 style={{ marginTop: "15px", fontWeight: "600", fontSize: "22px" }}>{selectedProduct.name}</h2>
               <p style={{ fontSize: "24px", fontWeight: "700", margin: "10px 0" }}>${selectedProduct.price.toLocaleString()} COP</p>
               <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
-                <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
+                <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÃSTICAS:</p>
+                <p style={{ fontSize: "14px", margin: "5px 0" }}>âŒš HORA ANÃLOGA</p>
+                <p style={{ fontSize: "14px", margin: "5px 0" }}>ðŸ’ CRISTAL MINERAL RESISTENTE</p>
+                <p style={{ fontSize: "14px", margin: "5px 0" }}>ðŸŽ INCLUYE CAJA DE PRESENTACIÃ“N</p>
               </div>
-              {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
+              {/* SECCIÃ“N DE TÃ‰RMINOS DESPLEGABLE */}
 <div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
   <div 
     onClick={() => setShowTerms(!showTerms)} 
@@ -430,9 +396,9 @@ export default function Home() {
     }}
   >
     <span style={{ fontSize: "12px", fontWeight: "700", color: "#333" }}>
-      📄 TÉRMINOS, GARANTÍA Y DEVOLUCIONES
+      ðŸ“„ TÃ‰RMINOS, GARANTÃA Y DEVOLUCIONES
     </span>
-    <span style={{ fontSize: "12px" }}>{showTerms ? "▲" : "▼"}</span>
+    <span style={{ fontSize: "12px" }}>{showTerms ? "â–²" : "â–¼"}</span>
   </div>
 
   {showTerms && (
@@ -445,17 +411,17 @@ export default function Home() {
       borderRadius: "10px",
       marginBottom: "10px"
     }}>
-      {/* 1. LÍNEA DE GARANTÍA DINÁMICA (SOLO UNA) */}
+      {/* 1. LÃNEA DE GARANTÃA DINÃMICA (SOLO UNA) */}
       <p style={{ marginBottom: "5px" }}>
-        • ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty} por maquinaria.
+        â€¢ âš™ï¸ <strong>GarantÃ­a:</strong> {selectedProduct.warranty} por maquinaria.
       </p>
 
       <p style={{ marginBottom: "5px" }}>
-        • 🔍 <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
+        â€¢ ðŸ” <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
       </p>
 
       <p>
-        • 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.
+        â€¢ ðŸ“¸ <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envÃ­o.
       </p>
     </div>
   )}
@@ -464,12 +430,12 @@ export default function Home() {
 <button onClick={() => {
   const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
 
-⌚ *Modelo:* ${selectedProduct.name}
-🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
-💰 *Precio:* $${selectedProduct.price.toLocaleString()} COP
-🛡️ *Garantía:* ${selectedProduct.warranty}
+âŒš *Modelo:* ${selectedProduct.name}
+ðŸ·ï¸ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
+ðŸ’° *Precio:* $${selectedProduct.price.toLocaleString()} COP
+ðŸ›¡ï¸ *GarantÃ­a:* ${selectedProduct.warranty}
 
-*He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
+*He leÃ­do y acepto los tÃ©rminos de garantÃ­a y peritaje tÃ©cnico.* Â¿Sigue disponible?`;
 
   window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
 }}
@@ -484,7 +450,7 @@ style={{
   cursor: "pointer", 
   marginTop: "10px" 
 }}>
-  SOLICITAR POR WHATSAPP 📱
+  SOLICITAR POR WHATSAPP ðŸ“±
 </button>
 
             </div>
@@ -493,4 +459,4 @@ style={{
       )}
     </div>
   );
-}
+                }
