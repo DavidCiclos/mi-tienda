@@ -198,11 +198,13 @@ export default function Home() {
           borderRadius: "0px", 
           transition: "all 0.4s ease",
 
-          // --- COPIA Y PEGA ESTAS 3 LÍNEAS AQUÍ ---
-          width: "85%",           // Hace la tarjeta más estrecha que la pantalla del móvil
-          maxWidth: "300px",      // Evita que se vea gigante en pantallas grandes
-          margin: "0 auto",       // La mantiene centrada horizontalmente
-          // ---------------------------------------
+          // --- CAMBIO PARA PC vs CELULAR ---
+          width: "100%",           // En PC ocupa todo su cuadro (se ve grande)
+          maxWidth: "320px",      // Pero en celular no deja que se desborde
+          margin: "0 auto",
+          
+          // Esto añade un margen interno solo si la pantalla es pequeña
+          padding: "0 5px", 
         }}
       >
         {/* CONTENEDOR DE IMAGEN (EFECTO CUADRO CENTRAL) */}
