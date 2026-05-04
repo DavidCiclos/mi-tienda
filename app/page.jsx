@@ -198,13 +198,11 @@ export default function Home() {
           borderRadius: "0px", 
           transition: "all 0.4s ease",
 
-          // --- CAMBIO PARA PC vs CELULAR ---
-          width: "100%",           // En PC ocupa todo su cuadro (se ve grande)
-          maxWidth: "320px",      // Pero en celular no deja que se desborde
-          margin: "0 auto",
-          
-          // Esto añade un margen interno solo si la pantalla es pequeña
-          padding: "0 5px", 
+          // --- COPIA Y PEGA ESTAS 3 LÍNEAS AQUÍ ---
+          width: "85%",           // Hace la tarjeta más estrecha que la pantalla del móvil
+          maxWidth: "300px",      // Evita que se vea gigante en pantallas grandes
+          margin: "0 auto",       // La mantiene centrada horizontalmente
+          // ---------------------------------------
         }}
       >
         {/* CONTENEDOR DE IMAGEN (EFECTO CUADRO CENTRAL) */}
@@ -245,7 +243,15 @@ export default function Home() {
             <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
         </div>
-
+        
+{/* --- LÍNEA DORADA / DIVISORA (Justo donde la marcaste en la foto) --- */}
+        <div style={{ 
+          width: "100%", 
+          height: "1px", 
+          background: isSuizo ? "#D4AF37" : "#eee", 
+          opacity: 0.6 
+        }}></div>
+        
         {/* INFORMACIÓN: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
