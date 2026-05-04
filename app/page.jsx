@@ -176,12 +176,12 @@ export default function Home() {
       </nav>
 {/* --- GRID DE PRODUCTOS: DISEÑO FINAL PULIDO --- */}
 <main style={{ 
-  maxWidth: "1300px", 
+  maxWidth: "1200px", 
   margin: "40px auto", 
   padding: "0 20px", 
   display: "grid", 
-  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
-  gap: "0px" 
+  gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
+  gap: "15px" 
 }}>
   {filteredProducts.map(p => {
     const isSuizo = categoryFilter === "SUIZOS-S";
@@ -225,8 +225,8 @@ export default function Home() {
           {/* Cuadro del reloj al 92% */}
           <div style={{
             position: "relative",
-            width: "92%", 
-            height: "92%",
+            width: "85%", 
+            height: "85%",
             zIndex: 2,
             boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
             border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
