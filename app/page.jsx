@@ -174,126 +174,104 @@ export default function Home() {
           </div>
         </div> 
       </nav>
-
- {/* --- GRID DE PRODUCTOS (ARQUITECTÓNICO / LUXURY BRUTALIST) --- */}
-      <main style={{ 
-        maxWidth: "1300px", 
-        margin: "40px auto", 
-        padding: "0 20px", 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
-        gap: "0px" // Sin espacio entre cuadros para crear un efecto de muro de lujo
-      }}>
-        {filteredProducts.map(p => (
-          <div key={p.id} 
-            onClick={() => setSelectedProduct(p)} 
+{/* --- GRID DE PRODUCTOS (ESTILO EXACTO CÍRCULO AZUL) --- */}
+<main style={{ 
+  maxWidth: "1300px", 
+  margin: "40px auto", 
+  padding: "0 20px", 
+  display: "grid", 
+  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+  gap: "0px" 
+}}>
+  {filteredProducts.map(p => {
+    const isSuizo = categoryFilter === "SUIZOS-S";
+    
+    return (
+      <div key={p.id} 
+        onClick={() => setSelectedProduct(p)} 
+        style={{ 
+          cursor: "pointer",
+          background: isSuizo ? "#0a0a0a" : "#fff",
+          border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: "0px", 
+          transition: "all 0.4s ease",
+        }}
+      >
+        {/* IMAGEN CON CUADRO CENTRAL AL 92% */}
+        <div style={{ 
+          position: "relative",
+          aspectRatio: "1/1",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: isSuizo ? "#000" : "#f0f0f0" 
+        }}>
+          {/* Capa de reflejo suave */}
+          <img 
+            src={p.images[0]} 
+            alt="Reflejo"
             style={{ 
-              cursor: "pointer",
-              background: "#fff",
-              border: "0.5px solid #e5e5e5", // Líneas finas y rígidas
-              position: "relative",
-              overflow: "hidden",
-              transition: "all 0.5s cubic-bezier(0.19, 1, 0.22, 1)"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.zIndex = "10";
-              e.currentTarget.style.outline = "4px solid #000"; // Marco negro fuerte al pasar el mouse
-              e.currentTarget.querySelector('.hover-line').style.width = "100%"; // <--- AÑADIR ESTA LÍNEA
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.zIndex = "1";
-              e.currentTarget.style.outline = "none";
-              e.currentTarget.querySelector('.hover-line').style.width = "0%"; // <--- AÑADIR ESTA LÍNEA
-            }}
-          >
-
-            {/* Contenedor de Imagen Recto y Crudo */}
-            <div style={{ 
-              position: "relative",
-              aspectRatio: "1/1",
-              overflow: "hidden",
-              background: "#f2f2f2"
-            }}>
-              <img 
-                src={p.images[0]} 
-                alt={p.name} 
-                style={{ 
-                  width: "100%", 
-                  height: "100%", 
-                  objectFit: "cover", 
-                  filter: "grayscale(20%)", // Estilo visual más serio
-                  transition: "transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)" 
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.15)"}
-                onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
-              />
-
-              {/* Etiqueta de Categoría (Estilo Industrial) */}
-              <div style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                background: "#000",
-                color: "#fff",
-                padding: "8px 15px",
-                fontSize: "10px",
-                fontWeight: "900",
-                letterSpacing: "2px",
-                textTransform: "uppercase"
-              }}>
-                {p.line.split('-')[0]}
-              </div>
-            </div>
-
-            {/* Bloque de Información Minimalista */}
-            <div style={{ 
-              padding: "30px 20px", 
-              textAlign: "left", // Alineación lateral para romper lo común
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              height: "140px"
-            }}>
-              <div>
-                <p style={{ 
-                  fontSize: "10px", 
-                  color: "#888", 
-                  letterSpacing: "4px", 
-                  margin: "0 0 5px 0",
-                  textTransform: "uppercase"
-                }}>
-                  {p.brand}
-                </p>
-                <h3 style={{ 
-                  fontWeight: "700", 
-                  fontSize: "18px", 
-                  margin: "0", 
-                  color: "#000",
-                  letterSpacing: "-0.5px",
-                  lineHeight: "1"
-                }}>
-                  {p.name.toUpperCase()}
-                </h3>
-              </div>
-
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <p style={{ 
-                  fontWeight: "900", 
-                  fontSize: "16px", 
-                  color: "#000",
-                  margin: "0" 
-                }}>
-                  ${p.price.toLocaleString()}
-                </p>
-                <span style={{ fontSize: "9px", fontWeight: "700", color: "#ccc" }}>COP</span>
-              </div>
-            </div>
-
-            {/* Efecto de barra de carga estética al fondo */}
-            <div style={{ width: "0%", height: "2px", background: "#000", transition: "width 0.4s ease" }} className="hover-line"></div>
+              position: "absolute",
+              width: "120%", 
+              height: "120%", 
+              objectFit: "cover",
+              filter: "blur(25px) opacity(0.2)", 
+              zIndex: 1
+            }} 
+          />
+          {/* Cuadro del reloj */}
+          <div style={{
+            position: "relative",
+            width: "92%", 
+            height: "92%",
+            zIndex: 2,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+            border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
+            overflow: "hidden",
+            borderRadius: "0px", 
+            background: "#fff"
+          }}>
+            <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
-        ))}
-      </main>
+        </div>
+
+        {/* INFO EXACTA: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
+        <div style={{ padding: "20px 10px", textAlign: "center" }}>
+          <p style={{ 
+            fontSize: "9px", 
+            color: isSuizo ? "#D4AF37" : "#999", 
+            letterSpacing: "4px", // Espaciado amplio para lujo
+            margin: "0 0 8px 0",
+            textTransform: "uppercase",
+            fontWeight: "400"
+          }}>
+            {p.brand}
+          </p>
+          <h3 style={{ 
+            fontWeight: "200", // EL CAMBIO CLAVE: Letra ultra fina
+            fontSize: "15px", 
+            color: isSuizo ? "#ccc" : "#333", 
+            margin: "0",
+            letterSpacing: "2px" // Separación elegante
+          }}>
+            {p.name.toUpperCase()}
+          </h3>
+          <p style={{ 
+            fontWeight: "600", 
+            fontSize: "16px", 
+            color: isSuizo ? "#D4AF37" : "#000", 
+            margin: "12px 0 0 0" 
+          }}>
+            ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '10px', fontWeight: '300', opacity: 0.7}}>COP</span>
+          </p>
+        </div>
+      </div>
+    );
+  })}
+</main>
 
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
