@@ -174,7 +174,7 @@ export default function Home() {
           </div>
         </div> 
       </nav>
-{/* --- GRID DE PRODUCTOS (ESTILO EXACTO CÍRCULO AZUL) --- */}
+{/* --- GRID DE PRODUCTOS: DISEÑO FINAL PULIDO --- */}
 <main style={{ 
   maxWidth: "1300px", 
   margin: "40px auto", 
@@ -199,7 +199,7 @@ export default function Home() {
           transition: "all 0.4s ease",
         }}
       >
-        {/* IMAGEN CON CUADRO CENTRAL AL 92% */}
+        {/* CONTENEDOR DE IMAGEN (EFECTO CUADRO CENTRAL) */}
         <div style={{ 
           position: "relative",
           aspectRatio: "1/1",
@@ -209,7 +209,7 @@ export default function Home() {
           justifyContent: "center",
           background: isSuizo ? "#000" : "#f0f0f0" 
         }}>
-          {/* Capa de reflejo suave */}
+          {/* Reflejo desenfocado */}
           <img 
             src={p.images[0]} 
             alt="Reflejo"
@@ -222,7 +222,7 @@ export default function Home() {
               zIndex: 1
             }} 
           />
-          {/* Cuadro del reloj */}
+          {/* Cuadro del reloj al 92% */}
           <div style={{
             position: "relative",
             width: "92%", 
@@ -238,12 +238,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* INFO EXACTA: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
+        {/* INFORMACIÓN: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
             fontSize: "9px", 
             color: isSuizo ? "#D4AF37" : "#999", 
-            letterSpacing: "4px", // Espaciado amplio para lujo
+            letterSpacing: "4px", 
             margin: "0 0 8px 0",
             textTransform: "uppercase",
             fontWeight: "400"
@@ -251,11 +251,11 @@ export default function Home() {
             {p.brand}
           </p>
           <h3 style={{ 
-            fontWeight: "200", // EL CAMBIO CLAVE: Letra ultra fina
+            fontWeight: "200", // La letra ultra delgada que querías
             fontSize: "15px", 
             color: isSuizo ? "#ccc" : "#333", 
             margin: "0",
-            letterSpacing: "2px" // Separación elegante
+            letterSpacing: "2px" 
           }}>
             {p.name.toUpperCase()}
           </h3>
