@@ -176,12 +176,12 @@ export default function Home() {
       </nav>
 {/* --- GRID DE PRODUCTOS: DISEÑO FINAL PULIDO --- */}
 <main style={{ 
-  maxWidth: "1200px", 
+  maxWidth: "1300px", 
   margin: "40px auto", 
   padding: "0 20px", 
   display: "grid", 
   gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
-  gap: "15px" 
+  gap: "0px" 
 }}>
   {filteredProducts.map(p => {
     const isSuizo = categoryFilter === "SUIZOS-S";
@@ -197,6 +197,12 @@ export default function Home() {
           overflow: "hidden",
           borderRadius: "0px", 
           transition: "all 0.4s ease",
+
+          // --- COPIA Y PEGA ESTAS 3 LÍNEAS AQUÍ ---
+          width: "85%",           // Hace la tarjeta más estrecha que la pantalla del móvil
+          maxWidth: "300px",      // Evita que se vea gigante en pantallas grandes
+          margin: "0 auto",       // La mantiene centrada horizontalmente
+          // ---------------------------------------
         }}
       >
         {/* CONTENEDOR DE IMAGEN (EFECTO CUADRO CENTRAL) */}
@@ -225,8 +231,8 @@ export default function Home() {
           {/* Cuadro del reloj al 92% */}
           <div style={{
             position: "relative",
-            width: "85%", 
-            height: "85%",
+            width: "95%", 
+            height: "95%",
             zIndex: 2,
             boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
             border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
