@@ -244,14 +244,6 @@ export default function Home() {
           </div>
         </div>
         
-{/* --- LÍNEA DORADA / DIVISORA (Justo donde la marcaste en la foto) --- */}
-        <div style={{ 
-          width: "100%", 
-          height: "1px", 
-          background: isSuizo ? "#D4AF37" : "#eee", 
-          opacity: 0.6 
-        }}></div>
-        
         {/* INFORMACIÓN: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
