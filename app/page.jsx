@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import { listaProductos } from './productos';
 
 export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -8,29 +9,7 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(null);
   const [showTerms, setShowTerms] = useState(false);
 
-  // Tus productos (Mantén tu lista de 200 aquí)
-  const products = [
-    // Ejemplo para SUIZOS-S
-    { 
-      id: 1, 
-      name: "Daytona S-Clon", 
-      brand: "ROLEX", 
-      line: "SUIZOS-S", 
-      price: 3450000, 
-      warranty: "2 años", 
-      images: ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800"] 
-    },
-    // Ejemplo para ORIGINALES (Copia y pega este para probar el selector)
-    { 
-      id: 2, 
-      name: "Reloj Original Test", 
-      brand: "CASIO", 
-      line: "CASIO-ORIGINAL", 
-      price: 250000, 
-      warranty: "1 año", 
-      images: ["https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800"] 
-    },
-  ];
+  const products = listaProductos;
 
   const availableBrands = useMemo(() => {
     const map = {
