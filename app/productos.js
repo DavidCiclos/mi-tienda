@@ -3,7 +3,7 @@ export const listaProductos = [
   {
     id: 1,
     name: "Daytona S-Clon Gold",
-    brand: "Rolex",
+    brand: "ROLEX",
     line: "SUIZOS-S", // Estilo dorado/premium
     price: 3450000, 
     images: ["https://res.cloudinary.com/debewjkqh/image/upload/v1777254410/11647_ppetcc.jpg"],
