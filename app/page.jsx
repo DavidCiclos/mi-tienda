@@ -166,26 +166,20 @@ export default function Home() {
     const isSuizo = categoryFilter === "SUIZOS-S";
     
     return (
-      <div key={p.id} 
-        onClick={() => setSelectedProduct(p)} 
-        style={{ 
-          cursor: "pointer",
-          background: isSuizo ? "#0a0a0a" : "#fff",
-          border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
-          position: "relative",
-          overflow: "hidden",
-          borderRadius: "0px", 
-          transition: "all 0.4s ease",
-
-          // --- COPIA Y PEGA ESTAS 3 LÍNEAS AQUÍ ---
-            width: "100%",
-            maxWidth: "400px",
-           margin: "0 auto 40px auto" // El 40px es el que empuja hacia abajo la siguiente tarjeta
-           }}
-          >
-        
-          // ---------------------------------------
-        }}
+          <div key={p.id}
+      onClick={() => setSelectedProduct(p)}
+      style={{
+        cursor: "pointer",
+        background: isSuizo ? "#0a0a0a" : "#fff",
+        border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
+        position: "relative",
+        overflow: "hidden",
+        borderRadius: "8px",
+        transition: "all 0.4s ease",
+        width: "100%",
+        maxWidth: "400px",
+        margin: "0 auto 40px auto"
+      }}
       >
         {/* CONTENEDOR DE IMAGEN (EFECTO CUADRO CENTRAL) */}
         <div style={{ 
