@@ -178,9 +178,11 @@ export default function Home() {
           transition: "all 0.4s ease",
 
           // --- COPIA Y PEGA ESTAS 3 LÍNEAS AQUÍ ---
-          width: "85%",           // Hace la tarjeta más estrecha que la pantalla del móvil
-          maxWidth: "300px",      // Evita que se vea gigante en pantallas grandes
-          margin: "0 auto",       // La mantiene centrada horizontalmente
+            width: "100%",
+  maxWidth: "400px",
+  margin: "0 auto 40px auto" // El 40px es el que empuja hacia abajo la siguiente tarjeta
+}}>
+        
           // ---------------------------------------
         }}
       >
