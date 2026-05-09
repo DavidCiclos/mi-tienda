@@ -179,9 +179,10 @@ export default function Home() {
 
           // --- COPIA Y PEGA ESTAS 3 LÍNEAS AQUÍ ---
             width: "100%",
-  maxWidth: "400px",
-  margin: "0 auto 40px auto" // El 40px es el que empuja hacia abajo la siguiente tarjeta
-}}>
+            maxWidth: "400px",
+           margin: "0 auto 40px auto" // El 40px es el que empuja hacia abajo la siguiente tarjeta
+           }}
+          >
         
           // ---------------------------------------
         }}
