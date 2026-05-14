@@ -220,7 +220,7 @@ export default function Home() {
           </div>
         </div>
         
-        {/* INFORMACIÓN: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
+                {/* INFORMACIÓN: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
             fontSize: "9px", 
@@ -233,7 +233,7 @@ export default function Home() {
             {p.brand}
           </p>
           <h3 style={{ 
-            fontWeight: "200", // La letra ultra delgada que querías
+            fontWeight: "200", 
             fontSize: "15px", 
             color: isSuizo ? "#ccc" : "#333", 
             margin: "0",
@@ -241,20 +241,24 @@ export default function Home() {
           }}>
             {p.name.toUpperCase()}
           </h3>
-          <p style={{ 
-            fontWeight: "600", 
-            fontSize: "16px", 
-            color: isSuizo ? "#D4AF37" : "#000", 
-            margin: "12px 0 0 0" 
-          }}>
-            ${(p.price / 1000).toFixed(0)}k <span style={{fontSize: '10px', fontWeight: '300', opacity: 0.7}}>COP</span>
-          </p>
-        </div>
-      </div>
-    );
-  })}
-</main>
 
+          {/* El condicional debe envolver a TODA la etiqueta del precio */}
+          {p.price > 0 && (
+            <p style={{ 
+              fontWeight: "600", 
+              fontSize: "16px", 
+              color: isSuizo ? "#D4AF37" : "#000", 
+              margin: "12px 0 0 0" 
+            }}>
+              {new Intl.NumberFormat('es-CO', { 
+                style: 'currency', 
+                currency: 'COP', 
+                maximumFractionDigits: 0 
+              }).format(p.price)}
+            </p>
+          )}
+        </div>
+            
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
