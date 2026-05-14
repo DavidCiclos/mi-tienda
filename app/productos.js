@@ -5,7 +5,7 @@ export const listaProductos = [
     name: "Daytona S-Clon Gold",
     brand: "ROLEX",
     line: "SUIZOS-S",
-    price: 3450000,
+    price: 0,
     images: ["https://res.cloudinary.com/debewjkqh/image/upload/v1777254410/11647_ppetcc.jpg"],
     description: "Maquinaria suiza, acero 904L, cristal de zafiro.",
     warranty: "2 años"
