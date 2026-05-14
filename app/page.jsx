@@ -284,11 +284,22 @@ export default function Home() {
               </div>
             </div>
 
-            {/* INFO */}
+           {/* INFO */}
             <div style={{ marginTop: "10px" }}>
               <span style={{ background: "#ffebee", color: "#d32f2f", padding: "4px 8px", borderRadius: "4px", fontSize: "11px", fontWeight: "bold" }}>🔴 CASI AGOTADO</span>
               <h2 style={{ marginTop: "15px", fontWeight: "600", fontSize: "22px" }}>{selectedProduct.name}</h2>
-              <p style={{ fontSize: "24px", fontWeight: "700", margin: "10px 0" }}>${selectedProduct.price.toLocaleString()} COP</p>
+              
+              {/* ESTA ES LA LÍNEA QUE REEMPLAZAS POR EL BLOQUE CONDICIONAL */}
+              {selectedProduct.price > 0 && (
+                <p style={{ fontSize: "24px", fontWeight: "700", margin: "10px 0" }}>
+                  {new Intl.NumberFormat('es-CO', { 
+                    style: 'currency', 
+                    currency: 'COP', 
+                    maximumFractionDigits: 0 
+                  }).format(selectedProduct.price)}
+                </p>
+              )}
+
               <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
                 <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
                 <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
@@ -340,11 +351,14 @@ export default function Home() {
 </div>
 
 <button onClick={() => {
+  const precioTexto = selectedProduct.price > 0 
+  ? new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(selectedProduct.price)
+  : "Precio a convenir";
   const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
 
 ⌚ *Modelo:* ${selectedProduct.name}
 🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
-💰 *Precio:* $${selectedProduct.price.toLocaleString()} COP
+💰 *Precio:* ${precioTexto}
 🛡️ *Garantía:* ${selectedProduct.warranty}
 
 *He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
