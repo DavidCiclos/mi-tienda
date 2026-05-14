@@ -160,28 +160,28 @@ export default function Home() {
   padding: "0 20px", 
   display: "grid", 
   gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
-  gap: "0px" 
+  gap: "20px" 
 }}>
   {filteredProducts.map(p => {
     const isSuizo = categoryFilter === "SUIZOS-S";
     
     return (
-          <div key={p.id}
-      onClick={() => setSelectedProduct(p)}
-      style={{
-        cursor: "pointer",
-        background: isSuizo ? "#0a0a0a" : "#fff",
-        border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
-        position: "relative",
-        overflow: "hidden",
-        borderRadius: "8px",
-        transition: "all 0.4s ease",
-        width: "100%",
-        maxWidth: "400px",
-        margin: "0 auto 40px auto"
-      }}
+      <div key={p.id}
+        onClick={() => setSelectedProduct(p)}
+        style={{
+          cursor: "pointer",
+          background: isSuizo ? "#0a0a0a" : "#fff",
+          border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: "8px",
+          transition: "all 0.4s ease",
+          width: "100%",
+          maxWidth: "400px",
+          margin: "0 auto 40px auto"
+        }}
       >
-        {/* CONTENEDOR DE IMAGEN (EFECTO CUADRO CENTRAL) */}
+        {/* CONTENEDOR DE IMAGEN */}
         <div style={{ 
           position: "relative",
           aspectRatio: "1/1",
@@ -191,7 +191,6 @@ export default function Home() {
           justifyContent: "center",
           background: isSuizo ? "#000" : "#f0f0f0" 
         }}>
-          {/* Reflejo desenfocado */}
           <img 
             src={p.images[0]} 
             alt="Reflejo"
@@ -204,7 +203,6 @@ export default function Home() {
               zIndex: 1
             }} 
           />
-          {/* Cuadro del reloj al 92% */}
           <div style={{
             position: "relative",
             width: "95%", 
@@ -220,7 +218,7 @@ export default function Home() {
           </div>
         </div>
         
-                {/* INFORMACIÓN: TIPOGRAFÍA DELGADA Y PRECIO SIMPLIFICADO */}
+        {/* INFORMACIÓN */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
             fontSize: "9px", 
@@ -242,7 +240,6 @@ export default function Home() {
             {p.name.toUpperCase()}
           </h3>
 
-          {/* El condicional debe envolver a TODA la etiqueta del precio */}
           {p.price > 0 && (
             <p style={{ 
               fontWeight: "600", 
@@ -258,6 +255,10 @@ export default function Home() {
             </p>
           )}
         </div>
+      </div>
+    ); // <-- Aquí faltaba cerrar correctamente
+  })}
+</main>
             
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
