@@ -80,7 +80,7 @@ export default function Home() {
           maxWidth: "90%",                         // Usa el 90% de la pantalla del celular para no tocar los bordes
           lineHeight: "2",
           margin: "0 auto",                        // Fuerza a centrar el bloque completo
-          textAlign: "center"                      // Fuerza a centrar el texto por dentro
+          textAlign: "center",                    // Fuerza a centrar el texto por dentro
         }}>
           ALTA RELOJERÍA <span style={{ margin: "0 clamp(5px, 2vw, 15px)", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
         </p>
