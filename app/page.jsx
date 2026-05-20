@@ -73,14 +73,16 @@ export default function Home() {
 
         <p style={{ 
           color: "#eee", 
-          letterSpacing: "8px", 
-          fontSize: "11px", 
+          letterSpacing: "clamp(3px, 1.5vw, 8px)", // Ajuste automático del espacio entre letras
+          fontSize: "clamp(9px, 2vw, 11px)",       // Ajuste automático del tamaño de letra
           fontWeight: 400, 
           textTransform: "uppercase",
-          maxWidth: "600px",
-          lineHeight: "2"
+          maxWidth: "90%",                         // Usa el 90% de la pantalla del celular para no tocar los bordes
+          lineHeight: "2",
+          margin: "0 auto",                        // Fuerza a centrar el bloque completo
+          textAlign: "center"                      // Fuerza a centrar el texto por dentro
         }}>
-          ALTA RELOJERÍA <span style={{ margin: "0 15px", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
+          ALTA RELOJERÍA <span style={{ margin: "0 clamp(5px, 2vw, 15px)", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
         </p>
 
         <div style={{ 
