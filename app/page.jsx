@@ -39,8 +39,7 @@ export default function Home() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        textAlign: "center", // <--- AQUÍ FALTABA LA COMA
-        /* OPCIÓN DE IMAGEN ACTUALIZADA (Maquinaria técnica nítida) */
+        textAlign: "center",
         backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1600')`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -49,13 +48,15 @@ export default function Home() {
         padding: "0 20px",
         overflow: "hidden"
       }}>
-        {/* Línea decorativa superior estilo minimalista */}
-        <div style={{ width: "1px", height: "60px", background: "rgba(255,255,255,0.3)", marginBottom: "30px" }}></div>
+        
+        {/* 1. Línea vertical superior - Ahora con margen automático para centrarse */}
+        <div style={{ width: "1px", height: "50px", background: "rgba(255,255,255,0.3)", margin: "0 auto 20px auto" }}></div>
 
+        {/* 2. Título Principal */}
         <h1 style={{ 
           letterSpacing: "20px", 
           fontWeight: 200, 
-          margin: 0, 
+          margin: "0 0 15px 0", 
           fontSize: "clamp(30px, 5vw, 60px)", 
           textTransform: "uppercase",
           textShadow: "0 10px 30px rgba(0,0,0,0.5)"
@@ -63,39 +64,33 @@ export default function Home() {
           APEX TIME
         </h1>
 
+        {/* 3. Línea horizontal divisoria - Con margen automático para PC y celular */}
         <div style={{
           height: "1px",
-          width: "100px",
+          width: "120px",
           background: "#fff",
-          margin: "25px 0",
+          margin: "0 auto 20px auto",
           opacity: 0.5
         }}></div>
 
+        {/* 4. Subtítulo Ajustado */}
         <p style={{ 
           color: "#eee", 
-          letterSpacing: "clamp(3px, 1.5vw, 8px)", // Ajuste automático del espacio entre letras
-          fontSize: "clamp(9px, 2vw, 11px)",       // Ajuste automático del tamaño de letra
+          letterSpacing: "clamp(3px, 1.5vw, 8px)", 
+          fontSize: "clamp(9px, 2vw, 11px)",       
           fontWeight: 400, 
           textTransform: "uppercase",
-          maxWidth: "90%",                         // Usa el 90% de la pantalla del celular para no tocar los bordes
+          maxWidth: "90%",                         
           lineHeight: "2",
-          margin: "0",                        // Fuerza a centrar el bloque completo
-          textAlign: "center",                    // Fuerza a centrar el texto por dentro
+          margin: "0 auto",                        
+          textAlign: "center"                      
         }}>
           ALTA RELOJERÍA <span style={{ margin: "0 clamp(5px, 2vw, 15px)", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
         </p>
 
-        <div style={{ 
-          position: "absolute", 
-          bottom: "30px", 
-          right: "30px", 
-          fontSize: "9px", 
-          letterSpacing: "3px", 
-          opacity: 0.4,
-          textTransform: "uppercase"
-        }}>
-          EST. 2026
-        </div>
+        {/* 5. Línea vertical inferior - Perfectamente alineada al eje */}
+        <div style={{ width: "1px", height: "50px", background: "rgba(255,255,255,0.3)", margin: "20px auto 0 auto" }}></div>
+
       </section>
 {/* --- NAVEGACIÓN --- */}
       <nav style={{ 
