@@ -21,7 +21,6 @@ export const listaProductos = [
     price: 1850000,
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779292975/nano-banana-2_hazlo_ver_c%C3%B3mo_presentaci%C3%B3n_de_lujo._fondo_negro_premium_anuncio.-0_2_lafh7h.jpg",
-      "https://res.cloudinary.com/debewjkqh/image/upload/v1779293223/20260418_131238_jlyx6m.jpg"
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779293165/20260418_131228_ntkclr.jpg"
     ],
     description: "Movimiento automático, bisel cerámico, resistant al agua.",
