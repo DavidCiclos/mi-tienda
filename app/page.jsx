@@ -241,7 +241,7 @@ export default function Home() {
           </div>
         </div>
         
-        {/* INFORMACIÓN */}
+       {/* INFORMACIÓN */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
             fontSize: "9px", 
@@ -257,11 +257,25 @@ export default function Home() {
             fontWeight: "200", 
             fontSize: "15px", 
             color: isSuizo ? "#ccc" : "#333", 
-            margin: "0",
+            margin: "0", 
             letterSpacing: "2px" 
           }}>
             {p.name.toUpperCase()}
           </h3>
+
+          {/* Muestra la descripción propia de cada reloj */}
+          {p.description && (
+            <p style={{ 
+              fontSize: "12px", 
+              color: isSuizo ? "#aaa" : "#666", 
+              margin: "10px 0 0 0", 
+              fontWeight: "300",
+              lineHeight: "1.4",
+              padding: "0 10px"
+            }}>
+              {p.description}
+            </p>
+          )}
 
           {p.price > 0 && (
             <p style={{ 
@@ -276,13 +290,11 @@ export default function Home() {
                 maximumFractionDigits: 0 
               }).format(p.price)} COP
             </p>
-          )}
+         )}
         </div>
-      </div>
-    ); // <-- Aquí faltaba cerrar correctamente
-  })}
-</main>
-            
+      );
+    })}
+</main>   
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
@@ -323,12 +335,19 @@ export default function Home() {
                 </p>
               )}
 
-              <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
-                <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
-              </div>
+             {/* Bloque Dinámico: Lee las características únicas de cada reloj de productos.js */}
+              {selectedProduct.features && selectedProduct.features.length > 0 && (
+                <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
+                  <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px", color: "#333" }}>
+                    CARACTERÍSTICAS:
+                  </p>
+                  {selectedProduct.features.map((feature, idx) => (
+                    <p key={idx} style={{ fontSize: "13px", margin: "6px 0", textTransform: "uppercase", fontWeight: "500", color: "#555" }}>
+                      {feature}
+                    </p>
+                  ))}
+                </div>
+              )}
               {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
 <div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
   <div 
