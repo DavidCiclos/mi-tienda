@@ -387,7 +387,7 @@ export default function Home() {
         • 🔍 <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
       </p>
 
-      <p>
+      <p style={{ marginBottom: "5px" }}>
         • 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.
       </p>
     </div>
