@@ -274,7 +274,7 @@ export default function Home() {
                 style: 'currency', 
                 currency: 'COP', 
                 maximumFractionDigits: 0 
-              }).format(p.price)}
+              }).format(p.price)} COP
             </p>
           )}
         </div>
@@ -319,7 +319,7 @@ export default function Home() {
                     style: 'currency', 
                     currency: 'COP', 
                     maximumFractionDigits: 0 
-                  }).format(selectedProduct.price)}
+                  }).format(selectedProduct.price)} COP 
                 </p>
               )}
 
