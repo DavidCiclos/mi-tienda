@@ -241,7 +241,7 @@ export default function Home() {
           </div>
         </div>
         
-       {/* INFORMACIÓN */}
+      {/* INFORMACIÓN */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
             fontSize: "9px", 
@@ -290,11 +290,11 @@ export default function Home() {
                 maximumFractionDigits: 0 
               }).format(p.price)} COP
             </p>
-         )}
+          )}
         </div>
       );
-    })
-</main>   
+    })}
+</main> 
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
