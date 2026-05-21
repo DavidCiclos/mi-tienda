@@ -293,7 +293,7 @@ export default function Home() {
          )}
         </div>
       );
-    })}
+    })
 </main>   
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
