@@ -40,7 +40,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1600')`, 
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://res.cloudinary.com/debewjkqh/image/upload/v1779328709/Gemini_Generated_Image_q3lz1gq3lz1gq3lz_2_asge6w.jpg')`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed", 
