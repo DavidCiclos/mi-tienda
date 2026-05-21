@@ -303,10 +303,11 @@ export default function Home() {
             <button onClick={() => { setSelectedProduct(null); setCurrentImage(null); }} 
               style={{ position: "absolute", top: "15px", right: "15px", background: "#eee", border: "none", borderRadius: "50%", width: "30px", height: "30px", cursor: "pointer", zIndex: 10 }}>✕</button>
 
-            {/* GALERÍA */}
+           {/* GALERÍA */}
             <div style={{ width: "100%", marginTop: "10px" }}>
               <div style={{ overflow: "hidden", borderRadius: "12px", cursor: "zoom-in", background: "#f9f9f9", marginBottom: "15px" }}>
                 <img src={currentImage || selectedProduct.images[0]} 
+                  alt={selectedProduct.name}
                   style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.3s ease" }} 
                   onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.5)"}
                   onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"} />
@@ -314,6 +315,7 @@ export default function Home() {
               <div style={{ display: "flex", gap: "10px", marginBottom: "20px", overflowX: "auto" }}>
                 {selectedProduct.images.map((img, idx) => (
                   <img key={idx} src={img} onClick={() => setCurrentImage(img)}
+                    alt="mini"
                     style={{ width: "70px", height: "70px", objectFit: "cover", borderRadius: "8px", cursor: "pointer", flexShrink: 0, border: (currentImage === img || (!currentImage && idx === 0)) ? "2px solid #D4AF37" : "2px solid transparent" }} />
                 ))}
               </div>
@@ -396,14 +398,8 @@ export default function Home() {
   const precioTexto = selectedProduct.price > 0 
   ? new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(selectedProduct.price)
   : "Precio a convenir";
-  const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
-
-⌚ *Modelo:* ${selectedProduct.name}
-🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
-💰 *Precio:* ${precioTexto}
-🛡️ *Garantía:* ${selectedProduct.warranty}
-
-*He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
+  
+  const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:\n\n⌚ *Modelo:* ${selectedProduct.name}\n🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}\n💰 *Precio:* ${precioTexto}\n🛡️ *Garantía:* ${selectedProduct.warranty}\n\n*He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
 
   window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
 }}
