@@ -9,24 +9,50 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(null);
   const [showTerms, setShowTerms] = useState(false);
 
-  const products = listaProductos;
+ const products = listaProductos;
 
+  // 1. Detectar si el filtro actual viene del selector de marcas originales o de las pestañas normales
+  const currentLine = useMemo(() => {
+    if (categoryFilter.includes("-ORIGINAL")) {
+      return "ORIGINALES";
+    }
+    return categoryFilter;
+  }, [categoryFilter]);
+
+  // 2. Mapa de marcas actualizado: Agregamos HUBLOT a SUIZOS-S para que aparezca el botón en la barra horizontal
   const availableBrands = useMemo(() => {
     const map = {
-      "SUIZOS-S": ["ROLEX"],
+      "SUIZOS-S": ["ROLEX", "HUBLOT"], // <--- ¡AQUÍ YA QUEDÓ HUBLOT AGREGADO EN SUIZOS!
       "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"],
       "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"]
     };
+
+    // Si viene del selector de originales (ej: SKMEI-ORIGINAL), la única marca disponible en la barra será esa misma
+    if (categoryFilter.includes("-ORIGINAL")) {
+      const marcaOriginal = categoryFilter.split("-")[0];
+      return ["TODAS", marcaOriginal];
+    }
+
     return ["TODAS", ...(map[categoryFilter] || [])];
   }, [categoryFilter]);
 
+  // 3. Filtro corregido para que renderice correctamente los productos en pantalla
   const filteredProducts = useMemo(() => {
-    return products.filter(
-      p => p.line === categoryFilter &&
-      (brandFilter === "TODAS" || p.brand === brandFilter)
-    );
-  }, [categoryFilter, brandFilter, products]);
-
+    return products.filter(p => {
+      // Validamos si coincide con la línea (SUIZOS-S, PREMIUM 1.1, AAA u ORIGINALES)
+      const matchLine = p.line === currentLine;
+      
+      // Si estamos buscando un original específico desde el menú desplegable
+      if (categoryFilter.includes("-ORIGINAL")) {
+        const marcaEspecifica = categoryFilter.split("-")[0];
+        return matchLine && p.brand === marcaEspecifica;
+      }
+      
+      // Filtro normal para las pestañas superiores
+      const matchBrand = brandFilter === "TODAS" || p.brand === brandFilter;
+      return matchLine && matchBrand;
+    });
+  }, [categoryFilter, currentLine, brandFilter, products]);
   return (
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
