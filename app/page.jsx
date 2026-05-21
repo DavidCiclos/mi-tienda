@@ -241,7 +241,7 @@ export default function Home() {
           </div>
         </div>
         
-      {/* INFORMACIÓN */}
+        {/* INFORMACIÓN */}
         <div style={{ padding: "20px 10px", textAlign: "center" }}>
           <p style={{ 
             fontSize: "9px", 
@@ -257,25 +257,11 @@ export default function Home() {
             fontWeight: "200", 
             fontSize: "15px", 
             color: isSuizo ? "#ccc" : "#333", 
-            margin: "0", 
+            margin: "0",
             letterSpacing: "2px" 
           }}>
             {p.name.toUpperCase()}
           </h3>
-
-          {/* Muestra la descripción propia de cada reloj */}
-          {p.description && (
-            <p style={{ 
-              fontSize: "12px", 
-              color: isSuizo ? "#aaa" : "#666", 
-              margin: "10px 0 0 0", 
-              fontWeight: "300",
-              lineHeight: "1.4",
-              padding: "0 10px"
-            }}>
-              {p.description}
-            </p>
-          )}
 
           {p.price > 0 && (
             <p style={{ 
@@ -292,9 +278,11 @@ export default function Home() {
             </p>
           )}
         </div>
-      );
-    })}
-</main> 
+      </div>
+    ); // <-- Aquí faltaba cerrar correctamente
+  })}
+</main>
+            
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
@@ -303,11 +291,10 @@ export default function Home() {
             <button onClick={() => { setSelectedProduct(null); setCurrentImage(null); }} 
               style={{ position: "absolute", top: "15px", right: "15px", background: "#eee", border: "none", borderRadius: "50%", width: "30px", height: "30px", cursor: "pointer", zIndex: 10 }}>✕</button>
 
-           {/* GALERÍA */}
+            {/* GALERÍA */}
             <div style={{ width: "100%", marginTop: "10px" }}>
               <div style={{ overflow: "hidden", borderRadius: "12px", cursor: "zoom-in", background: "#f9f9f9", marginBottom: "15px" }}>
                 <img src={currentImage || selectedProduct.images[0]} 
-                  alt={selectedProduct.name}
                   style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.3s ease" }} 
                   onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.5)"}
                   onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"} />
@@ -315,7 +302,6 @@ export default function Home() {
               <div style={{ display: "flex", gap: "10px", marginBottom: "20px", overflowX: "auto" }}>
                 {selectedProduct.images.map((img, idx) => (
                   <img key={idx} src={img} onClick={() => setCurrentImage(img)}
-                    alt="mini"
                     style={{ width: "70px", height: "70px", objectFit: "cover", borderRadius: "8px", cursor: "pointer", flexShrink: 0, border: (currentImage === img || (!currentImage && idx === 0)) ? "2px solid #D4AF37" : "2px solid transparent" }} />
                 ))}
               </div>
@@ -337,19 +323,12 @@ export default function Home() {
                 </p>
               )}
 
-             {/* Bloque Dinámico: Lee las características únicas de cada reloj de productos.js */}
-              {selectedProduct.features && selectedProduct.features.length > 0 && (
-                <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
-                  <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px", color: "#333" }}>
-                    CARACTERÍSTICAS:
-                  </p>
-                  {selectedProduct.features.map((feature, idx) => (
-                    <p key={idx} style={{ fontSize: "13px", margin: "6px 0", textTransform: "uppercase", fontWeight: "500", color: "#555" }}>
-                      {feature}
-                    </p>
-                  ))}
-                </div>
-              )}
+              <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
+                <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
+                <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
+                <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
+                <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
+              </div>
               {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
 <div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
   <div 
@@ -387,7 +366,7 @@ export default function Home() {
         • 🔍 <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
       </p>
 
-      <p style={{ marginBottom: "5px" }}>
+      <p>
         • 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.
       </p>
     </div>
@@ -398,8 +377,14 @@ export default function Home() {
   const precioTexto = selectedProduct.price > 0 
   ? new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(selectedProduct.price)
   : "Precio a convenir";
-  
-  const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:\n\n⌚ *Modelo:* ${selectedProduct.name}\n🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}\n💰 *Precio:* ${precioTexto}\n🛡️ *Garantía:* ${selectedProduct.warranty}\n\n*He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
+  const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
+
+⌚ *Modelo:* ${selectedProduct.name}
+🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
+💰 *Precio:* ${precioTexto}
+🛡️ *Garantía:* ${selectedProduct.warranty}
+
+*He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
 
   window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
 }}
