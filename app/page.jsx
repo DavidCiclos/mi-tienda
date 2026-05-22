@@ -243,7 +243,7 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* INFORMACIÓN */}
+             {/* INFORMACIÓN DE LA TARJETA PRINCIPAL (MINIMALISTA) */}
               <div style={{ padding: "20px 10px", textAlign: "center" }}>
                 <p style={{ 
                   fontSize: "9px", 
@@ -257,27 +257,13 @@ export default function Home() {
                 </p>
                 <h3 style={{ 
                   fontWeight: "200", 
-                  fontSize: "15px", 
+                  fontSize: "14px", 
                   color: isSuizo ? "#ccc" : "#333", 
                   margin: "0",
                   letterSpacing: "2px" 
                 }}>
                   {p.name.toUpperCase()}
                 </h3>
-
-                {/* Características/Descripción en la tarjeta */}
-                {p.description && (
-                  <p style={{ 
-                    fontSize: "12px", 
-                    color: isSuizo ? "#aaa" : "#666", 
-                    margin: "10px 0 0 0", 
-                    fontWeight: "300",
-                    lineHeight: "1.4",
-                    padding: "0 10px"
-                  }}>
-                    {p.description}
-                  </p>
-                )}
 
                 {p.price > 0 && (
                   <p style={{ 
@@ -294,11 +280,6 @@ export default function Home() {
                   </p>
                 )}
               </div>
-            </div>
-          ); 
-        })}
-      </main>
-              
       {/* --- MODAL DE PRODUCTO (CORREGIDO: Ubicado fuera del ciclo .map) --- */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
