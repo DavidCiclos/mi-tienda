@@ -9,7 +9,7 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(null);
   const [showTerms, setShowTerms] = useState(false);
 
- const products = listaProductos;
+  const products = listaProductos;
 
   // 1. Detectar si el filtro actual viene del selector de marcas originales o de las pestañas normales
   const currentLine = useMemo(() => {
@@ -22,7 +22,7 @@ export default function Home() {
   // 2. Mapa de marcas actualizado: Agregamos HUBLOT a SUIZOS-S para que aparezca el botón en la barra horizontal
   const availableBrands = useMemo(() => {
     const map = {
-      "SUIZOS-S": ["ROLEX", "HUBLOT"], // <--- ¡AQUÍ YA QUEDÓ HUBLOT AGREGADO EN SUIZOS!
+      "SUIZOS-S": ["ROLEX", "HUBLOT"], 
       "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"],
       "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"]
     };
@@ -53,11 +53,12 @@ export default function Home() {
       return matchLine && matchBrand;
     });
   }, [categoryFilter, currentLine, brandFilter, products]);
+
   return (
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
     <div style={{ background: "#fff", color: "#111", fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100vh" }}>
       
-{/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
+      {/* --- HEADER (HERO SECTION CON IMAGEN DE FONDO) --- */}
       <section style={{ 
         position: "relative",
         height: "60vh", 
@@ -106,10 +107,10 @@ export default function Home() {
           fontSize: "clamp(9px, 2vw, 11px)",       
           fontWeight: 400, 
           textTransform: "uppercase",
-          maxWidth: "90%",                         
+          maxWidth: "90%",                                 
           lineHeight: "2",
-          margin: "0 auto",                        
-          textAlign: "center"                      
+          margin: "0 auto",                                
+          textAlign: "center"                              
         }}>
           ALTA RELOJERÍA <span style={{ margin: "0 clamp(5px, 2vw, 15px)", opacity: 0.3 }}>|</span> CURADURÍA SELECTA
         </p>
@@ -118,7 +119,8 @@ export default function Home() {
         <div style={{ width: "1px", height: "50px", background: "rgba(255,255,255,0.3)", margin: "20px auto 0 auto" }}></div>
 
       </section>
-{/* --- NAVEGACIÓN --- */}
+
+      {/* --- NAVEGACIÓN --- */}
       <nav style={{ 
         position: "sticky", top: 0, background: "rgba(255,255,255,0.98)", zIndex: 100, 
         boxShadow: "0 10px 40px -15px rgba(0,0,0,0.05)", borderBottom: "1px solid #f0f0f0" 
@@ -159,7 +161,6 @@ export default function Home() {
             justifyContent: "flex-start", 
             WebkitOverflowScrolling: "touch" 
           }}>
-            <style>{`div::-webkit-scrollbar { display: none; }`}</style>
             {availableBrands.map(brand => (
               <span key={brand} onClick={() => setBrandFilter(brand)}
                 style={{ 
@@ -176,124 +177,129 @@ export default function Home() {
           </div>
         </div> 
       </nav>
-{/* --- GRID DE PRODUCTOS: DISEÑO FINAL PULIDO --- */}
-<main style={{ 
-  maxWidth: "1300px", 
-  margin: "40px auto", 
-  padding: "0 20px", 
-  display: "grid", 
-  gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
-  gap: "20px" 
-}}>
-  {filteredProducts.map(p => {
-    const isSuizo = categoryFilter === "SUIZOS-S";
-    
-    return (
-      <div key={p.id}
-        onClick={() => setSelectedProduct(p)}
-        style={{
-          cursor: "pointer",
-          background: isSuizo ? "#0a0a0a" : "#fff",
-          border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
-          position: "relative",
-          overflow: "hidden",
-          borderRadius: "8px",
-          transition: "all 0.4s ease",
-          width: "100%",
-          maxWidth: "400px",
-          margin: "0 auto 40px auto"
-        }}
-      >
-        {/* CONTENEDOR DE IMAGEN */}
-        <div style={{ 
-          position: "relative",
-          aspectRatio: "1/1",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: isSuizo ? "#000" : "#f0f0f0" 
-        }}>
-          <img 
-            src={p.images[0]} 
-            alt="Reflejo"
-            style={{ 
-              position: "absolute",
-              width: "120%", 
-              height: "120%", 
-              objectFit: "cover",
-              filter: "blur(25px) opacity(0.2)", 
-              zIndex: 1
-            }} 
-          />
-          <div style={{
-            position: "relative",
-            width: "95%", 
-            height: "95%",
-            zIndex: 2,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-            border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
-            overflow: "hidden",
-            borderRadius: "0px", 
-            background: "#fff"
-          }}>
-            <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          </div>
-        </div>
-        
-        {/* INFORMACIÓN */}
-        <div style={{ padding: "20px 10px", textAlign: "center" }}>
-          <p style={{ 
-            fontSize: "9px", 
-            color: isSuizo ? "#D4AF37" : "#999", 
-            letterSpacing: "4px", 
-            margin: "0 0 8px 0",
-            textTransform: "uppercase",
-            fontWeight: "400"
-          }}>
-            {p.brand}
-          </p>
-          <h3 style={{ 
-            fontWeight: "200", 
-            fontSize: "15px", 
-            color: isSuizo ? "#ccc" : "#333", 
-            margin: "0",
-            letterSpacing: "2px" 
-          }}>
-            {p.name.toUpperCase()}
-          </h3>
 
-          {/* Características/Descripción en la tarjeta */}
-          {p.description && (
-            <p style={{ 
-              fontSize: "12px", 
-              color: isSuizo ? "#aaa" : "#666", 
-              margin: "10px 0 0 0", 
-              fontWeight: "300",
-              lineHeight: "1.4",
-              padding: "0 10px"
-            }}>
-              {p.description}
-            </p>
-          )}
+      {/* --- GRID DE PRODUCTOS: DISEÑO FINAL PULIDO --- */}
+      <main style={{ 
+        maxWidth: "1300px", 
+        margin: "40px auto", 
+        padding: "0 20px", 
+        display: "grid", 
+        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
+        gap: "20px" 
+      }}>
+        {filteredProducts.map(p => {
+          const isSuizo = categoryFilter === "SUIZOS-S";
+          
+          return (
+            <div key={p.id}
+              onClick={() => setSelectedProduct(p)}
+              style={{
+                cursor: "pointer",
+                background: isSuizo ? "#0a0a0a" : "#fff",
+                border: isSuizo ? "1px solid #D4AF37" : "1px solid #eee",
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "8px",
+                transition: "all 0.4s ease",
+                width: "100%",
+                maxWidth: "400px",
+                margin: "0 auto 40px auto"
+              }}
+            >
+              {/* CONTENEDOR DE IMAGEN */}
+              <div style={{ 
+                position: "relative",
+                aspectRatio: "1/1",
+                overflow: "hidden",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: isSuizo ? "#000" : "#f0f0f0" 
+              }}>
+                <img 
+                  src={p.images[0]} 
+                  alt="Reflejo"
+                  style={{ 
+                    position: "absolute",
+                    width: "120%", 
+                    height: "120%", 
+                    objectFit: "cover",
+                    filter: "blur(25px) opacity(0.2)", 
+                    zIndex: 1
+                  }} 
+                />
+                <div style={{
+                  position: "relative",
+                  width: "95%", 
+                  height: "95%",
+                  zIndex: 2,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                  border: isSuizo ? "1px solid rgba(212, 175, 55, 0.6)" : "1px solid #fff",
+                  overflow: "hidden",
+                  borderRadius: "0px", 
+                  background: "#fff"
+                }}>
+                  <img src={p.images[0]} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </div>
+              </div>
+              
+              {/* INFORMACIÓN */}
+              <div style={{ padding: "20px 10px", textAlign: "center" }}>
+                <p style={{ 
+                  fontSize: "9px", 
+                  color: isSuizo ? "#D4AF37" : "#999", 
+                  letterSpacing: "4px", 
+                  margin: "0 0 8px 0",
+                  textTransform: "uppercase",
+                  fontWeight: "400"
+                }}>
+                  {p.brand}
+                </p>
+                <h3 style={{ 
+                  fontWeight: "200", 
+                  fontSize: "15px", 
+                  color: isSuizo ? "#ccc" : "#333", 
+                  margin: "0",
+                  letterSpacing: "2px" 
+                }}>
+                  {p.name.toUpperCase()}
+                </h3>
 
-          {p.price > 0 && (
-            <p style={{ 
-              fontWeight: "600", 
-              fontSize: "16px", 
-              color: isSuizo ? "#D4AF37" : "#000", 
-              margin: "12px 0 0 0" 
-            }}>
-              {new Intl.NumberFormat('es-CO', { 
-                style: 'currency', 
-                currency: 'COP', 
-                maximumFractionDigits: 0 
-              }).format(p.price)} COP
-            </p>
-          )}
-        </div>
-            
-      {/* MODAL DE PRODUCTO */}
+                {/* Características/Descripción en la tarjeta */}
+                {p.description && (
+                  <p style={{ 
+                    fontSize: "12px", 
+                    color: isSuizo ? "#aaa" : "#666", 
+                    margin: "10px 0 0 0", 
+                    fontWeight: "300",
+                    lineHeight: "1.4",
+                    padding: "0 10px"
+                  }}>
+                    {p.description}
+                  </p>
+                )}
+
+                {p.price > 0 && (
+                  <p style={{ 
+                    fontWeight: "600", 
+                    fontSize: "16px", 
+                    color: isSuizo ? "#D4AF37" : "#000", 
+                    margin: "12px 0 0 0" 
+                  }}>
+                    {new Intl.NumberFormat('es-CO', { 
+                      style: 'currency', 
+                      currency: 'COP', 
+                      maximumFractionDigits: 0 
+                    }).format(p.price)} COP
+                  </p>
+                )}
+              </div>
+            </div>
+          ); 
+        })}
+      </main>
+              
+      {/* --- MODAL DE PRODUCTO (CORREGIDO: Ubicado fuera del ciclo .map) --- */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
           <div style={{ background: "#fff", maxWidth: "450px", width: "100%", borderRadius: "20px", padding: "25px", position: "relative", maxHeight: "90vh", overflowY: "auto" }}>
@@ -317,12 +323,11 @@ export default function Home() {
               </div>
             </div>
 
-           {/* INFO */}
+            {/* INFO */}
             <div style={{ marginTop: "10px" }}>
               <span style={{ background: "#ffebee", color: "#d32f2f", padding: "4px 8px", borderRadius: "4px", fontSize: "11px", fontWeight: "bold" }}>🔴 CASI AGOTADO</span>
               <h2 style={{ marginTop: "15px", fontWeight: "600", fontSize: "22px" }}>{selectedProduct.name}</h2>
               
-              {/* ESTA ES LA LÍNEA QUE REEMPLAZAS POR EL BLOQUE CONDICIONAL */}
               {selectedProduct.price > 0 && (
                 <p style={{ fontSize: "24px", fontWeight: "700", margin: "10px 0" }}>
                   {new Intl.NumberFormat('es-CO', { 
@@ -333,7 +338,7 @@ export default function Home() {
                 </p>
               )}
 
-             {/* CARACTERÍSTICAS DINÁMICAS */}
+              {/* CARACTERÍSTICAS DINÁMICAS */}
               <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
                 <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
                 {selectedProduct.specs && selectedProduct.specs.length > 0 ? (
@@ -350,55 +355,56 @@ export default function Home() {
                   </>
                 )}
               </div>
+
               {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
-<div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
-  <div 
-    onClick={() => setShowTerms(!showTerms)} 
-    style={{ 
-      cursor: "pointer", 
-      display: "flex", 
-      justifyContent: "space-between", 
-      alignItems: "center",
-      padding: "12px 0"
-    }}
-  >
-    <span style={{ fontSize: "12px", fontWeight: "700", color: "#333" }}>
-      📄 TÉRMINOS, GARANTÍA Y DEVOLUCIONES
-    </span>
-    <span style={{ fontSize: "12px" }}>{showTerms ? "▲" : "▼"}</span>
-  </div>
+              <div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
+                <div 
+                  onClick={() => setShowTerms(!showTerms)} 
+                  style={{ 
+                    cursor: "pointer", 
+                    display: "flex", 
+                    justifyContent: "space-between", 
+                    alignItems: "center",
+                    padding: "12px 0"
+                  }}
+                >
+                  <span style={{ fontSize: "12px", fontWeight: "700", color: "#333" }}>
+                    📄 TÉRMINOS, GARANTÍA Y DEVOLUCIONES
+                  </span>
+                  <span style={{ fontSize: "12px" }}>{showTerms ? "▲" : "▼"}</span>
+                </div>
 
-  {showTerms && (
-    <div style={{ 
-      fontSize: "11px", 
-      color: "#666", 
-      lineHeight: "1.4", 
-      padding: "12px", 
-      background: "#f9f9f9", 
-      borderRadius: "10px",
-      marginBottom: "10px"
-    }}>
-      {/* 1. LÍNEA DE GARANTÍA DINÁMICA (SOLO UNA) */}
-      <p style={{ marginBottom: "5px" }}>
-        • ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty} por maquinaria.
-      </p>
+                {showTerms && (
+                  <div style={{ 
+                    fontSize: "11px", 
+                    color: "#666", 
+                    lineHeight: "1.4", 
+                    padding: "12px", 
+                    background: "#f9f9f9", 
+                    borderRadius: "10px",
+                    marginBottom: "10px"
+                  }}>
+                    {/* 1. LÍNEA DE GARANTÍA DINÁMICA (SOLO UNA) */}
+                    <p style={{ marginBottom: "5px" }}>
+                      • ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty} por maquinaria.
+                    </p>
 
-      <p style={{ marginBottom: "5px" }}>
-        • 🔍 <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
-      </p>
+                    <p style={{ marginBottom: "5px" }}>
+                      • 🔍 <strong>Peritaje:</strong> No se aceptan cambios de satisfaccion, si la pieza tiene rayones o marcas de uso. 
+                    </p>
 
-      <p>
-        • 📸 <strong>Seguridad:</strong> Grabamos video del estado de cada reloj antes del envío.
-      </p>
-    </div>
-  )}
-</div>
+                    <p>
+                      • 📸 <strong>Security:</strong> Grabamos video del estado de cada reloj antes del envío.
+                    </p>
+                  </div>
+                )}
+              </div>
 
-<button onClick={() => {
-  const precioTexto = selectedProduct.price > 0 
-  ? new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(selectedProduct.price)
-  : "Precio a convenir";
-  const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
+              <button onClick={() => {
+                const precioTexto = selectedProduct.price > 0 
+                ? new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(selectedProduct.price)
+                : "Precio a convenir";
+                const mensaje = `Hola APEX TIME, deseo adquirir esta pieza:
 
 ⌚ *Modelo:* ${selectedProduct.name}
 🏷️ *Ref:* ${selectedProduct.brand}-${selectedProduct.id}
@@ -407,21 +413,21 @@ export default function Home() {
 
 *He leído y acepto los términos de garantía y peritaje técnico.* ¿Sigue disponible?`;
 
-  window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
-}}
-style={{ 
-  width: "100%", 
-  padding: "16px", 
-  background: "#25D366", 
-  color: "#fff", 
-  border: "none", 
-  borderRadius: "12px", 
-  fontWeight: "700", 
-  cursor: "pointer", 
-  marginTop: "10px" 
-}}>
-  SOLICITAR POR WHATSAPP 📱
-</button>
+                window.open(`https://wa.me/573126934247?text=${encodeURIComponent(mensaje)}`, "_blank");
+              }}
+              style={{ 
+                width: "100%", 
+                padding: "16px", 
+                background: "#25D366", 
+                color: "#fff", 
+                border: "none", 
+                borderRadius: "12px", 
+                fontWeight: "700", 
+                cursor: "pointer", 
+                marginTop: "10px" 
+              }}>
+                SOLICITAR POR WHATSAPP 📱
+              </button>
 
             </div>
           </div>
