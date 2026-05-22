@@ -280,6 +280,10 @@ export default function Home() {
                   </p>
                 )}
               </div>
+             ); // <-- ESTE CIERRA CADA TARJETA INDIVIDUAL
+          })}  // <-- ESTE CIERRA EL MAPEO DE PRODUCTOS
+        </main>
+               
       {/* --- MODAL DE PRODUCTO (CORREGIDO: Ubicado fuera del ciclo .map) --- */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
