@@ -243,7 +243,7 @@ export default function Home() {
                 </div>
               </div>
               
-             {/* INFORMACIÓN DE LA TARJETA PRINCIPAL (MINIMALISTA) */}
+            {/* INFORMACIÓN DE LA TARJETA PRINCIPAL (MINIMALISTA) */}
               <div style={{ padding: "20px 10px", textAlign: "center" }}>
                 <p style={{ 
                   fontSize: "9px", 
@@ -280,10 +280,10 @@ export default function Home() {
                   </p>
                 )}
               </div>
-             ); // <-- ESTE CIERRA CADA TARJETA INDIVIDUAL
-          })}  // <-- ESTE CIERRA EL MAPEO DE PRODUCTOS
-        </main>
-               
+            </div>
+          ); 
+        })}
+      </main>
       {/* --- MODAL DE PRODUCTO (CORREGIDO: Ubicado fuera del ciclo .map) --- */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
