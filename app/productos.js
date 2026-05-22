@@ -1,7 +1,7 @@
 // productos.js - Catálogo de APEX TIME
 export const listaProductos = [
   {
-    id: 1,
+    id: "-1.1-E-C",
     name: "Daytona S-Clon Gold",
     brand: "ROLEX",
     line: "SUIZOS-S",
@@ -14,7 +14,7 @@ export const listaProductos = [
     warranty: "2 años"
   },
   {
-    id: 2,
+    id: "-1.2-E-C",
     name: "Datejust",
     brand: "ROLEX",
     line: "SUIZOS-S",
@@ -28,7 +28,7 @@ export const listaProductos = [
     warranty: "1 año"
   },
   {
-    id: 3,
+    id: "-2.1",
     name: "Skmei supervivencia 1155",
     brand: "SKMEI",
     line: "ORIGINALES",
@@ -42,7 +42,7 @@ export const listaProductos = [
     warranty: "3 meces"
   },
   {
-    id: 4,
+    id: "-2.2",
     name: "Sanda 6162",
     brand: "SANDA",
     line: "ORIGINALES",
@@ -58,7 +58,7 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y funcionamiento"
   },
   {
-    id: 5,
+    id: "-2.3",
     name: "Sanda 6008",
     brand: "SANDA",
     line: "ORIGINALES",
@@ -72,7 +72,7 @@ export const listaProductos = [
     warranty: "3 meses"
   },
   {
-    id: 6,
+    id: "-1.3-E-C",
     name: "Big Bang Chronograph",
     brand: "HUBLOT",
     line: "SUIZOS-S",
