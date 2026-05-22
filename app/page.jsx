@@ -178,7 +178,7 @@ export default function Home() {
         </div> 
       </nav>
 
-      {/* --- GRID DE PRODUCTOS: DISEÑO FINAL PULIDO --- */}
+      {/* --- GRID DE PRODUCTOS --- */}
       <main style={{ 
         maxWidth: "1300px", 
         margin: "40px auto", 
@@ -243,7 +243,7 @@ export default function Home() {
                 </div>
               </div>
               
-            {/* INFORMACIÓN DE LA TARJETA PRINCIPAL (MINIMALISTA) */}
+              {/* INFORMACIÓN DE LA TARJETA PRINCIPAL (MINIMALISTA) */}
               <div style={{ padding: "20px 10px", textAlign: "center" }}>
                 <p style={{ 
                   fontSize: "9px", 
@@ -281,10 +281,11 @@ export default function Home() {
                 )}
               </div>
             </div>
-          ); 
+          );
         })}
       </main>
-      {/* --- MODAL DE PRODUCTO (CORREGIDO: Ubicado fuera del ciclo .map) --- */}
+               
+      {/* --- MODAL DE PRODUCTO (AQUÍ ESTÁ LA CORRECCIÓN CLAVE) --- */}
       {selectedProduct && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }}>
           <div style={{ background: "#fff", maxWidth: "450px", width: "100%", borderRadius: "20px", padding: "25px", position: "relative", maxHeight: "90vh", overflowY: "auto" }}>
@@ -323,22 +324,39 @@ export default function Home() {
                 </p>
               )}
 
-              {/* CARACTERÍSTICAS DINÁMICAS */}
-              <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
-                <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
-                {selectedProduct.specs && selectedProduct.specs.length > 0 ? (
-                  selectedProduct.specs.map((spec, index) => (
-                    <p key={index} style={{ fontSize: "14px", margin: "5px 0", textTransform: "uppercase" }}>
-                      ✨ {spec}
+              {/* CARACTERÍSTICAS DINÁMICAS REUBICADAS (REEMPLAZAN TOTALMENTE LO QUEMADO) */}
+              <div style={{ margin: "25px 0", padding: "20px 15px", background: "#fcfcfc", borderRadius: "12px", border: "1px solid #f0f0f0" }}>
+                <p style={{ 
+                  fontWeight: "700", 
+                  fontSize: "11px", 
+                  marginBottom: "12px", 
+                  color: "#888", 
+                  letterSpacing: "1px",
+                  textTransform: "uppercase" 
+                }}>
+                  Especificaciones técnicas:
+                </p>
+                
+                <div style={{ textAlign: "left" }}>
+                  {selectedProduct.description ? (
+                    <div style={{ 
+                      display: "flex", 
+                      alignItems: "flex-start", 
+                      gap: "10px", 
+                      fontSize: "13px",
+                      lineHeight: "1.6",
+                      color: "#444",
+                      fontWeight: "400"
+                    }}>
+                      <span style={{ color: "#D4AF37", fontSize: "10px", marginTop: "2px" }}>●</span>
+                      <span>{selectedProduct.description}</span>
+                    </div>
+                  ) : (
+                    <p style={{ fontSize: "13px", color: "#999", fontStyle: "italic" }}>
+                      Consulte disponibilidad de detalles y variaciones con nuestro asesor.
                     </p>
-                  ))
-                ) : (
-                  <>
-                    <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
-                    <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
-                    <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
-                  </>
-                )}
+                  )}
+                </div>
               </div>
 
               {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
@@ -369,7 +387,6 @@ export default function Home() {
                     borderRadius: "10px",
                     marginBottom: "10px"
                   }}>
-                    {/* 1. LÍNEA DE GARANTÍA DINÁMICA (SOLO UNA) */}
                     <p style={{ marginBottom: "5px" }}>
                       • ⚙️ <strong>Garantía:</strong> {selectedProduct.warranty} por maquinaria.
                     </p>
