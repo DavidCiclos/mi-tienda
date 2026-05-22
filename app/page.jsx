@@ -263,6 +263,20 @@ export default function Home() {
             {p.name.toUpperCase()}
           </h3>
 
+          {/* Características/Descripción en la tarjeta */}
+          {p.description && (
+            <p style={{ 
+              fontSize: "12px", 
+              color: isSuizo ? "#aaa" : "#666", 
+              margin: "10px 0 0 0", 
+              fontWeight: "300",
+              lineHeight: "1.4",
+              padding: "0 10px"
+            }}>
+              {p.description}
+            </p>
+          )}
+
           {p.price > 0 && (
             <p style={{ 
               fontWeight: "600", 
@@ -278,10 +292,6 @@ export default function Home() {
             </p>
           )}
         </div>
-      </div>
-    ); // <-- Aquí faltaba cerrar correctamente
-  })}
-</main>
             
       {/* MODAL DE PRODUCTO */}
       {selectedProduct && (
@@ -323,11 +333,22 @@ export default function Home() {
                 </p>
               )}
 
+             {/* CARACTERÍSTICAS DINÁMICAS */}
               <div style={{ margin: "20px 0", padding: "15px", borderTop: "1px solid #eee" }}>
                 <p style={{ fontWeight: "700", fontSize: "12px", marginBottom: "10px" }}>CARACTERÍSTICAS:</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
-                <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
+                {selectedProduct.specs && selectedProduct.specs.length > 0 ? (
+                  selectedProduct.specs.map((spec, index) => (
+                    <p key={index} style={{ fontSize: "14px", margin: "5px 0", textTransform: "uppercase" }}>
+                      ✨ {spec}
+                    </p>
+                  ))
+                ) : (
+                  <>
+                    <p style={{ fontSize: "14px", margin: "5px 0" }}>⌚ HORA ANÁLOGA</p>
+                    <p style={{ fontSize: "14px", margin: "5px 0" }}>💍 CRISTAL MINERAL RESISTENTE</p>
+                    <p style={{ fontSize: "14px", margin: "5px 0" }}>🎁 INCLUYE CAJA DE PRESENTACIÓN</p>
+                  </>
+                )}
               </div>
               {/* SECCIÓN DE TÉRMINOS DESPLEGABLE */}
 <div style={{ marginTop: "15px", borderTop: "1px solid #eee" }}>
