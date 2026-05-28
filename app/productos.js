@@ -70,7 +70,7 @@ export const listaProductos = [
   {
     id: "-2.2", // ID Único: [Proveedor].[Consecutivo]-[Letras]
     name: "SKMEI 2355", // Ejemplo: "Daytona S-Clon Gold"
-    brand: "SKMEI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    brand: "SUIZOS-S", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
     line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
     price: 129900, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
     images: [
