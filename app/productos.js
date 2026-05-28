@@ -5,7 +5,7 @@ export const listaProductos = [
     name: "Daytona S-Clon Gold",
     brand: "ROLEX",
     line: "SUIZOS-S",
-    price: 3500000,
+    price: 3499000,
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779291658/nano-banana-2_hazlo_ver_c%C3%B3mo_presentaci%C3%B3n_de_lujo._fondo_negro_premium_anuncio.-0_1_2_ejumav.jpg",
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779291679/20251129_153935_f3xmcj.jpg"
@@ -59,16 +59,16 @@ export const listaProductos = [
   },
   {
     id: "-2.3", // ID Único: [Proveedor].[Consecutivo]-[Letras]
-    name: "NOMBRE DEL RELOJ AQUÍ", // Ejemplo: "Daytona S-Clon Gold"
+    name: "", // Ejemplo: "Daytona S-Clon Gold"
     brand: "SANDA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
     line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
-    price: 0, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    price: 109000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904413/IMG_20260523_203121_332_avxodo.jpg", // Imagen principal (la que se ve en el catálogo)
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904414/IMG_20260523_203121_737_oele5v.jpg" // Segunda imagen para la galería del modal
     ],
-    description: "Escribe aquí las especificaciones técnicas detalladas que se leerán de forma dinámica en el cuadro gris del modal.",
-    warranty: "2 años" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+    description: "Hora digital, pulso en silicona, resistente al agua.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
     id: "-2.4",
@@ -89,13 +89,13 @@ export const listaProductos = [
     name: "", // Ejemplo: "Daytona S-Clon Gold"
     brand: "SANDA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
     line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
-    price: 0, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    price: 119000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904417/IMG_20260523_203918_853_epaeka.jpg", // Imagen principal (la que se ve en el catálogo)
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904418/IMG_20260523_203918_641_hm3afn.jpg" // Segunda imagen para la galería del modal
     ],
-    description: "Escribe aquí las especificaciones técnicas detalladas que se leerán de forma dinámica en el cuadro gris del modal.",
-    warranty: "2 años" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+    description: "Doble hora, resistente al agua, pulso en silicona.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
     id: "-2.6", // ID Único: [Proveedor].[Consecutivo]-[Letras]
