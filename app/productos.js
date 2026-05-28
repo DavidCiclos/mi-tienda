@@ -68,6 +68,61 @@ export const listaProductos = [
     warranty: "3 meces"
   },
   {
+    id: "-2.2", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SKMEI 2355", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SKMEI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 129900, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903675/IMG_20260523_204444_964_njz939.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903675/IMG_20260523_204440_170_kqfqjb.jpg", // Segunda imagen para la galería del modal
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903677/IMG_20260523_204454_420_yqeqqq.jpg"  // Tercera imagen (puedes meter las que quieras)
+    ],
+    description: "Dual time, Pulso en silicona, A prueva de agua.",
+    warranty: "Garantia por filtracion de agua y Maquinaria" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.3", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "RELOJ DRAGON", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SKMEI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 139000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904500/IMG_20260523_203202_528_ce6o21.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904497/IMG_20260523_203155_665_e70rkg.jpg", // Segunda imagen para la galería del modal
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904501/IMG_20260523_203211_042_cxl234.jpg",
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904497/IMG_20260523_203148_633_mccf7h.jpg"
+    ],
+    description: "Analogo, Caja de acero, Pulso en acero inoxidable, Las manecillas brillan en la ozcuridad.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.4", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SKMEI BINARIO", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SKMEI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 99900, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779905085/IMG_20260523_200621_800_wvp8xd.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779905085/IMG_20260523_200617_848_utuxwj.jpg"
+    ],
+    description: "Hora en luz led, Pulso en acero inoxidable, Impermeable.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.5", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SKMEI Astronauta", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SKMEI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 100000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779905414/IMG_20260523_200514_661_hwpwzd.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779905415/IMG_20260523_200458_755_o804jr.jpg"
+    ],
+    description: "Hora digital, Pulso en silicona, Formato 12H-24H, Resistente al agua.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
     id: "-2.20", // ID Único: [Proveedor].[Consecutivo]-[Letras]
     name: "SKMEI 2328", // Ejemplo: "Daytona S-Clon Gold"
     brand: "SKMEI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
@@ -148,6 +203,45 @@ export const listaProductos = [
     ],
     description: "Dual Time, Formato 12H-24H, a Prueva de Agua, Pulso en Silicona de Alta Resistencia.",
     warranty: "Garantia por filtracion de agua y funcionamiento" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.41", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIE 1669", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 129000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903501/IMG_20260523_202845_545_jc0k15.jpg" // Imagen principal (la que se ve en el catálogo)    
+    ],
+    description: "Sumergible, Caja de acero, Pulso en acero.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.42", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 135000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903501/IMG_20260523_203719_752_puvcwf.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903502/IMG_20260523_203719_666_itxcjn.jpg"
+    ],
+    description: "Hora analogica, Calendario funncional, Pulso en silicona.",
+    warranty: "3 meces" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.43", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIE 1146", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 139900, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903507/IMG_20260523_205954_097_hbdemy.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903505/IMG_20260523_205147_280_ilm2pf.jpg", // Segunda imagen para la galería del modal
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903506/IMG_20260523_205146_615_l1t3eb.jpg"  // Tercera imagen (puedes meter las que quieras)
+    ],
+    description: "Dual time, Pulso en acero, A prueva de agua.",
+    warranty: "Garantia por filtracion de agua y Funcionamiento" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
     id: "-1.3-E-C",
