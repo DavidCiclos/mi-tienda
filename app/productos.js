@@ -99,16 +99,16 @@ export const listaProductos = [
   },
   {
     id: "-2.6", // ID Único: [Proveedor].[Consecutivo]-[Letras]
-    name: "NOMBRE DEL RELOJ AQUÍ", // Ejemplo: "Daytona S-Clon Gold"
+    name: "Sanda 3302", // Ejemplo: "Daytona S-Clon Gold"
     brand: "SANDA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
     line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
-    price: 0, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    price: 99000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904420/IMG_20260523_210336_065_xbyryf.jpg", // Imagen principal (la que se ve en el catálogo)
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904421/IMG_20260523_210335_748_wmo31p.jpg" // Segunda imagen para la galería del modal
     ],
-    description: "Escribe aquí las especificaciones técnicas detalladas que se leerán de forma dinámica en el cuadro gris del modal.",
-    warranty: "2 años" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+    description: "Dual time, formato 12H-24H, a prueva de agua, pulso en silicona de lata resistencia.",
+    warranty: "Garantia por filtracion de agua y funcionamiento" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
     id: "-1.3-E-C",
