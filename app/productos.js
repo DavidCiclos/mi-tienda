@@ -58,7 +58,20 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y funcionamiento"
   },
   {
-    id: "-2.3",
+    id: "-2.3", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "NOMBRE DEL RELOJ AQUÍ", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SANDA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 0, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904413/IMG_20260523_203121_332_avxodo.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904414/IMG_20260523_203121_737_oele5v.jpg" // Segunda imagen para la galería del modal
+    ],
+    description: "Escribe aquí las especificaciones técnicas detalladas que se leerán de forma dinámica en el cuadro gris del modal.",
+    warranty: "2 años" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.4",
     name: "Sanda 6008",
     brand: "SANDA",
     line: "ORIGINALES",
@@ -70,6 +83,32 @@ export const listaProductos = [
     ],
     description: "Pulso en silicona de lata resistencia, doble hora, incluye estuche.",
     warranty: "3 meses"
+  },
+  {
+    id: "-2.5", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SANDA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 0, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904417/IMG_20260523_203918_853_epaeka.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904418/IMG_20260523_203918_641_hm3afn.jpg" // Segunda imagen para la galería del modal
+    ],
+    description: "Escribe aquí las especificaciones técnicas detalladas que se leerán de forma dinámica en el cuadro gris del modal.",
+    warranty: "2 años" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.6", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "NOMBRE DEL RELOJ AQUÍ", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SANDA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 0, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904420/IMG_20260523_210336_065_xbyryf.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779904421/IMG_20260523_210335_748_wmo31p.jpg" // Segunda imagen para la galería del modal
+    ],
+    description: "Escribe aquí las especificaciones técnicas detalladas que se leerán de forma dinámica en el cuadro gris del modal.",
+    warranty: "2 años" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
     id: "-1.3-E-C",
