@@ -104,9 +104,9 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
 
-          {/* Fila 1: Categorías y Selector de Originales */}
+          {/* Fila 1: Categorías unificadas */}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", padding: "25px 0 15px", flexWrap: "wrap" }}>
-            {["SUIZOS-S", "PREMIUM 1.1", "AAA"].map(cat => (
+            {["SUIZOS-S", "PREMIUM 1.1", "AAA", "ORIGINALES"].map(cat => (
               <button key={cat} onClick={() => { setCategoryFilter(cat); setBrandFilter("TODAS"); }}
                 style={{
                   padding: "12px 24px", borderRadius: "4px",
@@ -115,22 +115,11 @@ export default function Home() {
                   color: categoryFilter === cat ? "#fff" : "#666",
                   cursor: "pointer", fontSize: "11px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", transition: "all 0.2s ease", outline: "none",
                   boxShadow: categoryFilter === cat ? "0 4px 12px rgba(0,0,0,0.15)" : "none"
-                }}>{cat}</button>
+                }}>
+                {cat === "ORIGINALES" ? "✨ ORIGINALES" : cat}
+              </button>
             ))}
-
-            <div style={{ width: "1px", height: "20px", background: "#eee", margin: "0 5px" }}></div>
-
-            <select 
-              value={categoryFilter.includes("ORIGINAL") ? categoryFilter : ""} 
-              onChange={(e) => { setCategoryFilter(e.target.value); setBrandFilter("TODAS"); }}
-              style={{ padding: "12px 24px", borderRadius: "4px", border: "2px solid #000", background: categoryFilter.includes("ORIGINAL") ? "#000" : "#fff", color: categoryFilter.includes("ORIGINAL") ? "#fff" : "#000", fontSize: "11px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", cursor: "pointer", outline: "none", appearance: "none", textAlign: "center", minWidth: "200px" }}>
-              <option value="" disabled hidden>✨ ORIGINALES ▼</option>
-              {["CHRONOS", "CURREN", "NAVIFORCE", "CASIO", "PULSO", "BENYAR", "G-SHOCK", "SCOTTIE", "ONOLA", "SKMEI", "SANDA", "FOXBOX", "CASSRAY", "Q&Q", "KOSMO", "EXPONI", "RD"].sort().map(marca => (
-                <option key={marca} value={`${marca}-ORIGINAL`}>{marca} (ORIGINAL)</option>
-              ))}
-            </select>
           </div>
-
           {/* Fila 2: Marcas con scroll lateral corregido */}
           <div style={{ 
             display: "flex", gap: "35px", padding: "15px 0 25px", 
