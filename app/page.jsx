@@ -11,31 +11,18 @@ export default function Home() {
 
   const products = listaProductos;
 
-  // 1. Detectar si el filtro actual viene del selector de marcas originales o de las pestañas normales
-  const currentLine = useMemo(() => {
-    if (categoryFilter.includes("-ORIGINAL")) {
-      return "ORIGINALES";
-    }
-    return categoryFilter;
-  }, [categoryFilter]);
-
-  // 2. Mapa de marcas actualizado: Agregamos HUBLOT a SUIZOS-S para que aparezca el botón en la barra horizontal
+ // 2. Mapa de marcas unificado (Aquí agregas las nuevas marcas cuando quieras)
   const availableBrands = useMemo(() => {
     const map = {
       "SUIZOS-S": ["ROLEX", "HUBLOT"], 
       "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"],
-      "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"]
+      "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"],
+      "ORIGINALES": ["SKMEI", "SANDA", "SCOTTIE", "CHRONOS", "CURREN", "NAVIFORCE", "BENYAR", "Q&Q"]
     };
-
-    // Si viene del selector de originales (ej: SKMEI-ORIGINAL), la única marca disponible en la barra será esa misma
-    if (categoryFilter.includes("-ORIGINAL")) {
-      const marcaOriginal = categoryFilter.split("-")[0];
-      return ["TODAS", marcaOriginal];
-    }
 
     return ["TODAS", ...(map[categoryFilter] || [])];
   }, [categoryFilter]);
-
+  
   // 3. Filtro corregido para que renderice correctamente los productos en pantalla
   const filteredProducts = useMemo(() => {
     return products.filter(p => {
