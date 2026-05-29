@@ -322,7 +322,7 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779905262/IMG_20260523_210913_716_e6zq5i.jpg", // Imagen principal (la que se ve en el catálogo)
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779905263/IMG_20260523_210917_588_q2ed45.jpg"
     ],
-    description: "Sumergible, Caja en acero, Segundero funcional, Pulso en aceero.",
+    description: "Sumergible, Caja en acero, Segundero funcional, Pulso en acero.",
     warranty: "3 Meses" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
