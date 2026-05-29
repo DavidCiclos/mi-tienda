@@ -17,7 +17,7 @@ export default function Home() {
       "SUIZOS-S": ["ROLEX", "HUBLOT"], 
       "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"],
       "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"],
-      "ORIGINALES": ["SKMEI", "SANDA", "SCOTTIE", "CHRONOS", "CURREN", "NAVIFORCE", "BENYAR", "Q&Q"]
+      "ORIGINALES": ["SKMEI", "SANDA", "SCOTTIE", "CHRONOS", "CURREN", "NAVIFORCE", "BENYAR", "Q&Q", "PULSO", "ONOLA", "CASRAY", "FOXBOX", "CASIO", "G-SHOCK"]
     };
 
     return ["TODAS", ...(map[categoryFilter] || [])];
