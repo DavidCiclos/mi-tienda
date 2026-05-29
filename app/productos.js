@@ -236,9 +236,9 @@ export const listaProductos = [
     line: "ORIGINALES", 
     price: 139900, 
     images: [
-      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903507/IMG_20260523_205954_097_hbdemy.jpg", 
-      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903505/IMG_20260523_205147_280_ilm2pf.jpg", 
-      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903506/IMG_20260523_205146_615_l1t3eb.jpg"  
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903506/IMG_20260523_205146_615_l1t3eb.jpg", 
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903505/IMG_20260523_205147_280_ilm2pf.jpg" 
+   
     ],
     description: "Dual time, Pulso en acero, A prueva de agua.",
     warranty: "Garantia por filtracion de agua y Funcionamiento" 
