@@ -15,9 +15,9 @@ export default function Home() {
   const availableBrands = useMemo(() => {
     const map = {
       "SUIZOS-S": ["ROLEX", "HUBLOT"], 
-      "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q"],
+      "PREMIUM 1.1": ["ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT", "CASIO", "TISSOT", "OMEGA", "Q&Q", "SMARTWATCH"],
       "AAA": ["CASIO", "Q&Q", "TISSOT", "OMEGA", "ROLEX", "CARTIER", "RICHARD MILLE", "BREITLING", "HUBLOT"],
-      "ORIGINALES": ["SKMEI", "SANDA", "SCOTTIE", "CHRONOS", "CURREN", "NAVIFORCE", "BENYAR", "Q&Q", "PULSO", "ONOLA", "CASRAY", "FOXBOX", "CASIO", "G-SHOCK"]
+      "ORIGINALES": ["SKMEI", "SANDA", "SCOTTIE", "TYFON", "CURREN", "NAVIFORCE", "BENYAR", "Q&Q", "PULSO", "ONOLA", "CASSRAY", "FOXBOX", "LIGE", "CASIO", "G-SHOCK", "CHENXI"]
     };
 
     return ["TODAS", ...(map[categoryFilter] || [])];
