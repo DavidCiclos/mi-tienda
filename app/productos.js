@@ -313,6 +313,32 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y funcionamineto" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
+    id: "-2.61-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "ONOLA 3859 PLANO ESTILO CLASICO", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "ONOLA", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 99900, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779905262/IMG_20260523_210913_716_e6zq5i.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779905263/IMG_20260523_210917_588_q2ed45.jpg"
+    ],
+    description: "Sumergible, Caja en acero, Segundero funcional, Pulso en aceero.",
+    warranty: "3 Meses" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.81-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "CURREN 8291", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "CURREN", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 149000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903292/IMG_20260523_203457_665_yddfpj.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903292/IMG_20260523_203458_304_vnx2qy.jpg"  // Segunda imagen para la galería del modaz
+    ],
+    description: "Reloj cronografo, Correa de cuero sintetico.",
+    warranty: "3 Meses" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
     id: "-1.3-E-C",
     name: "Big Bang Chronograph",
     brand: "HUBLOT",
