@@ -23,23 +23,13 @@ export default function Home() {
     return ["TODAS", ...(map[categoryFilter] || [])];
   }, [categoryFilter]);
   
-  // 3. Filtro corregido para que renderice correctamente los productos en pantalla
   const filteredProducts = useMemo(() => {
     return products.filter(p => {
-      // Validamos si coincide con la línea (SUIZOS-S, PREMIUM 1.1, AAA u ORIGINALES)
-      const matchLine = p.line === currentLine;
-      
-      // Si estamos buscando un original específico desde el menú desplegable
-      if (categoryFilter.includes("-ORIGINAL")) {
-        const marcaEspecifica = categoryFilter.split("-")[0];
-        return matchLine && p.brand === marcaEspecifica;
-      }
-      
-      // Filtro normal para las pestañas superiores
+      const matchLine = p.line === categoryFilter;
       const matchBrand = brandFilter === "TODAS" || p.brand === brandFilter;
       return matchLine && matchBrand;
     });
-  }, [categoryFilter, currentLine, brandFilter, products]);
+  }, [categoryFilter, brandFilter, products]);
 
   return (
     // CAMBIO: Fuente Inter o System-ui para un look más moderno y limpio
