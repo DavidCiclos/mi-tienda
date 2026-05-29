@@ -237,6 +237,7 @@ export const listaProductos = [
     price: 139900, 
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779903506/IMG_20260523_205146_615_l1t3eb.jpg", 
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903504/IMG_20260523_205146_412_vowr6u.jpg",
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779903505/IMG_20260523_205147_280_ilm2pf.jpg" 
    
     ],
