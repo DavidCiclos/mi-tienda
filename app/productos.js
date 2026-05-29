@@ -28,7 +28,7 @@ export const listaProductos = [
     warranty: "1 año"
   },
   {
-    id: "-2.0", 
+    id: "-2.0-C", 
     name: "SKMEI Classic Steel", // Corregido: Nombre asignado
     brand: "SKMEI",
     line: "ORIGINALES",
@@ -38,10 +38,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779903670/IMG_20260523_202836_179_d7n0v0.jpg"
     ],
     description: "Caja en acero, Pulso en acero, Sumergible.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2", 
+    id: "-2-C", 
     name: "SKMEI 1712", 
     brand: "SKMEI", 
     line: "ORIGINALES", 
@@ -54,7 +54,7 @@ export const listaProductos = [
     warranty: "Garantia por fltracion de agua y funcionamiento" 
   },
   {
-    id: "-2.1",
+    id: "-2.1-C",
     name: "Skmei supervivencia 1155",
     brand: "SKMEI",
     line: "ORIGINALES",
@@ -65,10 +65,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1778808365/IMG_20260514_202247_731_cpdukp.jpg"
     ],
     description: "Hora analogica, Digital, Cronometro, Alarma y Luz, Cuerda militar, Brujula, Pedernal de magnecio.",
-    warranty: "3 meces"
+    warranty: "3 meses"
   },
   {
-    id: "-2.2", 
+    id: "-2.2-C", 
     name: "SKMEI 2355", 
     brand: "SKMEI", // ✅ SOLUCIONADO: Cambiado de "ORIGINALES" a "SKMEI"
     line: "ORIGINALES", 
@@ -82,7 +82,7 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y Maquinaria" 
   },
   {
-    id: "-2.3", 
+    id: "-2.3-C", 
     name: "RELOJ DRAGON", 
     brand: "SKMEI", 
     line: "ORIGINALES", 
@@ -94,10 +94,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904497/IMG_20260523_203148_633_mccf7h.jpg"
     ],
     description: "Analogo, Caja de acero, Pulso en acero inoxidable, Las manecillas brillan in la ozcuridad.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.4", 
+    id: "-2.4-C", 
     name: "SKMEI BINARIO", 
     brand: "SKMEI", 
     line: "ORIGINALES", 
@@ -107,10 +107,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779905085/IMG_20260523_200617_848_utuxwj.jpg"
     ],
     description: "Hora en luz led, Pulso en acero inoxidable, Impermeable.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.5", 
+    id: "-2.5-C", 
     name: "SKMEI Astronauta", 
     brand: "SKMEI", 
     line: "ORIGINALES", 
@@ -120,10 +120,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779905415/IMG_20260523_200458_755_o804jr.jpg"
     ],
     description: "Hora digital, Pulso en silicona, Formato 12H-24H, Resistente al agua.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.20", 
+    id: "-2.20-C", 
     name: "SKMEI 2328", 
     brand: "SKMEI", 
     line: "ORIGINALES", 
@@ -136,7 +136,7 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y Funcionamiento" 
   },
   {
-    id: "-2.21",
+    id: "-2.21-C",
     name: "Sanda 6162",
     brand: "SANDA",
     line: "ORIGINALES",
@@ -152,7 +152,7 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y Funcionamiento"
   },
   {
-    id: "-2.22", 
+    id: "-2.22-C", 
     name: "SANDA Digital Sport", // Corregido: Nombre asignado
     brand: "SANDA", 
     line: "ORIGINALES", 
@@ -162,10 +162,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904414/IMG_20260523_203121_737_oele5v.jpg" 
     ],
     description: "Hora digital, Pulso en silicona, Resistente al agua.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.23",
+    id: "-2.23-C",
     name: "Sanda 6008",
     brand: "SANDA",
     line: "ORIGINALES",
@@ -179,7 +179,7 @@ export const listaProductos = [
     warranty: "3 meses"
   },
   {
-    id: "-2.24", 
+    id: "-2.24-C", 
     name: "SANDA Dual Chrono", // Corregido: Nombre asignado
     brand: "SANDA", 
     line: "ORIGINALES", 
@@ -189,10 +189,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779904418/IMG_20260523_203918_641_hm3afn.jpg" 
     ],
     description: "Doble Hora, Resistente al agua, Pulso en silicona.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.40", 
+    id: "-2.40-C", 
     name: "Sanda 3302", 
     brand: "SANDA", 
     line: "ORIGINALES", 
@@ -205,7 +205,7 @@ export const listaProductos = [
     warranty: "Garantia por filtracion de agua y funcionamiento" 
   },
   {
-    id: "-2.41", 
+    id: "-2.41-C", 
     name: "SCOTTIE 1669", 
     brand: "SCOTTIE", 
     line: "ORIGINALES", 
@@ -214,10 +214,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779903501/IMG_20260523_202845_545_jc0k15.jpg"    
     ],
     description: "Sumergible, Caja de acero, Pulso en acero.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.42", 
+    id: "-2.42-C", 
     name: "SCOTTIE Elegant Análogo", // Corregido: Nombre asignado
     brand: "SCOTTIE", 
     line: "ORIGINALES", 
@@ -227,10 +227,10 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779903502/IMG_20260523_203719_666_itxcjn.jpg"
     ],
     description: "Hora analogica, Calendario funncional, Pulso en silicona.",
-    warranty: "3 meces" 
+    warranty: "3 meses" 
   },
   {
-    id: "-2.43", 
+    id: "-2.43-C", 
     name: "SCOTTIE 1146", 
     brand: "SCOTTIE", 
     line: "ORIGINALES", 
@@ -243,6 +243,74 @@ export const listaProductos = [
     ],
     description: "Dual time, Pulso en acero, A prueva de agua.",
     warranty: "Garantia por filtracion de agua y Funcionamiento" 
+  },
+  {
+    id: "-2.44-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIE 1636", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 149000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903507/IMG_20260523_205954_097_hbdemy.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903508/IMG_20260523_205954_502_spie0k.jpg", // Segunda imagen para la galería del modal
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903510/IMG_20260523_205954_295_ndee2k.jpg"  // Tercera imagen (puedes meter las que quieras)
+    ],
+    description: "A prueva de agua, Dual time, Formato 12H-24H, Pulso en acero.",
+    warranty: "Garantia por filtracion de agua y funcionamineto" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.45-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIE 9253", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 149000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903512/IMG_20260523_210449_717_ro9qal.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903512/IMG_20260523_210450_154_r0hnjd.jpg" // Segunda imagen para la galería del modal
+    ],
+    description: "Cronografos fncionales, Sumergible, Caja en acero, Pulso en silicona.",
+    warranty: "3 meses" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.46-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIEN FASE LUNAR", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 99000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903517/IMG_20260523_211026_221_anx7ae.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903516/IMG_20260523_211020_737_gvhr8l.jpg", // Segunda imagen para la galería del modal
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903513/IMG_20260523_211018_280_w75uve.jpg"  // Tercera imagen (puedes meter las que quieras)
+    ],
+    description: "Case en acero, Pulso en silicona, Broche magnetico.",
+    warranty: "3 Meses" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.47-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIE 1123 RETRO", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 109000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903517/IMG_20260523_211046_270_f9iwct.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903520/IMG_20260523_211047_084_q528xu.jpg" // Segunda imagen para la galería del modal
+    ],
+    description: "Rsistente al agua, Pulso en acero inoxidable, Case en acero, Hora digital.",
+    warranty: "3 Meses" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+  },
+  {
+    id: "-2.48-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SCOTTIE 1502", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SCOTTIE", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES
+    price: 89900, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903744/IMG_20260523_204042_557_epu7qf.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903743/IMG_20260523_204043_267_xb2shi.jpg", // Segunda imagen para la galería del modal
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1779903742/IMG_20260523_204043_378_nj5izk.jpg"  // Tercera imagen (puedes meter las que quieras)
+    ],
+    description: "Pulso en silicona, A prueva de agua, Formato 12H-24H.",
+    warranty: "Garantia por filtracion de agua y funcionamineto" // Tiempo de garantía (Ejemplo: "2 años" o "1 año")
   },
   {
     id: "-1.3-E-C",
