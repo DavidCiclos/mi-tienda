@@ -341,8 +341,8 @@ export const listaProductos = [
   {
     id: "-1.3-E-C",
     name: "Big Bang Chronograph",
-    brand: "HUBLOT",
-    line: "SUIZOS-S",
+    brand: "CASIO",
+    line: "AAA",
     price: 2100000, 
     images: [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1779329422/Gemini_Generated_Image_rei22lrei22lrei2_2_j6gwvz.jpg" // Cambié el texto genérico por tu fondo para que no tire error de carga
