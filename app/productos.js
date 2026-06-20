@@ -132,8 +132,7 @@ export const listaProductos = [
       "https://res.cloudinary.com/debewjkqh/image/upload/v1780687507/IMG_20260605_123019_057_hnvtxc.jpg", 
       "https://res.cloudinary.com/debewjkqh/image/upload/v1780687506/IMG_20260605_123025_367_gmrqga.jpg"
     ],
-    description: "Diseño exclusivo con pantalla tipo indicador rotativo, Movimiento Quartz de alta precisión Caja en aleación de zinc resistente Pulso en acero inoxidable 304 
-      .",
+    description: "Diseño exclusivo con pantalla tipo indicador rotativo, Movimiento Quartz de alta precisión Caja en aleación de zinc resistente Pulso en acero inoxidable 304.",
     warranty: "Garantia por filtracion de agua y Funcionamiento" 
   },   
   {
