@@ -122,6 +122,24 @@ export const listaProductos = [
     description: "Hora digital, Pulso en silicona, Formato 12H-24H, Resistente al agua.",
     warranty: "3 meses" 
   },
+    {
+    id: "-2.6-C", // ID Único: [Proveedor].[Consecutivo]-[Letras]
+    name: "SKMEI 1260", // Ejemplo: "Daytona S-Clon Gold"
+    brand: "SKMAI", // Ejemplo: "ROLEX" (Debe coincidir con tus filtros)
+    line: "ORIGINALES", // Opciones exactas: "SUIZOS-S", "PREMIUM 1.1", "AAA" o "ORIGINALES"
+    price: 119000, // Número limpio sin puntos ni comas (Ejemplo: 3500000)
+    images: [
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1780687506/IMG_20260605_123025_367_gmrqga.jpg", // Imagen principal (la que se ve en el catálogo)
+      "https://res.cloudinary.com/debewjkqh/image/upload/v1780687507/IMG_20260605_123019_057_hnvtxc.jpg"  // Segunda imagen para la galería del modaz
+    ],
+    description: "Diseño exclusivo con pantalla tipo indicador rotativo.",
+    specs: {
+    movimiento: "Cuarzo",
+    cristal: "Resistente al agua",
+    diametro: "39mm",
+    resistencia: "3 ATM",// Tiempo de garantía (Ejemplo: "2 años" o "1 año")
+    warranty: "3 Meses"
+  },
   {
     id: "-2.20-C", 
     name: "SKMEI 2328", 
